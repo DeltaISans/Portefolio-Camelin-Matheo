@@ -47,34 +47,173 @@
         <h1 class="sitename">Personal</h1>
       </a>
 
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="resume.html" class="active">Resume</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
-            </ul>
-          </li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
+      <aside id="sidebar" class="sidebar">
+    <div class="sidebar-logo">
+      <a href="index.html"><h1 class="sitename">Mathéo Camelin</h1></a>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+  <li><a href="index.html">Accueil</a></li>
+  <li><a href="resume.html" class="active">Résumé</a></li>
+  <li><a href="about.html">A propos</a></li>
+        <li><a href="Experience.html">Experiences</a></li>
+        <li><a href="services.html">Projet</a></li>
+        <li><a href="#" class="has-submenu">Certifications</a></li>
+        <li><a href="#" class="has-submenu">Veille</a>
+          <ul class="submenu">
+            <li><a href="veille-t.html">Veille technologique</a></li>
+            <li><a href="veille-J.html">Veille juridique</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="sidebar-toggle" aria-label="Ouvrir/Fermer le menu"><span>&#9660;</span></button>
+  </aside>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background: #181818;
+      color: #fff;
+      font-family: 'Poppins', Arial, sans-serif;
+    }
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 260px;
+      height: 100vh;
+      background: #1a1a1a;
+      display: flex;
+      flex-direction: column;
+      z-index: 1000;
+      transition: transform 0.3s;
+    }
+    .sidebar-logo {
+      padding: 2rem 1.5rem 1rem 1.5rem;
+      text-align: left;
+    }
+    .sidebar-logo h1 {
+      color: #fff;
+      font-size: 1.6rem;
+      margin: 0;
+      font-weight: 700;
+    }
+    .sidebar-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sidebar-nav ul li {
+      margin: 0.7rem 0;
+    }
+    .sidebar-nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: 600;
+      padding: 0.5rem 1.5rem;
+      display: block;
+      border-radius: 4px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .sidebar-nav ul li a.active,
+    .sidebar-nav ul li a:hover {
+      color: #ff6600;
+      background: #232323;
+    }
+    .sidebar-nav ul li .submenu {
+      display: none;
+      margin-left: 1.5rem;
+      margin-top: 0.2rem;
+    }
+    .sidebar-nav ul li.open > .submenu {
+      display: block;
+    }
+    .sidebar-toggle {
+      position: absolute;
+      right: 1rem;
+      bottom: 2rem;
+      background: #292929;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .sidebar-toggle:hover {
+      background: #ff6600;
+      color: #fff;
+    }
+    @media (max-width: 900px) {
+      .sidebar {
+        width: 100vw;
+        height: auto;
+        flex-direction: row;
+        align-items: flex-start;
+        padding-bottom: 0.5rem;
+        position: fixed;
+        z-index: 1000;
+      }
+      .sidebar-logo {
+        padding: 1rem 1rem 0 1rem;
+      }
+      .sidebar-nav ul {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
+      .sidebar-nav ul li {
+        margin: 0.3rem 0;
+      }
+      .sidebar-toggle {
+        right: 1rem;
+        bottom: 1rem;
+      }
+    }
+    @media (max-width: 600px) {
+      .sidebar {
+        width: 100vw;
+        height: auto;
+        position: fixed;
+        z-index: 1000;
+      }
+      .sidebar-nav ul li a {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+      }
+      .sidebar-logo {
+        padding: 0.7rem 1rem 0 1rem;
+      }
+    }
+    main.main {
+      margin-left: 260px;
+      transition: margin-left 0.3s;
+    }
+    @media (max-width: 900px) {
+      main.main {
+        margin-left: 0;
+        margin-top: 80px;
+      }
+    }
+    @media (max-width: 600px) {
+      main.main {
+        margin-left: 0;
+        margin-top: 60px;
+      }
+    }
+  </style>
+    <button class="sidebar-toggle" aria-label="Ouvrir/Fermer le menu"><span>&#9660;</span></button>
+  </aside>
 
     </div>
   </header>
@@ -121,55 +260,75 @@
                 <li>(123) 456-7891</li>
                 <li>alice.barkley@example.com</li>
               </ul>
-            </div><!-- Edn Resume Item -->
+            <!-- Resume Section -->
+            <section id="resume" class="resume section">
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="resume-title">Profil</h3>
+                    <div class="resume-item pb-0">
+                      <h4>Mathéo Antoine Camelin</h4>
+                      <p><em>Étudiant motivé, à la recherche d'un premier emploi pour financer mes études et le permis de conduire.</em></p>
+                      <ul>
+                        <li><strong>Email :</strong> matheo.camelin974@gmail.com</li>
+                        <li><strong>Adresse :</strong> 45 chemin Jacquemin, Sainte-Anne</li>
+                        <li><strong>Téléphone :</strong> 0692709068</li>
+                        <li><strong>Date de naissance :</strong> 21 Fév, 2005</li>
+                      </ul>
+                    </div>
 
-            <h3 class="resume-title">Education</h3>
-            <div class="resume-item">
-              <h4>Master of Fine Arts &amp; Graphic Design</h4>
-              <h5>2015 - 2016</h5>
-              <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
-              <p>Qui deserunt veniam. Et sed aliquam labore tempore sed quisquam iusto autem sit. Ea vero voluptatum qui ut dignissimos deleniti nerada porti sand markend</p>
-            </div><!-- Edn Resume Item -->
+                    <h3 class="resume-title">Compétences</h3>
+                    <div class="resume-item">
+                      <ul>
+                        <li>Vente de letchis</li>
+                        <li>Tenir la caisse</li>
+                      </ul>
+                    </div>
 
-            <div class="resume-item">
-              <h4>Bachelor of Fine Arts &amp; Graphic Design</h4>
-              <h5>2010 - 2014</h5>
-              <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
-              <p>Quia nobis sequi est occaecati aut. Repudiandae et iusto quae reiciendis et quis Eius vel ratione eius unde vitae rerum voluptates asperiores voluptatem Earum molestiae consequatur neque etlon sader mart dila</p>
-            </div><!-- Edn Resume Item -->
+                    <h3 class="resume-title">Langues</h3>
+                    <div class="resume-item">
+                      <ul>
+                        <li>Français</li>
+                        <li>Anglais</li>
+                        <li>Espagnol</li>
+                      </ul>
+                    </div>
+                  </div>
 
-          </div>
+                  <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="resume-title">Expériences</h3>
+                    <div class="resume-item">
+                      <h4>Équipe Informatique</h4>
+                      <h5>2019</h5>
+                      <p><em>Mauvilac Le Port, Le Port</em></p>
+                      <ul>
+                        <li>Stage d'observation 3ème</li>
+                      </ul>
+                    </div>
 
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <h3 class="resume-title">Professional Experience</h3>
-            <div class="resume-item">
-              <h4>Senior graphic design specialist</h4>
-              <h5>2019 - Present</h5>
-              <p><em>Experion, New York, NY </em></p>
-              <ul>
-                <li>Lead in the design, development, and implementation of the graphic, layout, and production communication materials</li>
-                <li>Delegate tasks to the 7 members of the design team and provide counsel on all aspects of the project. </li>
-                <li>Supervise the assessment of all graphic materials in order to ensure quality and accuracy of the design</li>
-                <li>Oversee the efficient use of production project budgets ranging from $2,000 - $25,000</li>
-              </ul>
-            </div><!-- Edn Resume Item -->
-
-            <div class="resume-item">
-              <h4>Graphic design specialist</h4>
-              <h5>2017 - 2018</h5>
-              <p><em>Stepping Stone Advertising, New York, NY</em></p>
-              <ul>
-                <li>Developed numerous marketing programs (logos, brochures,infographics, presentations, and advertisements).</li>
-                <li>Managed up to 5 projects or tasks at a given time while under pressure</li>
-                <li>Recommended and consulted with clients on the most appropriate graphic design</li>
-                <li>Created 4+ design presentations and proposals a month for clients and account managers</li>
-              </ul>
-            </div><!-- Edn Resume Item -->
-
-          </div>
-
-        </div>
-
+                    <h3 class="resume-title">Éducation</h3>
+                    <div class="resume-item">
+                      <h4>BAC +1</h4>
+                      <h5>2023 - 2024</h5>
+                      <p><em>Université de La Réunion, Saint-Denis</em></p>
+                    </div>
+                    <div class="resume-item">
+                      <h4>BAC Général</h4>
+                      <h5>2020 - 2023</h5>
+                      <p><em>Lycée Marie Curie, Saint-Anne</em></p>
+                    </div>
+                    <div class="resume-item">
+                      <h4>Brevet</h4>
+                      <h5>2015 - 2020</h5>
+                      <p><em>Collège Basin Bleu, Saint-Anne</em></p>
+                      <ul>
+                        <li>Mention très bien</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section><!-- /Resume Section -->
       </div>
 
     </section><!-- /Resume Section -->
