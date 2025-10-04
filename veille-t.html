@@ -1,86 +1,25 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Veille tech . </title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-
-  <!-- Favicons -->
+  <title>Veille technologique</title>
   <link href="assets/img/logomatheo.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-
-  <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: matheo.
-  * Template URL: https://bootstrapmade.com/matheo.-free-Experiences-bootstrap-template/
-  * Updated: Mar 05 2025 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-</head>
-
-<body class="Experiences-page">
-
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-
-      <a href="index.html" class="logo d-flex align-items-center">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.webp" alt=""> -->
-        <h1 class="sitename">matheo.</h1>
-      </a>
-
-      <aside id="sidebar" class="sidebar">
-    <div class="sidebar-logo">
-      <a href="index.html"><h1 class="sitename">Mathéo Camelin</h1></a>
-    </div>
-    <nav class="sidebar-nav">
-      <ul>
-  <li><a href="index.html">Accueil</a></li>
-  <li><a href="resume.html">Résumé</a></li>
-  <li><a href="about.html">A propos</a></li>
-        <li><a href="Experience.html">Experiences</a></li>
-        <li><a href="services.html">Projet</a></li>
-        <li><a href="#" class="has-submenu">Certifications</a></li>
-        <li><a href="#" class="has-submenu">Veille</a>
-          <ul class="submenu">
-            <li><a href="veille-t.html class="active">Veille technologique</a></li>
-            <li><a href="veille-J.html">Veille juridique</a></li>
-          </ul>
-        </li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-    <button class="sidebar-toggle" aria-label="Ouvrir/Fermer le menu"><span>&#9660;</span></button>
-  </aside>
-
   <style>
     body {
       margin: 0;
       padding: 0;
       min-height: 100vh;
       background: #181818;
-      color: #fff;
+      color: #f5f5f5;
       font-family: 'Poppins', Arial, sans-serif;
+      overflow-y: auto;
     }
+
     .sidebar {
       position: fixed;
       top: 0;
@@ -88,29 +27,34 @@
       width: 260px;
       height: 100vh;
       background: #1a1a1a;
-      display: flex;
-      flex-direction: column;
       z-index: 1000;
       transition: transform 0.3s;
+      display: flex;
+      flex-direction: column;
     }
+
     .sidebar-logo {
       padding: 2rem 1.5rem 1rem 1.5rem;
       text-align: left;
     }
+
     .sidebar-logo h1 {
       color: #fff;
       font-size: 1.6rem;
       margin: 0;
       font-weight: 700;
     }
+
     .sidebar-nav ul {
       list-style: none;
       padding: 0;
       margin: 0;
     }
+
     .sidebar-nav ul li {
       margin: 0.7rem 0;
     }
+
     .sidebar-nav ul li a {
       color: #fff;
       text-decoration: none;
@@ -121,19 +65,23 @@
       border-radius: 4px;
       transition: background 0.2s, color 0.2s;
     }
+
     .sidebar-nav ul li a.active,
     .sidebar-nav ul li a:hover {
       color: #ff6600;
       background: #232323;
     }
+
     .sidebar-nav ul li .submenu {
       display: none;
       margin-left: 1.5rem;
       margin-top: 0.2rem;
     }
-    .sidebar-nav ul li.open > .submenu {
+
+    .sidebar-nav ul li.open> .submenu {
       display: block;
     }
+
     .sidebar-toggle {
       position: absolute;
       right: 1rem;
@@ -151,73 +99,141 @@
       justify-content: center;
       transition: background 0.2s;
     }
+
     .sidebar-toggle:hover {
       background: #ff6600;
       color: #fff;
     }
-    @media (max-width: 900px) {
-      .sidebar {
-        width: 100vw;
-        height: auto;
-        flex-direction: row;
-        align-items: flex-start;
-        padding-bottom: 0.5rem;
-        position: fixed;
-        z-index: 1000;
-      }
-      .sidebar-logo {
-        padding: 1rem 1rem 0 1rem;
-      }
-      .sidebar-nav ul {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-      }
-      .sidebar-nav ul li {
-        margin: 0.3rem 0;
-      }
-      .sidebar-toggle {
-        right: 1rem;
-        bottom: 1rem;
-      }
-    }
-    @media (max-width: 600px) {
-      .sidebar {
-        width: 100vw;
-        height: auto;
-        position: fixed;
-        z-index: 1000;
-      }
-      .sidebar-nav ul li a {
-        font-size: 1rem;
-        padding: 0.5rem 1rem;
-      }
-      .sidebar-logo {
-        padding: 0.7rem 1rem 0 1rem;
-      }
-    }
+
     main.main {
       margin-left: 260px;
+      max-width: 100vw;
+      width: 100%;
+      margin: 0 auto;
+      padding: 4vw 2vw 8vw 2vw;
+      min-height: 100vh;
+      box-sizing: border-box;
+      overflow-y: auto;
       transition: margin-left 0.3s;
     }
+
     @media (max-width: 900px) {
+      .sidebar {
+        width: 100vw;
+        height: auto;
+        position: fixed;
+      }
+
       main.main {
         margin-left: 0;
         margin-top: 80px;
+        max-width: 100vw;
+        padding: 4vw 2vw 8vw 2vw;
       }
     }
+
     @media (max-width: 600px) {
+      .sidebar {
+        width: 100vw;
+        height: auto;
+        position: fixed;
+      }
+
       main.main {
         margin-left: 0;
         margin-top: 60px;
+        max-width: 100vw;
+        padding: 2vw 1vw 8vw 1vw;
       }
+
+      .card {
+        padding: 4vw 2vw;
+        border-radius: 4vw;
+      }
+    }
+
+    .card,
+    .intro-section,
+    .subject-section,
+    .news-section,
+    .reglement-section,
+    .definition-section {
+      color: #f5f5f5 !important;
+    }
+
+    .card b,
+    .card strong,
+    .card h2,
+    .card h3,
+    .card h4 {
+      color: #ff6600 !important;
+    }
+
+    .card i,
+    .card span,
+    .card p,
+    .card ul li {
+      color: #e0e0e0 !important;
+    }
+
+    .card {
+      background: #232323;
+      border-radius: 2vw;
+      padding: 2vw;
+      margin-bottom: 2vw;
+      box-shadow: 0 2px 8px #0002;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Poppins', Arial, sans-serif;
+      font-weight: 700;
+    }
+
+    .sidebar.sidebar-closed {
+      transform: translateX(-100%);
+      transition: transform 0.3s;
+    }
+
+    .sidebar:not(.sidebar-closed) ~ main.main {
+      margin-left: 260px;
+    }
+
+    .sidebar.sidebar-closed ~ main.main {
+      margin-left: 0;
+    }
+
+    /* Bouton pour ouvrir la sidebar */
+    #open-sidebar {
+      position: fixed;
+      top: 24px;
+      left: 24px;
+      z-index: 1100;
+      background: #ff6600;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 1.5rem;
+      box-shadow: 0 2px 8px #0003;
+      cursor: pointer;
+      display: none;
+    }
+
+    .sidebar.sidebar-closed ~ #open-sidebar {
+      display: block !important;
     }
   </style>
   <script>
-    // Menu déroulant pour la veille
-    document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('.has-submenu').forEach(function(el) {
-        el.addEventListener('click', function(e) {
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.has-submenu').forEach(function (el) {
+        el.addEventListener('click', function (e) {
           e.preventDefault();
           this.parentElement.classList.toggle('open');
         });
@@ -225,146 +241,211 @@
       // Toggle sidebar (mobile)
       const sidebar = document.getElementById('sidebar');
       const toggleBtn = document.querySelector('.sidebar-toggle');
-      toggleBtn.addEventListener('click', function() {
-        sidebar.classList.toggle('sidebar-closed');
-        if(sidebar.classList.contains('sidebar-closed')) {
-          document.querySelector('main.main').style.marginLeft = '0';
+      const openSidebarBtn = document.getElementById('open-sidebar');
+      function updateSidebarBtn() {
+        if (sidebar.classList.contains('sidebar-closed')) {
+          openSidebarBtn.style.display = 'block';
         } else {
-          document.querySelector('main.main').style.marginLeft = '260px';
+          openSidebarBtn.style.display = 'none';
         }
-      });
+      }
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', function () {
+          sidebar.classList.toggle('sidebar-closed');
+          document.querySelector('main.main').style.marginLeft = sidebar.classList.contains('sidebar-closed') ? '0' : '260px';
+          updateSidebarBtn();
+        });
+      }
+      if (openSidebarBtn) {
+        openSidebarBtn.addEventListener('click', function () {
+          sidebar.classList.remove('sidebar-closed');
+          document.querySelector('main.main').style.marginLeft = '260px';
+          updateSidebarBtn();
+        });
+      }
+      updateSidebarBtn();
     });
   </script>
+</head>
+
+<body class="Experiences-page">
+
+  <aside id="sidebar" class="sidebar sidebar-closed">
+    <div class="sidebar-logo">
+      <a href="index.html">
+        <h1 class="sitename">Mathéo Camelin</h1>
+      </a>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="resume.html">Résumé</a></li>
+        <li><a href="about.html">A propos</a></li>
+        <li><a href="Experience.html">Experiences</a></li>
+        <li><a href="services.html">Projet</a></li>
+        <li><a href="#" class="has-submenu">Certifications</a></li>
+        <li><a href="#" class="has-submenu">Veille</a>
+          <ul class="submenu">
+            <li><a href="veille-t.html" class="active">Veille technologique</a></li>
+            <li><a href="veille-J.html">Veille juridique</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="sidebar-toggle" aria-label="Ouvrir/Fermer le menu"><span>&#9660;</span></button>
+  </aside>
+  <button id="open-sidebar" style="
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    z-index: 1100;
+    background: #ff6600;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 1.5rem;
+    box-shadow: 0 2px 8px #0003;
+    cursor: pointer;
+    display: none;
+  ">
+    ☰
+  </button>
+
   <main class="main">
 
-    <!-- Page Title -->
-    <div class="page-title" data-aos="fade">
-      <div class="heading">
-        <div class="container">
-          <div class="row d-flex justify-content-center text-center">
-            <div class="col-lg-8">
-              <h1>Veille technologique</h1>
-            </div>
+    <!-- Présentation générale -->
+    <section class="intro-section" style="padding: 2rem 0; background: #232323;">
+      <div class="card text-center">
+        <h1>Veille technologique</h1>
+        <p>
+          Sur cette page, découvrez les dernières tendances, actualités et outils liés à la sécurité des QR codes et à l’authentification mobile.<br>
+          <span style="color:#ff6600;">Objectif :</span> Comprendre les enjeux, les risques et les innovations dans ce domaine en pleine évolution.
+        </p>
+      </div>
+    </section>
+
+    <!-- Sujet principal -->
+    <section class="subject-section" style="padding: 2rem 0;">
+      <div class="card">
+        <h2>Sujet de veille</h2>
+        <p>
+          <strong>QR Code et authentification mobile : sécurisé ou vulnérable ?</strong><br>
+          L’utilisation des QR codes pour l’authentification sur mobile s’est largement démocratisée, notamment dans les applications bancaires, les paiements, ou l’accès à des services sécurisés. Mais cette technologie est-elle vraiment fiable ? Quels sont les risques de sécurité, les failles potentielles et les bonnes pratiques pour se protéger ? Cette veille vise à explorer les avantages, les limites et les enjeux de sécurité liés à l’authentification par QR code sur mobile.
+        </p>
+      </div>
+    </section>
+
+    <!-- Définition et objectifs -->
+    <section class="definition-section" style="padding: 2rem 0;">
+      <div class="row gy-4">
+        <div class="col-lg-6">
+          <div class="card">
+            <h4>Qu'est-ce qu'une veille technologique ?</h4>
+            <p>
+              La veille technologique consiste à surveiller, collecter, analyser et diffuser des informations sur les évolutions techniques, scientifiques et industrielles d’un secteur donné. Elle permet d’anticiper les innovations et de soutenir la prise de décisions.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="card">
+            <h4>Objectifs de la veille</h4>
+            <ul>
+              <li>Identifier les innovations technologiques</li>
+              <li>Comprendre l’impact sur la performance et la sécurité</li>
+              <li>Suivre l’évolution vers des pratiques plus sûres et écologiques</li>
+              <li>Observer l’influence de la data science</li>
+            </ul>
           </div>
         </div>
       </div>
-      <nav class="breadcrumbs">
-        <div class="container">
-          <ol>
-            <li><a href="index.html">Accueil</a></li>
-            <li class="current">Veille technologique</li>
-          </ol>
+    </section>
+
+    <!-- Actualités et tendances -->
+    <section class="news-section" style="padding: 2rem 0;">
+      <div class="row gy-4">
+        <div class="col-lg-6">
+          <div class="card">
+            <h3>Actualités QR Code & Authentification</h3>
+            <ul>
+              <li>
+                <b>
+                  <a href="https://www.tf1info.fr/societe/ils-vont-vous-soutirer-de-l-argent-pourquoi-vous-devez-imperativement-vous-mefier-des-qr-code-2397455.html" target="_blank" style="color:#ff6600;text-decoration:underline;">
+                    “Ils vont vous soutirer de l’argent” : pourquoi vous devez impérativement vous méfier des QR Code
+                  </a>
+                </b><br>
+                <span>
+                  Article publié le 29 septembre 2025 sur TF1 Info.<br>
+                  Il traite des escroqueries « QR code phishing / quishing » avec des exemples concrets et des conseils de prudence.<br>
+                  <i>Source : TF1 INFO</i>
+                </span>
+              </li>
+              <li>
+                <b>
+                  <a href="https://www.lemondeinformatique.fr/authentification-et-sso-30.html" target="_blank" style="color:#ff6600;text-decoration:underline;">
+                    Quand un QR code dissimule un malware
+                  </a>
+                </b><br>
+                <span>
+                  Article dans Le Monde Informatique (Rubrique « Authentification et SSO »), daté du 10 septembre 2025.<br>
+                  <i>Source : Le Monde Informatique</i>
+                </span>
+              </li>
+              <li>
+                <b>
+                  <a href="https://dcod.ch/2025/10/01/le-top5-des-actualites-cybersecurite-1-oct-2025/" target="_blank" style="color:#ff6600;text-decoration:underline;">
+                    Le top 5 des actualités cybersécurité – 1 oct 2025
+                  </a>
+                </b><br>
+                <span>
+                  Revue de presse récente sur la cyberactualité (pas forcément centrée sur les QR codes, mais utile pour le contexte).<br>
+                  <i>Source : dcod.ch</i>
+                </span>
+              </li>
+              <li>
+                <b>Évolutions des Passkeys</b><br>
+                <span>Adoption massive, intégration biométrique avancée.<br>
+                <i>Source : FIDO Alliance, Google</i></span>
+              </li>
+              <li>
+                <b>Nouvelles vulnérabilités</b><br>
+                <span>Attaques par email avec QR codes.<br>
+                <i>Source : CyberCorsica</i></span>
+              </li>
+            </ul>
+          </div>
         </div>
-      </nav>
-    </div><!-- End Page Title -->
-
-    <!-- Experiences Section -->
-    <section id="Experiences" class="Experiences section">
-
-      <div class="container">
-
-        <div class="row">
-
-          <div class="col-12" data-aos="fade-up" data-aos-delay="50">
-            <div class="Experiences-item">
-              <h4>Actualités QR Code et Authentification Mobile depuis le 25 août 2025</h4>
-              <strong>🚨 Découvertes Récentes - Septembre 2025</strong>
-              <ul>
-                <li><b>Attaque Sophistiquée via Package npm (23 septembre 2025)</b><br>
-                  L'équipe Socket a identifié un schéma d'obfuscation sophistiqué dans un package npm malveillant nommé "fezbox", qui cache des malwares dans des QR codes stéganographiques et menace la chaîne d'approvisionnement logicielle avec un voleur d'identifiants hautement obfusqué France NumQR Code Chimpanzee. Cette nouvelle technique combine :
-                  <ul>
-                    <li>Stéganographie dans les QR codes</li>
-                    <li>Vol de mots de passe des navigateurs</li>
-                    <li>Obfuscation avancée pour échapper à la détection</li>
-                  </ul>
-                </li>
-                <li><b>📈 Évolutions des Passkeys - Tendances Récentes</b><br>
-                  <b>Adoption Massive en 2025 :</b> Plus d'un milliard de personnes ont activé au moins une passkey selon la FIDO Alliance (<a href="https://fidoalliance.org/passkey-adoption/" target="_blank">source</a>), marquant une évolution remarquable vers l'authentification sans mot de passe.<br>
-                  <b>Intégration Biométrique Avancée (Juillet 2025) :</b> La liaison de passkeys ajoute une couche de sécurité supplémentaire en liant un identifiant biométrique à une passkey cryptographique unique (<a href="https://support.google.com/accounts/answer/185839" target="_blank">source</a>), créant un système d'authentification multicouche particulièrement robuste.
-                </li>
-                <li><b>🔒 Nouvelles Vulnérabilités Identifiées</b><br>
-                  <b>Techniques d'Attaque par Email avec QR Codes :</b> Les attaques commencent par un email qui prétend que le destinataire doit agir pour mettre à jour/consulter les paramètres de son compte organisationnel. Ces emails contiennent des pièces jointes PNG, JPEG, GIF avec un QR code (<a href="https://www.cybercorsica.com/qr-codes-risques/" target="_blank">source</a>).
-                </li>
-              </ul>
-            </div>
+        <div class="col-lg-6">
+          <div class="card">
+            <h3>Outils de veille</h3>
+            <ul>
+              <li>Feedly (flux RSS cybersécurité)</li>
+              <li>Google Alerts (mots-clés ciblés)</li>
+              <li>Twitter/X (comptes spécialisés)</li>
+              <li>Diigo (sauvegarde et annotation)</li>
+              <li>Google Docs (notes et synthèse)</li>
+            </ul>
           </div>
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            
-
-           
-            <div class="Experiences-item">
-              <h4>Qu'est-ce qu'une veille technologique ?</h4>
-              <p>La veille technologique est un processus stratégique qui consiste à surveiller, collecter, analyser et diffuser des informations sur les évolutions techniques, scientifiques et industrielles d’un secteur donné. Elle vise à anticiper les innovations, à détecter les opportunités et les menaces, et à soutenir la prise de décisions éclairées au sein des entreprises</p>
-            </div><!-- Edn Experiences Item -->
-
-            <div class="Experiences-item">
-              <h4>Objectif de la veille</h4>
-              <p>Identifier les dernières innovations technologiques utilisées dans le sport automobile. Comprendre comment ces technologies influencent la performance des monoplaces. Suivre l’évolution vers un sport automobile plus écologique. Observer l’impact de la data science dans la stratégie de course.</p>
-            </div><!-- Edn Experiences Item -->
-
-            <div class="Experiences-item">
-              <h4>Sujet de la veille</h4>
-              <p>Mon sujet de veille technologique est : <strong>QR Code et authentification mobile : sécurisé ou vulnérable ?</strong><br>
-              L’utilisation des QR codes pour l’authentification sur mobile s’est largement démocratisée, notamment dans les applications bancaires, les paiements, ou l’accès à des services sécurisés. Mais cette technologie est-elle vraiment fiable ? Quels sont les risques de sécurité, les failles potentielles et les bonnes pratiques pour se protéger ? Cette veille vise à explorer les avantages, les limites et les enjeux de sécurité liés à l’authentification par QR code sur mobile.</p>
-            </div><!-- Edn Experiences Item -->
-
-          </div>
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="Experiences-item">
-            
-              </div><!-- Edn Experiences Item -->
-
-            <div class="Experiences-item">
-                <h4>Outils utilisés</h4>
-                <p>Pour ma veille : <br>
-                  - Feedly (agrégateur de flux RSS pour suivre les sites de cybersécurité)<br>
-                  - Google Alerts (alertes sur les mots-clés « QR code », « authentification mobile », « faille sécurité »)<br>
-                  - Twitter/X (suivi de comptes spécialisés en sécurité informatique)<br>
-                  - Diigo (sauvegarde et annotation d’articles)<br>
-                  - Google Docs (prise de notes et synthèse)
-                </p>
-              </div><!-- Edn Experiences Item -->
-  
-
-          </div>
-
         </div>
-
       </div>
+    </section>
 
-    </section><!-- /Experiences Section -->
-
-    <!-- Projet Section -->
-    <section id="Projet" class="Projet section">
-
-        <div class="container">
-  
-          <div class="row gy-4">
-
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                <div class="col-12" data-aos="fade-up" data-aos-delay="100">
-                  <div class="service-item position-relative">
-                    <h4>QR code obligatoire sur le DPE (Diagnostic de Performance Énergétique)</h4>
-                    <p>Depuis le 1er septembre 2025, chaque rapport DPE devra comporter un QR code. En le scannant, l’acheteur ou le locataire pourra vérifier l’authenticité du diagnostic via la base officielle de l’Ademe.<br>
-                    <b>Sources :</b> Activ'Expertise, Service Public</p>
-                    <p>Cette mesure est motivée par la lutte contre la fraude dans le domaine immobilier.<br>
-                    <b>Source :</b> Service Public</p>
-                    <p><b>Renforcement des dispositifs pour fiabiliser le DPE</b><br>
-                    Un arrêté du 28 juillet 2025 complète des textes de juin 2025 pour sécuriser le DPE : suspension d’experts dépassant un certain seuil d’activité, exigences de certification renforcées, et l’instauration du QR code sur chaque diagnostic.<br>
-                    <b>Source :</b> Service Public</p>
-                    <p><b>Guide pratique du ministère de l’Intérieur : “Déjouer phishing, QR codes et SMS frauduleux”</b><br>
-                    Le gouvernement français met à jour ses recommandations face aux attaques numériques : parmi elles figure l’arnaque par QR codes (qu’on appelle “quishing”). Le guide est daté du 1er août 2025.</p>
-                  </div>
-                </div>
-  
-  
-          </div>
-  
-        </div>
-  
-      </section><!-- /Projet Section -->
+    <!-- Focus réglementaire -->
+    <section class="reglement-section" style="padding: 2rem 0;">
+      <div class="card">
+        <h3>QR code obligatoire sur le DPE</h3>
+        <p>
+          Depuis le 1er septembre 2025, chaque rapport DPE doit comporter un QR code pour vérifier l’authenticité du diagnostic via la base officielle de l’Ademe.<br>
+          <b>Motivation :</b> Lutter contre la fraude immobilière.<br>
+          <b>Sources :</b> Activ'Expertise, Service Public
+        </p>
+        <p>
+          <b>Guide pratique du ministère de l’Intérieur :</b> “Déjouer phishing, QR codes et SMS frauduleux” (août 2025).
+        </p>
+      </div>
+    </section>
 
   </main>
 
@@ -382,37 +463,16 @@
           <span>Copyright</span> <strong class="px-1 sitename">matheo.</strong> <span>All Rights Reserved</span>
         </div>
         <div class="credits">
-          <!-- All the links in the footer should remain intact. -->
-          <!-- You can delete the links only if you've purchased the pro version. -->
-          <!-- Licensing information: https://bootstrapmade.com/license/ -->
-          <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
           Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Preloader -->
   <div id="preloader"></div>
-
-  <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-
-  <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
-
 </body>
 
 </html>
