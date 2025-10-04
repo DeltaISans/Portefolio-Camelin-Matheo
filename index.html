@@ -61,6 +61,26 @@
     <button class="sidebar-toggle" aria-label="Ouvrir/Fermer le menu"><span>&#9660;</span></button>
   </aside>
 
+  <!-- ...après la balise de fermeture de la sidebar... -->
+  <button id="open-sidebar" style="
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    z-index: 1100;
+    background: #ff6600;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 1.5rem;
+    box-shadow: 0 2px 8px #0003;
+    cursor: pointer;
+    display: none;
+  ">
+    ☰
+  </button>
+
   <style>
     body {
       margin: 0;
@@ -214,14 +234,29 @@
       // Toggle sidebar (mobile)
       const sidebar = document.getElementById('sidebar');
       const toggleBtn = document.querySelector('.sidebar-toggle');
-      toggleBtn.addEventListener('click', function() {
-        sidebar.classList.toggle('sidebar-closed');
-        if(sidebar.classList.contains('sidebar-closed')) {
-          document.querySelector('main.main').style.marginLeft = '0';
+      const openSidebarBtn = document.getElementById('open-sidebar');
+      function updateSidebarBtn() {
+        if (sidebar.classList.contains('sidebar-closed')) {
+          openSidebarBtn.style.display = 'block';
         } else {
-          document.querySelector('main.main').style.marginLeft = '260px';
+          openSidebarBtn.style.display = 'none';
         }
-      });
+      }
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', function() {
+          sidebar.classList.toggle('sidebar-closed');
+          document.querySelector('main.main').style.marginLeft = sidebar.classList.contains('sidebar-closed') ? '0' : '260px';
+          updateSidebarBtn();
+        });
+      }
+      if (openSidebarBtn) {
+        openSidebarBtn.addEventListener('click', function() {
+          sidebar.classList.remove('sidebar-closed');
+          document.querySelector('main.main').style.marginLeft = '260px';
+          updateSidebarBtn();
+        });
+      }
+      updateSidebarBtn();
     });
   </script>
 
