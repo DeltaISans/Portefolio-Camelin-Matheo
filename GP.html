@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Veille technologique</title>
+  <title>Gestion du patrimoine informatique</title>
   <link href="assets/img/logomatheo.png" rel="icon">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -19,7 +18,6 @@
       font-family: 'Poppins', Arial, sans-serif;
       overflow-y: auto;
     }
-
     .sidebar {
       position: fixed;
       top: 0;
@@ -32,29 +30,24 @@
       display: flex;
       flex-direction: column;
     }
-
     .sidebar-logo {
       padding: 2rem 1.5rem 1rem 1.5rem;
       text-align: left;
     }
-
     .sidebar-logo h1 {
       color: #fff;
       font-size: 1.6rem;
       margin: 0;
       font-weight: 700;
     }
-
     .sidebar-nav ul {
       list-style: none;
       padding: 0;
       margin: 0;
     }
-
     .sidebar-nav ul li {
       margin: 0.7rem 0;
     }
-
     .sidebar-nav ul li a {
       color: #fff;
       text-decoration: none;
@@ -65,23 +58,19 @@
       border-radius: 4px;
       transition: background 0.2s, color 0.2s;
     }
-
     .sidebar-nav ul li a.active,
     .sidebar-nav ul li a:hover {
       color: #ff6600;
       background: #232323;
     }
-
     .sidebar-nav ul li .submenu {
       display: none;
       margin-left: 1.5rem;
       margin-top: 0.2rem;
     }
-
     .sidebar-nav ul li.open> .submenu {
       display: block;
     }
-
     .sidebar-toggle {
       position: absolute;
       right: 1rem;
@@ -99,12 +88,14 @@
       justify-content: center;
       transition: background 0.2s;
     }
-
     .sidebar-toggle:hover {
       background: #ff6600;
       color: #fff;
     }
-
+    .sidebar.sidebar-closed {
+      transform: translateX(-100%);
+      transition: transform 0.3s;
+    }
     main.main {
       margin-left: 260px;
       max-width: 100vw;
@@ -116,14 +107,12 @@
       overflow-y: auto;
       transition: margin-left 0.3s;
     }
-
     @media (max-width: 900px) {
       .sidebar {
         width: 100vw;
         height: auto;
         position: fixed;
       }
-
       main.main {
         margin-left: 0;
         margin-top: 80px;
@@ -131,51 +120,19 @@
         padding: 4vw 2vw 8vw 2vw;
       }
     }
-
     @media (max-width: 600px) {
       .sidebar {
         width: 100vw;
         height: auto;
         position: fixed;
       }
-
       main.main {
         margin-left: 0;
         margin-top: 60px;
         max-width: 100vw;
         padding: 2vw 1vw 8vw 1vw;
       }
-
-      .card {
-        padding: 4vw 2vw;
-        border-radius: 4vw;
-      }
     }
-
-    .card,
-    .intro-section,
-    .subject-section,
-    .news-section,
-    .reglement-section,
-    .definition-section {
-      color: #f5f5f5 !important;
-    }
-
-    .card b,
-    .card strong,
-    .card h2,
-    .card h3,
-    .card h4 {
-      color: #ff6600 !important;
-    }
-
-    .card i,
-    .card span,
-    .card p,
-    .card ul li {
-      color: #e0e0e0 !important;
-    }
-
     .card {
       background: #232323;
       border-radius: 2vw;
@@ -185,29 +142,13 @@
       width: 100%;
       max-width: 100%;
       box-sizing: border-box;
+      color: #f5f5f5;
     }
-
-    h1,
-    h2,
-    h3,
-    h4 {
+    h1, h2, h3, h4 {
       font-family: 'Poppins', Arial, sans-serif;
       font-weight: 700;
+      color: #ff6600;
     }
-
-    .sidebar.sidebar-closed {
-      transform: translateX(-100%);
-      transition: transform 0.3s;
-    }
-
-    .sidebar:not(.sidebar-closed) ~ main.main {
-      margin-left: 260px;
-    }
-
-    .sidebar.sidebar-closed ~ main.main {
-      margin-left: 0;
-    }
-
     /* Bouton pour ouvrir la sidebar */
     #open-sidebar {
       position: fixed;
@@ -224,10 +165,6 @@
       box-shadow: 0 2px 8px #0003;
       cursor: pointer;
       display: none;
-    }
-
-    .sidebar.sidebar-closed ~ #open-sidebar {
-      display: block !important;
     }
   </style>
   <script>
@@ -267,14 +204,10 @@
     });
   </script>
 </head>
-
-<body class="Experiences-page">
-
+<body>
   <aside id="sidebar" class="sidebar sidebar-closed">
     <div class="sidebar-logo">
-      <a href="index.html">
-        <h1 class="sitename">Mathéo Camelin</h1>
-      </a>
+      <a href="index.html"><h1 class="sitename">Mathéo Camelin</h1></a>
     </div>
     <nav class="sidebar-nav">
       <ul>
@@ -284,170 +217,91 @@
         <li><a href="Experience.html">Experiences</a></li>
         <li><a href="services.html">Projet</a></li>
         <li><a href="#" class="has-submenu">Certifications</a></li>
-        <li><a href="GP.html">Gestion patrimoine</a></li>
         <li><a href="#" class="has-submenu">Veille</a>
           <ul class="submenu">
-            <li><a href="veille-t.html" class="active">Veille technologique</a></li>
+            <li><a href="veille-t.html">Veille technologique</a></li>
             <li><a href="veille-J.html">Veille juridique</a></li>
           </ul>
         </li>
+        <li><a href="GP.html" class="active">Gestion patrimoine</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
     <button class="sidebar-toggle" aria-label="Ouvrir/Fermer le menu"><span>&#9660;</span></button>
   </aside>
-  <button id="open-sidebar" style="
-    position: fixed;
-    top: 24px;
-    left: 24px;
-    z-index: 1100;
-    background: #ff6600;
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    width: 44px;
-    height: 44px;
-    font-size: 1.5rem;
-    box-shadow: 0 2px 8px #0003;
-    cursor: pointer;
-    display: none;
-  ">
+  <button id="open-sidebar">
     ☰
   </button>
 
   <main class="main">
-
-    <!-- Présentation générale -->
-    <section class="intro-section" style="padding: 2rem 0; background: #232323;">
+    <section class="intro-section" style="padding: 2rem 0;">
       <div class="card text-center">
-        <h1>Veille technologique</h1>
+        <h1>Gestion du patrimoine informatique</h1>
         <p>
-          Sur cette page, découvrez les dernières tendances, actualités et outils liés à la sécurité des QR codes et à l’authentification mobile.<br>
-          <span style="color:#ff6600;">Objectif :</span> Comprendre les enjeux, les risques et les innovations dans ce domaine en pleine évolution.
+          La gestion du patrimoine informatique vise à optimiser l’inventaire, le suivi, la maintenance et la sécurité des ressources numériques d’une organisation.
         </p>
       </div>
     </section>
 
-    <!-- Sujet principal -->
     <section class="subject-section" style="padding: 2rem 0;">
       <div class="card">
-        <h2>Sujet de veille</h2>
-        <p>
-          <strong>QR Code et authentification mobile : sécurisé ou vulnérable ?</strong><br>
-          L’utilisation des QR codes pour l’authentification sur mobile s’est largement démocratisée, notamment dans les applications bancaires, les paiements, ou l’accès à des services sécurisés. Mais cette technologie est-elle vraiment fiable ? Quels sont les risques de sécurité, les failles potentielles et les bonnes pratiques pour se protéger ? Cette veille vise à explorer les avantages, les limites et les enjeux de sécurité liés à l’authentification par QR code sur mobile.
-        </p>
+        <h2>Les composants du parc IT</h2>
+        <ul>
+          <li><b>Matériel réseau</b> : serveurs, switches, routeurs, modems et équipements wifi</li>
+          <li><b>Postes utilisateurs</b> : machines fixes et ordinateurs portables</li>
+          <li><b>Logiciels</b> : suites bureautiques (type Microsoft Office), OS (Windows, Linux, MacOS)</li>
+          <li><b>Licences</b> : Windows 10, Windows 11 Pro, Windows Server 2022, Ubuntu, Debian</li>
+        </ul>
       </div>
     </section>
 
-    <!-- Définition et objectifs -->
-    <section class="definition-section" style="padding: 2rem 0;">
-      <div class="row gy-4">
-        <div class="col-lg-6">
-          <div class="card">
-            <h4>Qu'est-ce qu'une veille technologique ?</h4>
-            <p>
-              La veille technologique consiste à surveiller, collecter, analyser et diffuser des informations sur les évolutions techniques, scientifiques et industrielles d’un secteur donné. Elle permet d’anticiper les innovations et de soutenir la prise de décisions.
-            </p>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="card">
-            <h4>Objectifs de la veille</h4>
-            <ul>
-              <li>Identifier les innovations technologiques</li>
-              <li>Comprendre l’impact sur la performance et la sécurité</li>
-              <li>Suivre l’évolution vers des pratiques plus sûres et écologiques</li>
-              <li>Observer l’influence de la data science</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Actualités et tendances -->
-    <section class="news-section" style="padding: 2rem 0;">
-      <div class="row gy-4">
-        <div class="col-lg-6">
-          <div class="card">
-            <h3>Actualités QR Code & Authentification</h3>
-            <ul>
-              <li>
-                <b>
-                  <a href="https://www.tf1info.fr/societe/ils-vont-vous-soutirer-de-l-argent-pourquoi-vous-devez-imperativement-vous-mefier-des-qr-code-2397455.html" target="_blank" style="color:#ff6600;text-decoration:underline;">
-                    “Ils vont vous soutirer de l’argent” : pourquoi vous devez impérativement vous méfier des QR Code
-                  </a>
-                </b><br>
-                <span>
-                  Article publié le 29 septembre 2025 sur TF1 Info.<br>
-                  Il traite des escroqueries « QR code phishing / quishing » avec des exemples concrets et des conseils de prudence.<br>
-                  <i>Source : TF1 INFO</i>
-                </span>
-              </li>
-              <li>
-                <b>
-                  <a href="https://www.lemondeinformatique.fr/authentification-et-sso-30.html" target="_blank" style="color:#ff6600;text-decoration:underline;">
-                    Quand un QR code dissimule un malware
-                  </a>
-                </b><br>
-                <span>
-                  Article dans Le Monde Informatique (Rubrique « Authentification et SSO »), daté du 10 septembre 2025.<br>
-                  <i>Source : Le Monde Informatique</i>
-                </span>
-              </li>
-              <li>
-                <b>
-                  <a href="https://dcod.ch/2025/10/01/le-top5-des-actualites-cybersecurite-1-oct-2025/" target="_blank" style="color:#ff6600;text-decoration:underline;">
-                    Le top 5 des actualités cybersécurité – 1 oct 2025
-                  </a>
-                </b><br>
-                <span>
-                  Revue de presse récente sur la cyberactualité (pas forcément centrée sur les QR codes, mais utile pour le contexte).<br>
-                  <i>Source : dcod.ch</i>
-                </span>
-              </li>
-              <li>
-                <b>Évolutions des Passkeys</b><br>
-                <span>Adoption massive, intégration biométrique avancée.<br>
-                <i>Source : FIDO Alliance, Google</i></span>
-              </li>
-              <li>
-                <b>Nouvelles vulnérabilités</b><br>
-                <span>Attaques par email avec QR codes.<br>
-                <i>Source : CyberCorsica</i></span>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="card">
-            <h3>Outils de veille</h3>
-            <ul>
-              <li>Feedly (flux RSS cybersécurité)</li>
-              <li>Google Alerts (mots-clés ciblés)</li>
-              <li>Twitter/X (comptes spécialisés)</li>
-              <li>Diigo (sauvegarde et annotation)</li>
-              <li>Google Docs (notes et synthèse)</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Focus réglementaire -->
-    <section class="reglement-section" style="padding: 2rem 0;">
+    <section class="subject-section" style="padding: 2rem 0;">
       <div class="card">
-        <h3>QR code obligatoire sur le DPE</h3>
+        <h2>Logiciels de gestion disponibles</h2>
         <p>
-          Depuis le 1er septembre 2025, chaque rapport DPE doit comporter un QR code pour vérifier l’authenticité du diagnostic via la base officielle de l’Ademe.<br>
-          <b>Motivation :</b> Lutter contre la fraude immobilière.<br>
-          <b>Sources :</b> Activ'Expertise, Service Public
+          Différentes applications existent pour gérer le parc informatique en entreprise. On peut citer <b>Aida64</b>, <b>OCS Inventory</b> ou <b>GLPI</b> (Gestionnaire Libre de Parc Informatique).
         </p>
         <p>
-          <b>Guide pratique du ministère de l’Intérieur :</b> “Déjouer phishing, QR codes et SMS frauduleux” (août 2025).
+          <b>GLPI</b> est particulièrement intéressant : c'est une solution gratuite et open source qui permet de recenser tous les équipements et programmes du parc. Ce logiciel propose aussi des modules pour administrer les licences et gérer le support technique via un système de tickets pour traiter les demandes d'assistance.
         </p>
       </div>
     </section>
 
+    <section class="subject-section" style="padding: 2rem 0;">
+      <div class="card">
+        <h2>Les enjeux de l'inventaire IT</h2>
+        <p>
+          Dans un contexte où les entreprises accumulent de plus en plus d'équipements numériques, maintenir un inventaire précis devient un défi majeur. Sans visibilité claire sur les actifs possédés, une organisation s'expose à des risques financiers importants : paiement de licences inutilisées, renouvellement prématuré de matériel encore fonctionnel, ou impossibilité de localiser rapidement un équipement défaillant.
+        </p>
+      </div>
+    </section>
+
+    <section class="subject-section" style="padding: 2rem 0;">
+      <div class="card">
+        <h2>Le cycle de vie des équipements IT</h2>
+        <p>
+          La gestion du patrimoine informatique s'articule autour du cycle de vie complet des actifs, de l'acquisition jusqu'au retrait :
+        </p>
+        <ul>
+          <li><b>Phase d'acquisition</b> : budgétisation, sélection des fournisseurs, négociation des contrats et réception du matériel</li>
+          <li><b>Déploiement et configuration</b> : installation, paramétrage, attribution aux utilisateurs et documentation</li>
+          <li><b>Maintenance et suivi</b> : surveillance des performances, interventions préventives, gestion des garanties et suivi des réparations</li>
+          <li><b>Fin de vie</b> : recyclage, destruction sécurisée des données, revente ou mise au rebut conforme aux normes environnementales</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="subject-section" style="padding: 2rem 0;">
+      <div class="card">
+        <h2>Conformité et audits</h2>
+        <p>
+          Un aspect souvent négligé mais essentiel concerne la conformité légale. Les éditeurs de logiciels effectuent régulièrement des audits pour vérifier que les entreprises respectent leurs contrats de licence. Une gestion rigoureuse permet de se prémunir contre les amendes pouvant atteindre plusieurs milliers d'euros.
+        </p>
+        <p>
+          De plus, le RGPD impose des obligations strictes concernant le traitement et la sécurisation des données stockées sur les équipements, rendant indispensable un suivi précis de chaque appareil manipulant des informations sensibles.
+        </p>
+      </div>
+    </section>
   </main>
 
   <footer id="footer" class="footer dark-background">
@@ -469,11 +323,9 @@
       </div>
     </div>
   </footer>
-
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   <div id="preloader"></div>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
-
 </html>
