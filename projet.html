@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentation - Projets</title>
+  <link href="assets/css/main.css" rel="stylesheet">
+  <style>
+    .doc-section {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: flex-start;
+    }
+    .doc-card {
+      background: #232323;
+      color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+      padding: 2rem 1.5rem;
+      min-width: 320px;
+      max-width: 400px;
+      flex: 1 1 320px;
+      margin-bottom: 1rem;
+      transition: box-shadow 0.2s;
+    }
+    .doc-card:hover {
+      box-shadow: 0 4px 24px rgba(255,102,0,0.18);
+    }
+    .doc-card h2 {
+      color: #ff6600;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+    .add-doc-btn {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.7rem 1.5rem;
+      background: #ff6600;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      text-decoration: none;
+    }
+    .add-doc-btn:hover {
+      background: #ff8533;
+    }
+    @media (max-width: 700px) {
+      .doc-section {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body class="projet-page">
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-logo">
+      <a href="index.html"><h1 class="sitename">Mathéo Camelin</h1></a>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="resume.html">Résumé</a></li>
+        <li><a href="about.html">A propos</a></li>
+        <li><a href="Experience.html">Experiences</a></li>
+        <li><a href="services.html">Projet</a></li>
+        <li><a href="#" class="has-submenu">Certifications</a></li>
+        <li><a href="#" class="has-submenu">Veille</a>
+          <ul class="submenu">
+            <li><a href="veille-t.html">Veille technologique</a></li>
+            <li><a href="veille-J.html">Veille juridique</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="sidebar-toggle" aria-label="Ouvrir/Fermer le menu"><span>&#9660;</span></button>
+  </aside>
+
+  <main class="main">
+    <div class="container">
+      <h1>Documentation : Installation de Windows</h1>
+      <section>
+        <h2>Prérequis</h2>
+        <ul>
+          <li>Clé USB (8 Go minimum)</li>
+          <li>Image ISO de Windows</li>
+          <li>Outil de création de média (Media Creation Tool)</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Étapes d'installation</h2>
+        <ol>
+          <li>Télécharger l’ISO de Windows depuis le site officiel.</li>
+          <li>Créer une clé USB bootable avec l’outil Media Creation Tool.</li>
+          <li>Démarrer le PC sur la clé USB (modifier l’ordre de boot dans le BIOS si besoin).</li>
+          <li>Suivre les instructions à l’écran pour installer Windows.</li>
+        </ol>
+      </section>
+      <section>
+        <h2>Conseils</h2>
+        <ul>
+          <li>Pense à sauvegarder tes données avant l’installation.</li>
+          <li>Prépare ta clé de licence Windows si nécessaire.</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+    <div class="container">
+      <h3 class="sitename">matheo.</h3>
+      <div class="copyright">
+        <span>Copyright</span> <strong class="px-1 sitename">matheo.</strong> <span>All Rights Reserved</span>
+      </div>
+    </div>
+  </footer>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
