@@ -59,12 +59,14 @@
         <li><a href="Experience.html">Experiences</a></li>
         <li><a href="services.html">Projet</a></li>
         <li><a href="#" class="has-submenu">Certifications</a></li>
+        <li><a href="GP.html">Gestion patrimoine</a></li>
         <li><a href="#" class="has-submenu">Veille</a>
           <ul class="submenu">
             <li><a href="veille-t.html">Veille technologique</a></li>
             <li><a href="veille-J.html">Veille juridique</a></li>
           </ul>
         </li>
+        <li><a href="Stage.html">Stages</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
@@ -381,6 +383,44 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <!-- Sidebar toggle script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.has-submenu').forEach(function (el) {
+        el.addEventListener('click', function (e) {
+          e.preventDefault();
+          this.parentElement.classList.toggle('open');
+        });
+      });
+      // Toggle sidebar (mobile)
+      const sidebar = document.getElementById('sidebar');
+      const toggleBtn = document.querySelector('.sidebar-toggle');
+      const openSidebarBtn = document.getElementById('open-sidebar');
+      function updateSidebarBtn() {
+        if (sidebar.classList.contains('sidebar-closed')) {
+          openSidebarBtn.style.display = 'block';
+        } else {
+          openSidebarBtn.style.display = 'none';
+        }
+      }
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', function () {
+          sidebar.classList.toggle('sidebar-closed');
+          document.querySelector('main.main').style.marginLeft = sidebar.classList.contains('sidebar-closed') ? '0' : '260px';
+          updateSidebarBtn();
+        });
+      }
+      if (openSidebarBtn) {
+        openSidebarBtn.addEventListener('click', function () {
+          sidebar.classList.remove('sidebar-closed');
+          document.querySelector('main.main').style.marginLeft = '260px';
+          updateSidebarBtn();
+        });
+      }
+      updateSidebarBtn();
+    });
+  </script>
 
 </body>
 
