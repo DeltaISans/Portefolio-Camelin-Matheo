@@ -1,365 +1,763 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Veille  </title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-
-  <!-- Favicons -->
+  <title>Veille juridique – QR Code, Cybersécurité & RGPD</title>
   <link href="assets/img/logomatheo.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-
-  <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: .
-  * Template URL: 
-  * Updated
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <style>
+    :root {
+      --blue: #ff6600;
+      --blue-dim: rgba(255,102,0,0.12);
+      --bg: #111111;
+      --bg2: #1a1a1a;
+      --bg3: #222222;
+      --text: #e8e4dc;
+      --text-dim: #888;
+      --border: rgba(255,102,0,0.25);
+      --accent: #ff6600;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Syne', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ─── SIDEBAR ─── */
+    .sidebar {
+      position: fixed; top: 0; left: 0;
+      width: 260px; height: 100vh;
+      background: var(--bg2);
+      display: flex; flex-direction: column;
+      z-index: 1000;
+      transition: transform 0.3s;
+      border-right: 1px solid var(--border);
+    }
+    .sidebar-logo { padding: 2rem 1.5rem 1rem; }
+    .sidebar-logo h1 { color: #fff; font-size: 1.4rem; font-weight: 800; }
+    .sidebar-nav ul { list-style: none; }
+    .sidebar-nav ul li { margin: 0.4rem 0; }
+    .sidebar-nav ul li a {
+      color: #7b8db0; text-decoration: none; font-size: 0.95rem; font-weight: 600;
+      padding: 0.45rem 1.5rem; display: block; border-radius: 4px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .sidebar-nav ul li a.active,
+    .sidebar-nav ul li a:hover { color: var(--accent); background: var(--blue-dim); }
+    .sidebar-nav ul li .submenu { display: none; margin-left: 1.2rem; }
+    .sidebar-nav ul li.open > .submenu { display: block; }
+    .sidebar-toggle {
+      position: absolute; right: 1rem; bottom: 2rem;
+      background: var(--bg3); color: #fff; border: none; border-radius: 50%;
+      width: 36px; height: 36px; font-size: 1rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .sidebar-toggle:hover { background: var(--blue); }
+    .sidebar.sidebar-closed { transform: translateX(-100%); }
+
+    #open-sidebar {
+      position: fixed; top: 20px; left: 20px; z-index: 1100;
+      background: var(--blue); color: #fff; border: none; border-radius: 50%;
+      width: 42px; height: 42px; font-size: 1.4rem;
+      box-shadow: 0 2px 12px rgba(255,102,0,0.4); cursor: pointer; display: none;
+    }
+
+    /* ─── MAIN ─── */
+    main.main {
+      margin-left: 260px;
+      min-height: 100vh;
+      padding: 3rem 2.5rem 5rem;
+      transition: margin-left 0.3s;
+    }
+
+    /* ─── HERO ─── */
+    .hero-banner {
+      background: linear-gradient(135deg, var(--bg2) 0%, #1a1200 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 3rem 2.5rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-banner::before {
+      content: '§';
+      position: absolute; right: 2.5rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Space Mono', monospace;
+      font-size: 9rem; color: rgba(255,102,0,0.08); line-height: 1;
+      pointer-events: none; user-select: none;
+    }
+    .hero-banner .tag {
+      display: inline-block;
+      background: var(--blue-dim); color: var(--accent);
+      border: 1px solid var(--border); border-radius: 4px;
+      font-family: 'Space Mono', monospace; font-size: 0.7rem;
+      padding: 0.2rem 0.7rem; letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+    .hero-banner h1 {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800; line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .hero-banner h1 span { color: var(--accent); }
+    .hero-banner p { color: var(--text-dim); max-width: 540px; font-size: 1rem; line-height: 1.7; }
+    .period-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      margin-top: 1.5rem;
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 999px; padding: 0.4rem 1rem;
+      font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--accent);
+    }
+    .period-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%,100%{ opacity:1; } 50%{ opacity:0.3; } }
+
+    /* ─── SECTION TITLES ─── */
+    .section-title {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem; letter-spacing: 0.15em;
+      color: var(--accent); text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    /* ─── CARDS ─── */
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+    .card-item {
+      background: var(--bg2);
+      border: 1px solid rgba(255,102,0,0.15);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .card-item:hover { border-color: var(--blue); transform: translateY(-2px); }
+    .card-item h4 {
+      color: var(--accent); font-size: 1rem; font-weight: 700;
+      margin-bottom: 0.7rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .card-item p, .card-item li { color: #94a3b8; font-size: 0.9rem; line-height: 1.7; }
+    .card-item ul { padding-left: 1.2rem; }
+    .card-item ul li { margin-bottom: 0.3rem; }
+
+    /* ─── ARTICLE CARDS ─── */
+    .article-list { display: flex; flex-direction: column; gap: 1rem; }
+    .article-card {
+      background: var(--bg2);
+      border: 1px solid rgba(255,102,0,0.15);
+      border-radius: 12px;
+      padding: 1.2rem 1.5rem;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: start;
+      gap: 1rem;
+      transition: border-color 0.2s;
+    }
+    .article-card:hover { border-color: var(--blue); }
+    .article-num {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem; color: var(--accent);
+      background: var(--blue-dim);
+      border-radius: 4px; padding: 0.2rem 0.5rem;
+      white-space: nowrap; margin-top: 0.1rem;
+    }
+    .article-body h5 {
+      font-size: 0.95rem; font-weight: 700; color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+    .article-body h5 a { color: inherit; text-decoration: none; }
+    .article-body h5 a:hover { color: var(--accent); }
+    .article-body p { color: var(--text-dim); font-size: 0.85rem; line-height: 1.6; }
+    .article-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 0.3rem; }
+    .badge-date {
+      font-family: 'Space Mono', monospace; font-size: 0.65rem;
+      background: var(--bg3); color: var(--text-dim);
+      border-radius: 4px; padding: 0.2rem 0.6rem; white-space: nowrap;
+    }
+    .badge-source {
+      font-size: 0.7rem; color: var(--accent);
+      border: 1px solid var(--border); border-radius: 4px;
+      padding: 0.1rem 0.5rem; white-space: nowrap;
+    }
+
+    /* ─── STATS ─── */
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 1rem; margin-bottom: 2rem; }
+    .stat-box {
+      background: var(--bg2); border: 1px solid var(--border); border-radius: 12px;
+      padding: 1.2rem; text-align: center;
+    }
+    .stat-box .num {
+      font-family: 'Space Mono', monospace;
+      font-size: 1.9rem; font-weight: 700; color: var(--accent);
+      display: block; line-height: 1;
+    }
+    .stat-box .label { font-size: 0.78rem; color: var(--text-dim); margin-top: 0.4rem; line-height: 1.4; }
+
+    /* ─── TABLEAU SANCTIONS ─── */
+    .sanction-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-bottom: 2rem; }
+    .sanction-table th {
+      background: var(--bg3); color: var(--accent);
+      font-family: 'Space Mono', monospace; font-size: 0.7rem;
+      letter-spacing: 0.1em; padding: 0.8rem 1rem; text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .sanction-table td {
+      padding: 0.8rem 1rem; color: #94a3b8;
+      border-bottom: 1px solid rgba(255,102,0,0.08);
+    }
+    .sanction-table tr:hover td { background: var(--bg3); color: var(--text); }
+    .sanction-table td:first-child { color: var(--text); font-weight: 600; }
+
+    /* ─── TIMELINE ─── */
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: ''; position: absolute; left: 0.6rem; top: 0; bottom: 0;
+      width: 1px; background: var(--border);
+    }
+    .tl-item { position: relative; margin-bottom: 1.5rem; }
+    .tl-item::before {
+      content: ''; position: absolute; left: -1.75rem; top: 0.4rem;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--blue); border: 2px solid var(--bg);
+      box-shadow: 0 0 8px rgba(255,102,0,0.5);
+    }
+    .tl-item .tl-date {
+      font-family: 'Space Mono', monospace; font-size: 0.65rem;
+      color: var(--accent); margin-bottom: 0.2rem;
+    }
+    .tl-item .tl-text { font-size: 0.88rem; color: #94a3b8; line-height: 1.6; }
+    .tl-item .tl-text strong { color: var(--text); }
+
+    /* ─── TOOLS ─── */
+    .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1rem; }
+    .tool-pill {
+      background: var(--bg2); border: 1px solid var(--border); border-radius: 10px;
+      padding: 0.9rem 1.2rem; display: flex; align-items: center; gap: 0.8rem;
+    }
+    .tool-pill .icon { font-size: 1.4rem; }
+    .tool-pill .info .name { font-size: 0.9rem; font-weight: 700; color: var(--text); }
+    .tool-pill .info .desc { font-size: 0.75rem; color: var(--text-dim); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .sidebar { width: 100vw; height: auto; }
+      main.main { margin-left: 0; margin-top: 70px; padding: 1.5rem 1rem 4rem; }
+      .hero-banner::before { display: none; }
+    }
+    @media (max-width: 600px) {
+      .article-card { grid-template-columns: 1fr; }
+      .article-meta { flex-direction: row; align-items: center; }
+      .sanction-table { font-size: 0.78rem; }
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      margin-left: 260px; background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 2rem; text-align: center; color: var(--text-dim); font-size: 0.85rem;
+    }
+    @media (max-width: 900px) { footer { margin-left: 0; } }
+  </style>
 </head>
 
-<body class="Experiences-page">
+<body>
 
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-
-      <a href="index.html" class="logo d-flex align-items-center">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.webp" alt=""> -->
-        <h1 class="sitename">matheo</h1>
-      </a>
-
-       <aside id="sidebar" class="sidebar">
+  <!-- SIDEBAR -->
+  <aside id="sidebar" class="sidebar sidebar-closed">
     <div class="sidebar-logo">
-      <a href="index.html"><h1 class="sitename">Mathéo Camelin</h1></a>
+      <a href="index.html" style="text-decoration:none;">
+        <h1 class="sitename">Mathéo Camelin</h1>
+      </a>
     </div>
     <nav class="sidebar-nav">
       <ul>
-  <li><a href="index.html">Accueil</a></li>
-  <li><a href="resume.html">Résumé</a></li>
-  <li><a href="about.html">A propos</a></li>
-        <li><a href="Experience.html">Experiences</a></li>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="about.html">A propos</a></li>
+        <li><a href="Experience.html">Expériences</a></li>
         <li><a href="services.html">Projet</a></li>
-        <li><a href="#" class="has-submenu">Certifications</a></li>
+        <li><a href="#">Certifications</a></li>
         <li><a href="GP.html">Gestion patrimoine</a></li>
         <li><a href="#" class="has-submenu">Veille</a>
           <ul class="submenu">
             <li><a href="veille-t.html">Veille technologique</a></li>
-            <li><a href="veille-J.html class="active">Veille juridique</a></li>
+            <li><a href="veille-J.html" class="active">Veille juridique</a></li>
           </ul>
         </li>
         <li><a href="Stage.html">Stages</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
-    <button class="sidebar-toggle" aria-label="Ouvrir/Fermer le menu"><span>&#9660;</span></button>
+    <button class="sidebar-toggle" aria-label="Ouvrir/Fermer le menu">☰</button>
   </aside>
 
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      background: #181818;
-      color: #fff;
-      font-family: 'Poppins', Arial, sans-serif;
-    }
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 260px;
-      height: 100vh;
-      background: #1a1a1a;
-      display: flex;
-      flex-direction: column;
-      z-index: 1000;
-      transition: transform 0.3s;
-    }
-    .sidebar-logo {
-      padding: 2rem 1.5rem 1rem 1.5rem;
-      text-align: left;
-    }
-    .sidebar-logo h1 {
-      color: #fff;
-      font-size: 1.6rem;
-      margin: 0;
-      font-weight: 700;
-    }
-    .sidebar-nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .sidebar-nav ul li {
-      margin: 0.7rem 0;
-    }
-    .sidebar-nav ul li a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 1.2rem;
-      font-weight: 600;
-      padding: 0.5rem 1.5rem;
-      display: block;
-      border-radius: 4px;
-      transition: background 0.2s, color 0.2s;
-    }
-    .sidebar-nav ul li a.active,
-    .sidebar-nav ul li a:hover {
-      color: #ff6600;
-      background: #232323;
-    }
-    .sidebar-nav ul li .submenu {
-      display: none;
-      margin-left: 1.5rem;
-      margin-top: 0.2rem;
-    }
-    .sidebar-nav ul li.open > .submenu {
-      display: block;
-    }
-    .sidebar-toggle {
-      position: absolute;
-      right: 1rem;
-      bottom: 2rem;
-      background: #292929;
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      width: 36px;
-      height: 36px;
-      font-size: 1.2rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s;
-    }
-    .sidebar-toggle:hover {
-      background: #ff6600;
-      color: #fff;
-    }
-    @media (max-width: 900px) {
-      .sidebar {
-        width: 100vw;
-        height: auto;
-        flex-direction: row;
-        align-items: flex-start;
-        padding-bottom: 0.5rem;
-        position: fixed;
-        z-index: 1000;
-      }
-      .sidebar-logo {
-        padding: 1rem 1rem 0 1rem;
-      }
-      .sidebar-nav ul {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-      }
-      .sidebar-nav ul li {
-        margin: 0.3rem 0;
-      }
-      .sidebar-toggle {
-        right: 1rem;
-        bottom: 1rem;
-      }
-    }
-    @media (max-width: 600px) {
-      .sidebar {
-        width: 100vw;
-        height: auto;
-        position: fixed;
-        z-index: 1000;
-      }
-      .sidebar-nav ul li a {
-        font-size: 1rem;
-        padding: 0.5rem 1rem;
-      }
-      .sidebar-logo {
-        padding: 0.7rem 1rem 0 1rem;
-      }
-    }
-    main.main {
-      margin-left: 260px;
-      transition: margin-left 0.3s;
-    }
-    @media (max-width: 900px) {
-      main.main {
-        margin-left: 0;
-        margin-top: 80px;
-      }
-    }
-    @media (max-width: 600px) {
-      main.main {
-        margin-left: 0;
-        margin-top: 60px;
-      }
-    }
-  </style>
+  <button id="open-sidebar">☰</button>
+
+  <main class="main">
+
+    <!-- HERO -->
+    <div class="hero-banner">
+      <div class="tag">VEILLE JURIDIQUE — BTS SIO</div>
+      <h1>Cybersécurité, <span>RGPD</span> &amp; QR Code<br>Le cadre légal en 2025–2026</h1>
+      <p>Surveillance des lois, règlements, sanctions et décisions de justice liés à la cybersécurité, à l'authentification et aux QR codes en France et en Europe.</p>
+      <div class="period-badge">
+        <span class="dot"></span>
+        Période couverte : 29 sept. 2025 → 2026
+      </div>
+    </div>
+
+    <!-- DÉFINITIONS -->
+    <div class="section-title">Définitions &amp; objectifs</div>
+    <div class="card-grid" style="margin-bottom:2.5rem;">
+      <div class="card-item">
+        <h4>⚖️ Qu'est-ce qu'une veille juridique ?</h4>
+        <p>La veille juridique est une activité de surveillance régulière des lois, règlements, décisions de justice et évolutions réglementaires. Elle permet à une organisation d'anticiper les changements législatifs, de rester conforme à la loi et d'adapter ses pratiques pour éviter tout risque juridique.</p>
+      </div>
+      <div class="card-item">
+        <h4>🎯 Sujet de la veille</h4>
+        <p><strong style="color:#e2e8f0;">Cadre juridique de la cybersécurité et des QR codes :</strong> quelles lois encadrent l'usage des QR codes, l'authentification mobile et la protection des données ? Quelles sont les obligations légales des entreprises et les sanctions encourues ?</p>
+      </div>
+      <div class="card-item">
+        <h4>✅ Objectifs</h4>
+        <ul>
+          <li>Identifier les textes juridiques applicables (RGPD, NIS2, Code pénal)</li>
+          <li>Suivre les sanctions CNIL et décisions de justice 2025-2026</li>
+          <li>Comprendre les obligations des entreprises en matière de MFA/sécurité</li>
+          <li>Anticiper les évolutions réglementaires (IA Act, DORA)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CHIFFRES CLÉS -->
+    <div class="section-title">Chiffres clés 2025–2026</div>
+    <div class="stats-grid">
+      <div class="stat-box">
+        <span class="num">42 M€</span>
+        <div class="label">Amende CNIL contre Free en janvier 2026 pour absence de MFA</div>
+      </div>
+      <div class="stat-box">
+        <span class="num">+340%</span>
+        <div class="label">Hausse des sanctions CNIL en 2025 par rapport à l'année précédente</div>
+      </div>
+      <div class="stat-box">
+        <span class="num">15 000</span>
+        <div class="label">Entreprises françaises concernées par la directive NIS2</div>
+      </div>
+      <div class="stat-box">
+        <span class="num">504 000</span>
+        <div class="label">Demandes d'assistance sur Cybermalveillance.gouv.fr en 2025</div>
+      </div>
+      <div class="stat-box">
+        <span class="num">26%</span>
+        <div class="label">Seulement des TPE-PME françaises disposent d'une double authentification (oct. 2025)</div>
+      </div>
+      <div class="stat-box">
+        <span class="num">1,15 Md€</span>
+        <div class="label">Total des amendes RGPD infligées en Europe en 2025</div>
+      </div>
+    </div>
+
+    <!-- TEXTES JURIDIQUES -->
+    <div class="section-title">Textes juridiques applicables</div>
+    <div class="card-grid" style="margin-bottom:2.5rem;">
+      <div class="card-item">
+        <h4>🇪🇺 RGPD — Règlement Général sur la Protection des Données</h4>
+        <p>En vigueur depuis 2018, le RGPD encadre tout traitement de données personnelles dans l'UE. L'<strong style="color:#e2e8f0;">article 32</strong> impose des mesures de sécurité adaptées : chiffrement, pseudonymisation, <strong style="color:#e2e8f0;">authentification forte (MFA)</strong>, journalisation des accès. En 2026, la CNIL exige une "preuve continue de conformité" — être conforme ponctuellement ne suffit plus.</p>
+      </div>
+      <div class="card-item">
+        <h4>🛡️ Directive NIS2 — Sécurité des réseaux et systèmes d'information</h4>
+        <p>Entrée en vigueur en octobre 2024, transposée en France via une loi votée au Sénat le <strong style="color:#e2e8f0;">12 mars 2025</strong>. Elle concerne ~15 000 entités (18 secteurs critiques). Obligations : MFA sur tous les accès sensibles, notification d'incident à l'ANSSI sous <strong style="color:#e2e8f0;">24h</strong>, rapport complet sous 72h. Sanctions : jusqu'à 10 M€ ou 2% du CA mondial.</p>
+      </div>
+      <div class="card-item">
+        <h4>🤖 IA Act — Règlement européen sur l'intelligence artificielle</h4>
+        <p>Depuis août 2025, la CNIL est autorité de régulation de l'IA en France. Les IA à haut risque (reconnaissance biométrique, scoring) nécessitent une <strong style="color:#e2e8f0;">Analyse d'Impact (AIPD)</strong> avant déploiement. Application complète pour les systèmes à haut risque prévue pour <strong style="color:#e2e8f0;">août 2026</strong>. Lien direct avec l'authentification biométrique et les QR codes.</p>
+      </div>
+      <div class="card-item">
+        <h4>⚖️ Code pénal français — Cybercriminalité</h4>
+        <p>Le quishing (fraude par QR code) engage plusieurs articles : escroquerie (<strong style="color:#e2e8f0;">art. 313-1</strong> : 5 ans / 375 000€), accès frauduleux à un système (<strong style="color:#e2e8f0;">art. 323-1</strong> : 2 à 3 ans / 60 000 à 100 000€), vol de données (<strong style="color:#e2e8f0;">art. 323-3</strong> : 5 ans / 150 000€), usurpation d'identité (<strong style="color:#e2e8f0;">art. 226-4-1</strong> : 1 an / 15 000€).</p>
+      </div>
+      <div class="card-item">
+        <h4>🏦 DORA — Résilience numérique du secteur financier</h4>
+        <p>Applicable depuis janvier 2025, DORA impose aux banques, assurances et prestataires IT financiers des obligations de sécurité renforcées : tests de résilience, gestion des risques tiers, et <strong style="color:#e2e8f0;">authentification forte</strong> sur tous les accès sensibles. Complémentaire à NIS2 pour le secteur financier.</p>
+      </div>
+      <div class="card-item">
+        <h4>🇫🇷 QR Code sur le DPE (France)</h4>
+        <p>Depuis le <strong style="color:#e2e8f0;">1er septembre 2025</strong>, tout rapport de Diagnostic de Performance Énergétique doit comporter un QR code officiel permettant de vérifier son authenticité via la base de données de l'ADEME. Objectif : lutter contre la fraude immobilière. Première obligation légale française directement liée aux QR codes.</p>
+      </div>
+    </div>
+
+    <!-- ARTICLES & SOURCES -->
+    <div class="section-title">Articles &amp; sources — Oct. 2025 → Avr. 2026</div>
+    <div class="article-list" style="margin-bottom:2.5rem;">
+
+      <div class="article-card">
+        <div class="article-num">#01</div>
+        <div class="article-body">
+          <h5><a href="https://www.blaaaz.com/rgpd-2026-nouvelles-obligations-mise-en-conformite-pme/" target="_blank">RGPD 2026 : Nouvelles Obligations & Mise en Conformité PME</a></h5>
+          <p>En janvier 2026, la CNIL a infligé 42 M€ d'amende à Free Mobile et Free pour l'absence de MFA sur leurs VPN et l'inefficacité de leurs mesures de détection d'intrusions. Les sanctions ont augmenté de 340% en 2025, avec 60% des PME encore non-conformes. La MFA devient la norme minimale exigée par le RGPD.</p>
+        </div>
+        <div class="article-meta">
+          <span class="badge-date">2 févr. 2026</span>
+          <span class="badge-source">Blaaaz.com</span>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-num">#02</div>
+        <div class="article-body">
+          <h5><a href="https://www.axens-audit.fr/ressources/lire/actualites/rgpd-2026/" target="_blank">RGPD 2026 : ce qui change concrètement pour les entreprises</a></h5>
+          <p>En 2026, la CNIL annonce : l'absence d'authentification multifacteur (MFA) sur les grandes bases de données sensibles pourra justifier une sanction à elle seule. La conformité "orale" n'a plus de valeur. Les journaux d'accès, la MFA généralisée et les politiques de destruction des données sont désormais obligatoires.</p>
+        </div>
+        <div class="article-meta">
+          <span class="badge-date">30 oct. 2025</span>
+          <span class="badge-source">Axens-audit</span>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-num">#03</div>
+        <div class="article-body">
+          <h5><a href="https://eurolaw-france-cyber.eu/directive-nis2-obligations-pme-eti/" target="_blank">Directive NIS2 : quelles obligations pour les PMEs et ETIs ?</a></h5>
+          <p>La directive NIS2 est entrée en vigueur le 18 octobre 2024, avec une période d'application opérationnelle depuis début 2025. Elle concerne 10 000 à 15 000 entités françaises dans 18 secteurs. Obligations clés : MFA sur les accès sensibles, notification d'incident à l'ANSSI sous 24h, responsabilité personnelle des dirigeants.</p>
+        </div>
+        <div class="article-meta">
+          <span class="badge-date">4 août 2025</span>
+          <span class="badge-source">Eurolaw France Cyber</span>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-num">#04</div>
+        <div class="article-body">
+          <h5><a href="https://www.nis2-info.fr/post/nis2-que-se-passe-t-il-%C3%A0-partir-de-2025-les-obligations-imm%C3%A9diates" target="_blank">NIS2 : que se passe-t-il à partir de 2025 ? Les obligations immédiates</a></h5>
+          <p>À partir de 2025, les entreprises doivent démontrer un début de conformité NIS2 : MFA sur les accès sensibles, journalisation, sauvegardes, gestion des accès. Les PME dans les secteurs critiques doivent identifier leur statut d'entité essentielle ou importante et s'enregistrer auprès de l'ANSSI.</p>
+        </div>
+        <div class="article-meta">
+          <span class="badge-date">25 nov. 2025</span>
+          <span class="badge-source">NIS2-info.fr</span>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-num">#05</div>
+        <div class="article-body">
+          <h5><a href="https://www.rgpdkit.fr/blog/rgpd-2025-bilan-amendes-cnil-2026" target="_blank">RGPD 2025 : 1,15 Md€ d'amendes – Bilan et Perspectives 2026</a></h5>
+          <p>Les grandes sanctions 2025 : Google 325 M€ (sept. 2025), TikTok 530 M€, Shein 150 M€, Meta 251 M€. En France : Free 42 M€ (janv. 2026). 2026 marque la convergence RGPD + IA Act + NIS2 + DORA. La CNIL est devenue autorité de régulation de l'IA depuis août 2025.</p>
+        </div>
+        <div class="article-meta">
+          <span class="badge-date">Mars 2026</span>
+          <span class="badge-source">RGPDKit</span>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-num">#06</div>
+        <div class="article-body">
+          <h5><a href="https://deefense.fr/cyber-et-it/nis2-dora-rgpd-obligations-cybersecurite-pour-les-pme" target="_blank">NIS2, DORA, RGPD : quelles obligations cybersécurité pour les PME ?</a></h5>
+          <p>Selon un baromètre du 13 octobre 2025, seulement 26% des TPE-PME françaises disposent d'une double authentification. 24% ont une procédure de réaction aux cyberattaques. Les PME ignorent souvent si elles sont soumises à NIS2, ce qui crée une vulnérabilité juridique et technique majeure.</p>
+        </div>
+        <div class="article-meta">
+          <span class="badge-date">10 nov. 2025</span>
+          <span class="badge-source">Deefense.fr</span>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-num">#07</div>
+        <div class="article-body">
+          <h5><a href="https://www.belhaouci.com/peines-cybercriminalite-france/" target="_blank">Peines pour cybercriminalité en France : infractions et sanctions</a></h5>
+          <p>Le quishing (fraude par QR code) peut être qualifié d'escroquerie (art. 313-1 : 5 ans / 375 000€), d'accès frauduleux à un STAD (art. 323-1 : 2-3 ans), ou de vol de données (art. 323-3 : 5 ans / 150 000€). En bande organisée ou si les systèmes d'État sont visés, les peines peuvent atteindre 7 ans et 300 000€.</p>
+        </div>
+        <div class="article-meta">
+          <span class="badge-date">Mars 2026</span>
+          <span class="badge-source">Belhaouci.com (Avocat)</span>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-num">#08</div>
+        <div class="article-body">
+          <h5><a href="https://www.donneespersonnelles.fr/actualite-cybersecurite-2026" target="_blank">Actualité cybersécurité 2026 : NIS2, CRA, ANSSI</a></h5>
+          <p>Le 3 mars 2026, un décret instaure un régime de contrôles et sanctions pour les éditeurs de services numériques en santé. Le 24 mars 2026, une vague de violations massives frappe le secteur éducatif français. Cybermalveillance.gouv.fr enregistre 504 000 demandes en 2025, avec une hausse de 173% de la fraude au virement.</p>
+        </div>
+        <div class="article-meta">
+          <span class="badge-date">Avr. 2026</span>
+          <span class="badge-source">Donneespersonnelles.fr</span>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-num">#09</div>
+        <div class="article-body">
+          <h5><a href="https://www.leto.legal/guides/rgpd-les-7-regles-a-respecter-pour-etre-conforme" target="_blank">RGPD 2026 : Les 7 règles à respecter pour être conforme</a></h5>
+          <p>Mis à jour en mars 2026. Nouveautés CNIL 2026 : journaux d'accès plus précis obligatoires, MFA généralisée exigée, politiques de destruction des données documentées. La CNIL a réalisé 1 247 contrôles en 2025, +15% vs 2024. Seules 34% des entreprises déclarant être conformes le sont réellement.</p>
+        </div>
+        <div class="article-meta">
+          <span class="badge-date">Mars 2026 (màj)</span>
+          <span class="badge-source">Leto Legal</span>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-num">#10</div>
+        <div class="article-body">
+          <h5><a href="https://www.yzico.fr/rgpd-en-2026-on-en-est-ou/" target="_blank">RGPD : en 2026 on en est où ?</a></h5>
+          <p>En 2026, le RGPD est appliqué comme "un texte de sécurité". La CNIL sanctionne de plus en plus sur la base de "mesures de sécurité jugées insuffisantes", même sans violation massive de données. Le RGPD n'est plus un sujet juridique : c'est un sujet de pilotage IT, sécurité et gouvernance pour toutes les entreprises.</p>
+        </div>
+        <div class="article-meta">
+          <span class="badge-date">29 janv. 2026</span>
+          <span class="badge-source">Yzico.fr</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- TABLEAU DES SANCTIONS -->
+    <div class="section-title">Tableau des sanctions applicables</div>
+    <div style="overflow-x:auto; margin-bottom:2.5rem;">
+      <table class="sanction-table">
+        <thead>
+          <tr>
+            <th>Infraction</th>
+            <th>Texte applicable</th>
+            <th>Peine maximale</th>
+            <th>Amende max.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Escroquerie / Quishing</td>
+            <td>Art. 313-1 Code pénal</td>
+            <td>5 ans de prison</td>
+            <td>375 000 €</td>
+          </tr>
+          <tr>
+            <td>Accès frauduleux à un STAD</td>
+            <td>Art. 323-1 Code pénal</td>
+            <td>2 à 3 ans</td>
+            <td>60 000 à 100 000 €</td>
+          </tr>
+          <tr>
+            <td>Vol / introduction de données</td>
+            <td>Art. 323-3 Code pénal</td>
+            <td>5 à 7 ans</td>
+            <td>150 000 à 300 000 €</td>
+          </tr>
+          <tr>
+            <td>Usurpation d'identité en ligne</td>
+            <td>Art. 226-4-1 Code pénal</td>
+            <td>1 an</td>
+            <td>15 000 €</td>
+          </tr>
+          <tr>
+            <td>Collecte frauduleuse de données perso.</td>
+            <td>Art. 226-18 Code pénal</td>
+            <td>5 ans</td>
+            <td>300 000 €</td>
+          </tr>
+          <tr>
+            <td>Non-conformité RGPD (grave)</td>
+            <td>Art. 32 RGPD / CNIL</td>
+            <td>—</td>
+            <td>20 M€ ou 4% CA mondial</td>
+          </tr>
+          <tr>
+            <td>Non-conformité NIS2 (entité essentielle)</td>
+            <td>Directive NIS2</td>
+            <td>Suspension d'activité possible</td>
+            <td>10 M€ ou 2% CA mondial</td>
+          </tr>
+          <tr>
+            <td>Non-conformité NIS2 (entité importante)</td>
+            <td>Directive NIS2</td>
+            <td>Responsabilité dirigeants</td>
+            <td>7 M€ ou 1,4% CA mondial</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- CHRONOLOGIE -->
+    <div class="section-title">Chronologie des évolutions juridiques</div>
+    <div class="timeline" style="margin-bottom:2.5rem;">
+      <div class="tl-item">
+        <div class="tl-date">Janv. 2025</div>
+        <div class="tl-text"><strong>DORA :</strong> Le règlement européen sur la résilience numérique des institutions financières entre en application. Banques, assurances et prestataires IT doivent imposer l'authentification forte sur tous les accès critiques.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Fév. 2025</div>
+        <div class="tl-text"><strong>CNIL – arrêté "haut risque" :</strong> L'arrêté ministériel du 12 février 2025 classe la reconnaissance faciale et l'analyse comportementale algorithmique comme dispositifs à "haut risque", nécessitant une autorisation préalable de la CNIL.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">12 mars 2025</div>
+        <div class="tl-text"><strong>NIS2 – transposition française :</strong> La loi relative à la résilience des infrastructures critiques est votée au Sénat. La France entame officiellement la transposition de la directive NIS2. Les entités concernées ont jusqu'à fin 2027 pour être totalement conformes, mais la notification d'incidents est déjà obligatoire.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">1 sept. 2025</div>
+        <div class="tl-text"><strong>QR Code DPE obligatoire :</strong> Tout diagnostic de performance énergétique doit comporter un QR code officiel lié à la base ADEME. Premier texte légal français imposant directement l'usage d'un QR code sécurisé.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Sept. 2025</div>
+        <div class="tl-text"><strong>CNIL vs Google :</strong> Amende de 325 millions d'euros infligée à Google pour manquements au RGPD. Montant record pour une seule décision en France, portant le total des amendes européennes à 1,15 milliard d'euros sur l'année 2025.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">13 oct. 2025</div>
+        <div class="tl-text"><strong>Baromètre cybersécurité PME :</strong> Un baromètre révèle que seulement 26% des TPE-PME françaises disposent d'une double authentification. La CNIL durcit ses exigences envers les petites structures.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Nov. 2025</div>
+        <div class="tl-text"><strong>Guide cybermalveillance :</strong> Le ministère de l'Intérieur publie un guide pratique "Déjouer phishing, QR codes et SMS frauduleux". Première communication officielle du gouvernement ciblant spécifiquement les arnaques par QR code.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Janv. 2026</div>
+        <div class="tl-text"><strong>CNIL vs Free — Record :</strong> La CNIL inflige 42 millions d'euros d'amende à Free Mobile et Free pour absence d'authentification multifacteur (MFA) sur les VPN. C'est la première fois que l'absence de MFA seule justifie une sanction aussi lourde en France.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">3 mars 2026</div>
+        <div class="tl-text"><strong>Santé numérique :</strong> Un décret instaure un régime de contrôles et de sanctions pour les éditeurs de services numériques en santé non conformes aux référentiels de sécurité de l'Espace Numérique de Santé (ENS).</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Août 2026 (à venir)</div>
+        <div class="tl-text"><strong>IA Act — application complète :</strong> L'application intégrale de l'IA Act pour les systèmes à haut risque (dont la biométrie et l'authentification faciale) entre en vigueur. Les entreprises utilisant des QR codes biométriques ou l'authentification par reconnaissance faciale devront fournir une AIPD complète.</div>
+      </div>
+    </div>
+
+    <!-- OBLIGATIONS ENTREPRISES -->
+    <div class="section-title">Obligations concrètes pour les entreprises</div>
+    <div class="card-grid" style="margin-bottom:2.5rem;">
+      <div class="card-item">
+        <h4>🔒 Authentification forte (MFA) — OBLIGATOIRE</h4>
+        <p>Le RGPD (art. 32), NIS2 et la CNIL exigent désormais la MFA sur tous les accès à des systèmes contenant des données sensibles. L'absence de MFA est devenue un motif de sanction autonome depuis l'affaire Free (janv. 2026). Les QR codes peuvent servir de second facteur d'authentification, mais doivent être sécurisés (rotation dynamique, HTTPS, domaine vérifié).</p>
+      </div>
+      <div class="card-item">
+        <h4>📋 Registre des traitements</h4>
+        <p>Toute organisation traitant des données personnelles doit tenir un registre de ses traitements. En 2026, la CNIL exige des journaux d'accès plus précis et des politiques de destruction des données documentées. L'absence de documentation est considérée comme un manquement autonome.</p>
+      </div>
+      <div class="card-item">
+        <h4>⏱️ Notification d'incidents (NIS2)</h4>
+        <p>Tout incident significatif (cyberattaque, fuite de données) doit être notifié à l'ANSSI dans les <strong style="color:#e2e8f0;">24 heures</strong> après détection. Un rapport complet doit suivre sous <strong style="color:#e2e8f0;">72 heures</strong>. Simultanément, la violation de données personnelles doit être notifiée à la CNIL (RGPD, art. 33).</p>
+      </div>
+      <div class="card-item">
+        <h4>🔍 AIPD pour les données biométriques</h4>
+        <p>L'utilisation de données biométriques pour l'authentification (empreinte digitale, reconnaissance faciale) est soumise à une Analyse d'Impact relative à la Protection des Données (AIPD) obligatoire. L'IA Act renforce cette exigence pour les systèmes à haut risque déployés à partir d'août 2026.</p>
+      </div>
+      <div class="card-item">
+        <h4>🏢 Responsabilité des dirigeants (NIS2)</h4>
+        <p>La directive NIS2 engage la responsabilité personnelle des membres du conseil d'administration en cas de non-conformité grave ou répétée. Les dirigeants doivent suivre des formations régulières en cybersécurité. La cybersécurité sort du seul périmètre de la DSI pour devenir un enjeu de gouvernance stratégique.</p>
+      </div>
+      <div class="card-item">
+        <h4>🔗 Sécurisation de la chaîne d'approvisionnement</h4>
+        <p>NIS2 impose la surveillance des fournisseurs et sous-traitants. Les prestataires IT des entreprises soumises à NIS2 deviennent des acteurs réglementés à part entière. Un QR code généré par un prestataire tiers doit respecter les mêmes standards de sécurité que les systèmes internes.</p>
+      </div>
+    </div>
+
+    <!-- OUTILS DE VEILLE -->
+    <div class="section-title">Sources et outils de veille juridique</div>
+    <div class="tools-grid" style="margin-bottom:2.5rem;">
+      <div class="tool-pill">
+        <div class="icon">🏛️</div>
+        <div class="info">
+          <div class="name">CNIL.fr</div>
+          <div class="desc">Décisions, sanctions et guides officiels</div>
+        </div>
+      </div>
+      <div class="tool-pill">
+        <div class="icon">🔐</div>
+        <div class="info">
+          <div class="name">ANSSI / cyber.gouv.fr</div>
+          <div class="desc">Référentiels NIS2 et alertes cybersécurité</div>
+        </div>
+      </div>
+      <div class="tool-pill">
+        <div class="icon">⚠️</div>
+        <div class="info">
+          <div class="name">Cybermalveillance.gouv.fr</div>
+          <div class="desc">Signalements et rapports annuels</div>
+        </div>
+      </div>
+      <div class="tool-pill">
+        <div class="icon">📰</div>
+        <div class="info">
+          <div class="name">Legifrance.fr</div>
+          <div class="desc">Textes officiels et jurisprudence</div>
+        </div>
+      </div>
+      <div class="tool-pill">
+        <div class="icon">🔔</div>
+        <div class="info">
+          <div class="name">Google Alerts</div>
+          <div class="desc">Mots-clés : RGPD, NIS2, CNIL, quishing</div>
+        </div>
+      </div>
+      <div class="tool-pill">
+        <div class="icon">💼</div>
+        <div class="info">
+          <div class="name">LinkedIn</div>
+          <div class="desc">Comptes d'avocats, RSSI, experts RGPD</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONCLUSION -->
+    <div class="section-title">Synthèse &amp; conclusion juridique</div>
+    <div class="card-item" style="margin-bottom:2rem;">
+      <h4>📋 Bilan juridique (sept. 2025 → avr. 2026)</h4>
+      <p style="margin-bottom:0.8rem;">La période 2025-2026 marque une <strong style="color:#e2e8f0;">convergence réglementaire sans précédent</strong> : le RGPD, la directive NIS2, le règlement DORA et l'IA Act forment désormais un écosystème juridique dense qui encadre toute utilisation des QR codes et de l'authentification mobile dans un contexte professionnel.</p>
+      <p style="margin-bottom:0.8rem;">L'affaire Free (42 M€ en janvier 2026) illustre une réalité nouvelle : <strong style="color:#e2e8f0;">l'absence de MFA est désormais sanctionnable à elle seule</strong>. La CNIL ne se contente plus de constater des violations de données — elle vérifie que les mesures préventives (MFA, journalisation, chiffrement) sont réellement déployées et documentées.</p>
+      <p>Pour les professionnels du numérique, l'enjeu est clair : la sécurisation des QR codes (rotation dynamique, vérification HTTPS, domaine certifié) et l'implémentation de l'authentification forte ne sont plus de simples bonnes pratiques techniques — ce sont des <strong style="color:#e2e8f0;">obligations légales exigibles et sanctionnées</strong> par les autorités françaises et européennes.</p>
+    </div>
+
+  </main>
+
+  <footer id="footer">
+    <div style="margin-bottom:0.5rem;">
+      <a href="https://x.com/matheo0?s=21" style="color:var(--text-dim);margin:0 0.5rem;text-decoration:none;" target="_blank"><i class="bi bi-twitter-x"></i></a>
+      <a href="https://www.instagram.com/matheo_photography" style="color:var(--text-dim);margin:0 0.5rem;text-decoration:none;" target="_blank"><i class="bi bi-instagram"></i></a>
+      <a href="https://github.com/PierreBriceCK" style="color:var(--text-dim);margin:0 0.5rem;text-decoration:none;" target="_blank"><i class="bi bi-github"></i></a>
+      <a href="https://www.linkedin.com/in/pierre-brice-chane-kane-06a364330" style="color:var(--text-dim);margin:0 0.5rem;text-decoration:none;" target="_blank"><i class="bi bi-linkedin"></i></a>
+    </div>
+    <div>Copyright <strong style="color:var(--accent)">matheo.</strong> All Rights Reserved — Designed by <a href="https://bootstrapmade.com/" style="color:var(--text-dim);">BootstrapMade</a></div>
+  </footer>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
   <script>
-    // Menu déroulant pour la veille
-    document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('.has-submenu').forEach(function(el) {
-        el.addEventListener('click', function(e) {
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.has-submenu').forEach(function (el) {
+        el.addEventListener('click', function (e) {
           e.preventDefault();
           this.parentElement.classList.toggle('open');
         });
       });
-      // Toggle sidebar (mobile)
       const sidebar = document.getElementById('sidebar');
       const toggleBtn = document.querySelector('.sidebar-toggle');
-      toggleBtn.addEventListener('click', function() {
+      const openBtn = document.getElementById('open-sidebar');
+      function updateBtn() {
+        openBtn.style.display = sidebar.classList.contains('sidebar-closed') ? 'block' : 'none';
+        document.querySelector('main.main').style.marginLeft = sidebar.classList.contains('sidebar-closed') ? '0' : '260px';
+        document.querySelector('footer').style.marginLeft = sidebar.classList.contains('sidebar-closed') ? '0' : '260px';
+      }
+      toggleBtn.addEventListener('click', function () {
         sidebar.classList.toggle('sidebar-closed');
-        if(sidebar.classList.contains('sidebar-closed')) {
-          document.querySelector('main.main').style.marginLeft = '0';
-        } else {
-          document.querySelector('main.main').style.marginLeft = '260px';
-        }
+        updateBtn();
       });
+      openBtn.addEventListener('click', function () {
+        sidebar.classList.remove('sidebar-closed');
+        updateBtn();
+      });
+      updateBtn();
     });
   </script>
-    </div>
-  </header>
-
-  <main class="main">
-
-    <!-- Page Title -->
-    <div class="page-title" data-aos="fade">
-      <div class="heading">
-        <div class="container">
-          <div class="row d-flex justify-content-center text-center">
-            <div class="col-lg-8">
-              <h1>Veille juridique</h1>
-            </div>
-          </div>
-        </div>
-      </div>
-      <nav class="breadcrumbs">
-        <div class="container">
-          <ol>
-            <li><a href="index.html">Accueil</a></li>
-            <li class="current">Veille juridique</li>
-          </ol>
-        </div>
-      </nav>
-    </div><!-- End Page Title -->
-
-    <!-- Experiences Section -->
-    <section id="Experiences" class="Experiences section">
-
-      <div class="container">
-
-        <div class="row">
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            
-
-           
-            <div class="Experiences-item">
-              <h4>Qu'est-ce qu'une veille juridique ?</h4>
-              <p>Une veille juridique est une activité de surveillance régulière des lois, règlements, décisions de justice et évolutions juridiques pour anticiper et s'adapter aux changements.</p>
-            </div><!-- Edn Experiences Item -->
-
-            <div class="Experiences-item">
-              <h4>Objectif de la veille</h4>
-              <p>L’objectif de la veille juridique est de protéger l’entreprise ou l’organisation en restant conforme à la loi, d’anticiper les risques juridiques, et d'adapter ses pratiques aux nouvelles règles pour garder un avantage compétitif.</p>
-            </div><!-- Edn Experiences Item -->
-
-            <div class="Experiences-item">
-              <h4>Sujet de la veille </h4>
-              <p></p>
-            </div><!-- Edn Experiences Item -->
-
-          </div>
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="Experiences-item">
-                <h4>Sources</h4>
-                <p></p>
-              </div><!-- Edn Experiences Item -->
-
-            <div class="Experiences-item">
-                <h4>Outils utilisées </h4>
-                <p> </p>
-              </div><!-- Edn Experiences Item -->
-  
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section><!-- /Experiences Section -->
-
-    <!-- Projet Section supprimée à la demande de l'utilisateur -->
-
-  </main>
-
-  <footer id="footer" class="footer dark-background">
-    <div class="container">
-      <h3 class="sitename">matheo.</h3>
-      <div class="social-links d-flex justify-content-center">
-        <a href="https://x.com/matheo0?s=21"><i class="bi bi-twitter-x"></i></a>
-        <a href="https://www.instagram.com/matheo_photography?igsh=dHl4YjUxZGUzc3hq&utm_source=qr"><i class="bi bi-instagram"></i></a>
-        <a href="https://github.com/PierreBriceCK"><i class="bi bi-github"></i></a>
-        <a href="https://www.linkedin.com/in/pierre-brice-chane-kane-06a364330?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"><i class="bi bi-linkedin"></i></a>
-      </div>
-      <div class="container">
-        <div class="copyright">
-          <span>Copyright</span> <strong class="px-1 sitename">matheo.</strong> <span>All Rights Reserved</span>
-        </div>
-        <div class="credits">
-          <!-- All the links in the footer should remain intact. -->
-          <!-- You can delete the links only if you've purchased the pro version. -->
-          <!-- Licensing information: https://bootstrapmade.com/license/ -->
-          <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Preloader -->
-  <div id="preloader"></div>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
 
 </body>
-
 </html>

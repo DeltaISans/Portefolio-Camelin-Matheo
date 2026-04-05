@@ -4,286 +4,276 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Veille technologique</title>
+  <title>Veille technologique – QR Code & Authentification Mobile</title>
   <link href="assets/img/logomatheo.png" rel="icon">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/css/main.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      background: #181818;
-      color: #f5f5f5;
-      font-family: 'Poppins', Arial, sans-serif;
-      overflow-y: auto;
+    :root {
+      --orange: #ff6600;
+      --orange-dim: rgba(255,102,0,0.12);
+      --bg: #111111;
+      --bg2: #1a1a1a;
+      --bg3: #222222;
+      --text: #e8e4dc;
+      --text-dim: #888;
+      --border: rgba(255,102,0,0.25);
     }
 
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Syne', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ─── SIDEBAR ─── */
     .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 260px;
-      height: 100vh;
-      background: #1a1a1a;
+      position: fixed; top: 0; left: 0;
+      width: 260px; height: 100vh;
+      background: var(--bg2);
+      display: flex; flex-direction: column;
       z-index: 1000;
       transition: transform 0.3s;
-      display: flex;
-      flex-direction: column;
+      border-right: 1px solid var(--border);
     }
-
-    .sidebar-logo {
-      padding: 2rem 1.5rem 1rem 1.5rem;
-      text-align: left;
-    }
-
-    .sidebar-logo h1 {
-      color: #fff;
-      font-size: 1.6rem;
-      margin: 0;
-      font-weight: 700;
-    }
-
-    .sidebar-nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .sidebar-nav ul li {
-      margin: 0.7rem 0;
-    }
-
+    .sidebar-logo { padding: 2rem 1.5rem 1rem; }
+    .sidebar-logo h1 { color: #fff; font-size: 1.4rem; font-weight: 800; }
+    .sidebar-nav ul { list-style: none; }
+    .sidebar-nav ul li { margin: 0.4rem 0; }
     .sidebar-nav ul li a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 1.2rem;
-      font-weight: 600;
-      padding: 0.5rem 1.5rem;
-      display: block;
-      border-radius: 4px;
+      color: #aaa; text-decoration: none; font-size: 0.95rem; font-weight: 600;
+      padding: 0.45rem 1.5rem; display: block; border-radius: 4px;
       transition: background 0.2s, color 0.2s;
     }
-
     .sidebar-nav ul li a.active,
-    .sidebar-nav ul li a:hover {
-      color: #ff6600;
-      background: #232323;
-    }
-
-    .sidebar-nav ul li .submenu {
-      display: none;
-      margin-left: 1.5rem;
-      margin-top: 0.2rem;
-    }
-
-    .sidebar-nav ul li.open> .submenu {
-      display: block;
-    }
-
+    .sidebar-nav ul li a:hover { color: var(--orange); background: var(--orange-dim); }
+    .sidebar-nav ul li .submenu { display: none; margin-left: 1.2rem; }
+    .sidebar-nav ul li.open > .submenu { display: block; }
     .sidebar-toggle {
-      position: absolute;
-      right: 1rem;
-      bottom: 2rem;
-      background: #292929;
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      width: 36px;
-      height: 36px;
-      font-size: 1.2rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s;
+      position: absolute; right: 1rem; bottom: 2rem;
+      background: var(--bg3); color: #fff; border: none; border-radius: 50%;
+      width: 36px; height: 36px; font-size: 1rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .sidebar-toggle:hover { background: var(--orange); }
+    .sidebar.sidebar-closed { transform: translateX(-100%); }
+
+    #open-sidebar {
+      position: fixed; top: 20px; left: 20px; z-index: 1100;
+      background: var(--orange); color: #fff; border: none; border-radius: 50%;
+      width: 42px; height: 42px; font-size: 1.4rem;
+      box-shadow: 0 2px 12px rgba(255,102,0,0.4); cursor: pointer; display: none;
     }
 
-    .sidebar-toggle:hover {
-      background: #ff6600;
-      color: #fff;
-    }
-
+    /* ─── MAIN ─── */
     main.main {
       margin-left: 260px;
-      max-width: 100vw;
-      width: 100%;
-      margin: 0 auto;
-      padding: 4vw 2vw 8vw 2vw;
       min-height: 100vh;
-      box-sizing: border-box;
-      overflow-y: auto;
+      padding: 3rem 2.5rem 5rem;
       transition: margin-left 0.3s;
     }
 
+    /* ─── HERO ─── */
+    .hero-banner {
+      background: linear-gradient(135deg, var(--bg2) 0%, #1a1200 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 3rem 2.5rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-banner::before {
+      content: '{ }';
+      position: absolute; right: 2rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Space Mono', monospace;
+      font-size: 8rem; color: var(--orange-dim); line-height: 1;
+      pointer-events: none; user-select: none;
+    }
+    .hero-banner .tag {
+      display: inline-block;
+      background: var(--orange-dim); color: var(--orange);
+      border: 1px solid var(--border); border-radius: 4px;
+      font-family: 'Space Mono', monospace; font-size: 0.7rem;
+      padding: 0.2rem 0.7rem; letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+    .hero-banner h1 {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800; line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .hero-banner h1 span { color: var(--orange); }
+    .hero-banner p { color: var(--text-dim); max-width: 520px; font-size: 1rem; line-height: 1.7; }
+    .period-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      margin-top: 1.5rem;
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 999px; padding: 0.4rem 1rem;
+      font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--orange);
+    }
+    .period-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%,100%{ opacity:1; } 50%{ opacity:0.3; } }
+
+    /* ─── SECTION TITLES ─── */
+    .section-title {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem; letter-spacing: 0.15em;
+      color: var(--orange); text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .section-title::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
+
+    /* ─── CARDS ─── */
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+    .card-item {
+      background: var(--bg2);
+      border: 1px solid rgba(255,102,0,0.15);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .card-item:hover { border-color: var(--orange); transform: translateY(-2px); }
+    .card-item h4 {
+      color: var(--orange); font-size: 1rem; font-weight: 700;
+      margin-bottom: 0.7rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .card-item p, .card-item li { color: #bbb; font-size: 0.9rem; line-height: 1.7; }
+    .card-item ul { padding-left: 1.2rem; }
+    .card-item ul li { margin-bottom: 0.3rem; }
+
+    /* ─── ARTICLE CARDS ─── */
+    .article-list { display: flex; flex-direction: column; gap: 1rem; }
+    .article-card {
+      background: var(--bg2);
+      border: 1px solid rgba(255,102,0,0.15);
+      border-radius: 12px;
+      padding: 1.2rem 1.5rem;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: start;
+      gap: 1rem;
+      transition: border-color 0.2s;
+    }
+    .article-card:hover { border-color: var(--orange); }
+    .article-num {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem; color: var(--orange);
+      background: var(--orange-dim);
+      border-radius: 4px; padding: 0.2rem 0.5rem;
+      white-space: nowrap; margin-top: 0.1rem;
+    }
+    .article-body h5 {
+      font-size: 0.95rem; font-weight: 700; color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+    .article-body h5 a { color: inherit; text-decoration: none; }
+    .article-body h5 a:hover { color: var(--orange); }
+    .article-body p { color: var(--text-dim); font-size: 0.85rem; line-height: 1.6; }
+    .article-meta {
+      display: flex; flex-direction: column; align-items: flex-end; gap: 0.3rem;
+    }
+    .badge-date {
+      font-family: 'Space Mono', monospace; font-size: 0.65rem;
+      background: var(--bg3); color: var(--text-dim);
+      border-radius: 4px; padding: 0.2rem 0.6rem; white-space: nowrap;
+    }
+    .badge-source {
+      font-size: 0.7rem; color: var(--orange);
+      border: 1px solid var(--border); border-radius: 4px;
+      padding: 0.1rem 0.5rem; white-space: nowrap;
+    }
+
+    /* ─── STATS ─── */
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 1rem; margin-bottom: 2rem; }
+    .stat-box {
+      background: var(--bg2); border: 1px solid var(--border); border-radius: 12px;
+      padding: 1.2rem; text-align: center;
+    }
+    .stat-box .num {
+      font-family: 'Space Mono', monospace;
+      font-size: 2rem; font-weight: 700; color: var(--orange);
+      display: block; line-height: 1;
+    }
+    .stat-box .label { font-size: 0.78rem; color: var(--text-dim); margin-top: 0.4rem; line-height: 1.4; }
+
+    /* ─── TIMELINE ─── */
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: ''; position: absolute; left: 0.6rem; top: 0; bottom: 0;
+      width: 1px; background: var(--border);
+    }
+    .tl-item { position: relative; margin-bottom: 1.5rem; }
+    .tl-item::before {
+      content: ''; position: absolute; left: -1.75rem; top: 0.4rem;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--orange); border: 2px solid var(--bg);
+      box-shadow: 0 0 8px rgba(255,102,0,0.5);
+    }
+    .tl-item .tl-date {
+      font-family: 'Space Mono', monospace; font-size: 0.65rem;
+      color: var(--orange); margin-bottom: 0.2rem;
+    }
+    .tl-item .tl-text { font-size: 0.88rem; color: #bbb; line-height: 1.6; }
+    .tl-item .tl-text strong { color: var(--text); }
+
+    /* ─── TOOLS ─── */
+    .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1rem; }
+    .tool-pill {
+      background: var(--bg2); border: 1px solid var(--border); border-radius: 10px;
+      padding: 0.9rem 1.2rem; display: flex; align-items: center; gap: 0.8rem;
+    }
+    .tool-pill .icon { font-size: 1.4rem; }
+    .tool-pill .info .name { font-size: 0.9rem; font-weight: 700; color: var(--text); }
+    .tool-pill .info .desc { font-size: 0.75rem; color: var(--text-dim); }
+
+    /* ─── RESPONSIVE ─── */
     @media (max-width: 900px) {
-      .sidebar {
-        width: 100vw;
-        height: auto;
-        position: fixed;
-      }
-
-      main.main {
-        margin-left: 0;
-        margin-top: 80px;
-        max-width: 100vw;
-        padding: 4vw 2vw 8vw 2vw;
-      }
+      .sidebar { width: 100vw; height: auto; }
+      main.main { margin-left: 0; margin-top: 70px; padding: 1.5rem 1rem 4rem; }
+      .hero-banner::before { display: none; }
     }
-
     @media (max-width: 600px) {
-      .sidebar {
-        width: 100vw;
-        height: auto;
-        position: fixed;
-      }
-
-      main.main {
-        margin-left: 0;
-        margin-top: 60px;
-        max-width: 100vw;
-        padding: 2vw 1vw 8vw 1vw;
-      }
-
-      .card {
-        padding: 4vw 2vw;
-        border-radius: 4vw;
-      }
+      .article-card { grid-template-columns: 1fr; }
+      .article-meta { flex-direction: row; align-items: center; }
     }
 
-    .card,
-    .intro-section,
-    .subject-section,
-    .news-section,
-    .reglement-section,
-    .definition-section {
-      color: #f5f5f5 !important;
+    /* ─── FOOTER ─── */
+    footer {
+      margin-left: 260px; background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 2rem; text-align: center; color: var(--text-dim); font-size: 0.85rem;
     }
-
-    .card b,
-    .card strong,
-    .card h2,
-    .card h3,
-    .card h4 {
-      color: #ff6600 !important;
-    }
-
-    .card i,
-    .card span,
-    .card p,
-    .card ul li {
-      color: #e0e0e0 !important;
-    }
-
-    .card {
-      background: #232323;
-      border-radius: 2vw;
-      padding: 2vw;
-      margin-bottom: 2vw;
-      box-shadow: 0 2px 8px #0002;
-      width: 100%;
-      max-width: 100%;
-      box-sizing: border-box;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4 {
-      font-family: 'Poppins', Arial, sans-serif;
-      font-weight: 700;
-    }
-
-    .sidebar.sidebar-closed {
-      transform: translateX(-100%);
-      transition: transform 0.3s;
-    }
-
-    .sidebar:not(.sidebar-closed) ~ main.main {
-      margin-left: 260px;
-    }
-
-    .sidebar.sidebar-closed ~ main.main {
-      margin-left: 0;
-    }
-
-    /* Bouton pour ouvrir la sidebar */
-    #open-sidebar {
-      position: fixed;
-      top: 24px;
-      left: 24px;
-      z-index: 1100;
-      background: #ff6600;
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      width: 44px;
-      height: 44px;
-      font-size: 1.5rem;
-      box-shadow: 0 2px 8px #0003;
-      cursor: pointer;
-      display: none;
-    }
-
-    .sidebar.sidebar-closed ~ #open-sidebar {
-      display: block !important;
-    }
+    @media (max-width: 900px) { footer { margin-left: 0; } }
   </style>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      document.querySelectorAll('.has-submenu').forEach(function (el) {
-        el.addEventListener('click', function (e) {
-          e.preventDefault();
-          this.parentElement.classList.toggle('open');
-        });
-      });
-      // Toggle sidebar (mobile)
-      const sidebar = document.getElementById('sidebar');
-      const toggleBtn = document.querySelector('.sidebar-toggle');
-      const openSidebarBtn = document.getElementById('open-sidebar');
-      function updateSidebarBtn() {
-        if (sidebar.classList.contains('sidebar-closed')) {
-          openSidebarBtn.style.display = 'block';
-        } else {
-          openSidebarBtn.style.display = 'none';
-        }
-      }
-      if (toggleBtn) {
-        toggleBtn.addEventListener('click', function () {
-          sidebar.classList.toggle('sidebar-closed');
-          document.querySelector('main.main').style.marginLeft = sidebar.classList.contains('sidebar-closed') ? '0' : '260px';
-          updateSidebarBtn();
-        });
-      }
-      if (openSidebarBtn) {
-        openSidebarBtn.addEventListener('click', function () {
-          sidebar.classList.remove('sidebar-closed');
-          document.querySelector('main.main').style.marginLeft = '260px';
-          updateSidebarBtn();
-        });
-      }
-      updateSidebarBtn();
-    });
-  </script>
 </head>
 
-<body class="Experiences-page">
+<body>
 
+  <!-- SIDEBAR -->
   <aside id="sidebar" class="sidebar sidebar-closed">
     <div class="sidebar-logo">
-      <a href="index.html">
+      <a href="index.html" style="text-decoration:none;">
         <h1 class="sitename">Mathéo Camelin</h1>
       </a>
     </div>
     <nav class="sidebar-nav">
       <ul>
         <li><a href="index.html">Accueil</a></li>
-        <li><a href="resume.html">Résumé</a></li>
         <li><a href="about.html">A propos</a></li>
-        <li><a href="Experience.html">Experiences</a></li>
+        <li><a href="Experience.html">Expériences</a></li>
         <li><a href="services.html">Projet</a></li>
-        <li><a href="#" class="has-submenu">Certifications</a></li>
+        <li><a href="#">Certifications</a></li>
         <li><a href="GP.html">Gestion patrimoine</a></li>
         <li><a href="#" class="has-submenu">Veille</a>
           <ul class="submenu">
@@ -295,186 +285,384 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
-    <button class="sidebar-toggle" aria-label="Ouvrir/Fermer le menu"><span>&#9660;</span></button>
+    <button class="sidebar-toggle" aria-label="Ouvrir/Fermer le menu">☰</button>
   </aside>
-  <button id="open-sidebar" style="
-    position: fixed;
-    top: 24px;
-    left: 24px;
-    z-index: 1100;
-    background: #ff6600;
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    width: 44px;
-    height: 44px;
-    font-size: 1.5rem;
-    box-shadow: 0 2px 8px #0003;
-    cursor: pointer;
-    display: none;
-  ">
-    ☰
-  </button>
+
+  <button id="open-sidebar">☰</button>
 
   <main class="main">
 
-    <!-- Présentation générale -->
-    <section class="intro-section" style="padding: 2rem 0; background: #232323;">
-      <div class="card text-center">
-        <h1>Veille technologique</h1>
-        <p>
-          Sur cette page, découvrez les dernières tendances, actualités et outils liés à la sécurité des QR codes et à l’authentification mobile.<br>
-          <span style="color:#ff6600;">Objectif :</span> Comprendre les enjeux, les risques et les innovations dans ce domaine en pleine évolution.
-        </p>
+    <!-- HERO -->
+    <div class="hero-banner">
+      <div class="tag">VEILLE TECHNOLOGIQUE — BTS SIO</div>
+      <h1>QR Code &amp; <span>Authentification</span> Mobile<br>Sécurisé ou vulnérable ?</h1>
+      <p>Surveillance des menaces, innovations et évolutions réglementaires liées à l'authentification par QR code sur mobile.</p>
+      <div class="period-badge">
+        <span class="dot"></span>
+        Période couverte : 29 sept. 2025 → 2026
       </div>
-    </section>
+    </div>
 
-    <!-- Sujet principal -->
-    <section class="subject-section" style="padding: 2rem 0;">
-      <div class="card">
-        <h2>Sujet de veille</h2>
-        <p>
-          <strong>QR Code et authentification mobile : sécurisé ou vulnérable ?</strong><br>
-          L’utilisation des QR codes pour l’authentification sur mobile s’est largement démocratisée, notamment dans les applications bancaires, les paiements, ou l’accès à des services sécurisés. Mais cette technologie est-elle vraiment fiable ? Quels sont les risques de sécurité, les failles potentielles et les bonnes pratiques pour se protéger ? Cette veille vise à explorer les avantages, les limites et les enjeux de sécurité liés à l’authentification par QR code sur mobile.
-        </p>
+    <!-- DÉFINITIONS -->
+    <div class="section-title">Définitions &amp; objectifs</div>
+    <div class="card-grid" style="margin-bottom:2.5rem;">
+      <div class="card-item">
+        <h4>📡 Qu'est-ce qu'une veille technologique ?</h4>
+        <p>La veille technologique consiste à surveiller, collecter, analyser et diffuser des informations sur les évolutions techniques, scientifiques et industrielles d'un secteur donné. Elle permet d'anticiper les innovations et de soutenir la prise de décisions stratégiques.</p>
       </div>
-    </section>
-
-    <!-- Définition et objectifs -->
-    <section class="definition-section" style="padding: 2rem 0;">
-      <div class="row gy-4">
-        <div class="col-lg-6">
-          <div class="card">
-            <h4>Qu'est-ce qu'une veille technologique ?</h4>
-            <p>
-              La veille technologique consiste à surveiller, collecter, analyser et diffuser des informations sur les évolutions techniques, scientifiques et industrielles d’un secteur donné. Elle permet d’anticiper les innovations et de soutenir la prise de décisions.
-            </p>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="card">
-            <h4>Objectifs de la veille</h4>
-            <ul>
-              <li>Identifier les innovations technologiques</li>
-              <li>Comprendre l’impact sur la performance et la sécurité</li>
-              <li>Suivre l’évolution vers des pratiques plus sûres et écologiques</li>
-              <li>Observer l’influence de la data science</li>
-            </ul>
-          </div>
-        </div>
+      <div class="card-item">
+        <h4>🎯 Sujet de la veille</h4>
+        <p><strong style="color:#e8e4dc;">QR Code et authentification mobile :</strong> sécurisé ou vulnérable ?<br><br>
+        L'usage des QR codes pour l'authentification sur mobile s'est largement démocratisé dans les apps bancaires, les paiements et les accès sécurisés. Cette veille explore les avantages, les limites et les enjeux de sécurité de cette technologie.</p>
       </div>
-    </section>
+      <div class="card-item">
+        <h4>✅ Objectifs</h4>
+        <ul>
+          <li>Identifier les risques liés aux QR codes malveillants</li>
+          <li>Suivre les innovations (Passkeys, FIDO2, biométrie)</li>
+          <li>Comprendre les évolutions réglementaires</li>
+          <li>Observer la transition vers l'authentification sans mot de passe</li>
+        </ul>
+      </div>
+    </div>
 
-    <!-- Actualités et tendances -->
-    <section class="news-section" style="padding: 2rem 0;">
-      <div class="row gy-4">
-        <div class="col-lg-6">
-          <div class="card">
-            <h3>Actualités QR Code & Authentification</h3>
-            <ul>
-              <li>
-                <b>
-                  <a href="https://www.tf1info.fr/societe/ils-vont-vous-soutirer-de-l-argent-pourquoi-vous-devez-imperativement-vous-mefier-des-qr-code-2397455.html" target="_blank" style="color:#ff6600;text-decoration:underline;">
-                    “Ils vont vous soutirer de l’argent” : pourquoi vous devez impérativement vous méfier des QR Code
-                  </a>
-                </b><br>
-                <span>
-                  Article publié le 29 septembre 2025 sur TF1 Info.<br>
-                  Il traite des escroqueries « QR code phishing / quishing » avec des exemples concrets et des conseils de prudence.<br>
-                  <i>Source : TF1 INFO</i>
-                </span>
-              </li>
-              <li>
-                <b>
-                  <a href="https://www.lemondeinformatique.fr/authentification-et-sso-30.html" target="_blank" style="color:#ff6600;text-decoration:underline;">
-                    Quand un QR code dissimule un malware
-                  </a>
-                </b><br>
-                <span>
-                  Article dans Le Monde Informatique (Rubrique « Authentification et SSO »), daté du 10 septembre 2025.<br>
-                  <i>Source : Le Monde Informatique</i>
-                </span>
-              </li>
-              <li>
-                <b>
-                  <a href="https://dcod.ch/2025/10/01/le-top5-des-actualites-cybersecurite-1-oct-2025/" target="_blank" style="color:#ff6600;text-decoration:underline;">
-                    Le top 5 des actualités cybersécurité – 1 oct 2025
-                  </a>
-                </b><br>
-                <span>
-                  Revue de presse récente sur la cyberactualité (pas forcément centrée sur les QR codes, mais utile pour le contexte).<br>
-                  <i>Source : dcod.ch</i>
-                </span>
-              </li>
-              <li>
-                <b>Évolutions des Passkeys</b><br>
-                <span>Adoption massive, intégration biométrique avancée.<br>
-                <i>Source : FIDO Alliance, Google</i></span>
-              </li>
-              <li>
-                <b>Nouvelles vulnérabilités</b><br>
-                <span>Attaques par email avec QR codes.<br>
-                <i>Source : CyberCorsica</i></span>
-              </li>
-            </ul>
-          </div>
+    <!-- CHIFFRES CLÉS -->
+    <div class="section-title">Chiffres clés</div>
+    <div class="stats-grid">
+      <div class="stat-box">
+        <span class="num">×5</span>
+        <div class="label">Volume d'emails de quishing entre août et novembre 2025</div>
+      </div>
+      <div class="stat-box">
+        <span class="num">25%</span>
+        <div class="label">Hausse mondiale du quishing en 2025 (KeepNet Labs)</div>
+      </div>
+      <div class="stat-box">
+        <span class="num">69%</span>
+        <div class="label">Des utilisateurs disposent d'au moins une passkey fin 2025</div>
+      </div>
+      <div class="stat-box">
+        <span class="num">2 Md</span>
+        <div class="label">Passkeys utilisées dans le monde (FIDO Alliance)</div>
+      </div>
+      <div class="stat-box">
+        <span class="num">93%</span>
+        <div class="label">Taux de réussite de connexion avec les passkeys vs 63% pour les mots de passe</div>
+      </div>
+      <div class="stat-box">
+        <span class="num">15%</span>
+        <div class="label">Des Français victimes de quishing (ANSSI)</div>
+      </div>
+    </div>
+
+    <!-- ARTICLES & SOURCES -->
+    <div class="section-title">Articles &amp; sources — Oct. 2025 → Avr. 2026</div>
+    <div class="article-list" style="margin-bottom:2.5rem;">
+
+      <div class="article-card">
+        <div class="article-num">#01</div>
+        <div class="article-body">
+          <h5><a href="https://www.tf1info.fr/societe/ils-vont-vous-soutirer-de-l-argent-pourquoi-vous-devez-imperativement-vous-mefier-des-qr-code-2397455.html" target="_blank">"Ils vont vous soutirer de l'argent" : méfiez-vous des QR codes</a></h5>
+          <p>Alerte sur les escroqueries de type quishing avec exemples concrets de fraude dans les parkings, restaurants et emails bancaires. Conseils de prudence pour le grand public.</p>
         </div>
-        <div class="col-lg-6">
-          <div class="card">
-            <h3>Outils de veille</h3>
-            <ul>
-              <li>Feedly (flux RSS cybersécurité)</li>
-              <li>Google Alerts (mots-clés ciblés)</li>
-              <li>Twitter/X (comptes spécialisés)</li>
-              <li>Diigo (sauvegarde et annotation)</li>
-              <li>Google Docs (notes et synthèse)</li>
-            </ul>
-          </div>
+        <div class="article-meta">
+          <span class="badge-date">29 sept. 2025</span>
+          <span class="badge-source">TF1 INFO</span>
         </div>
       </div>
-    </section>
 
-    <!-- Focus réglementaire -->
-    <section class="reglement-section" style="padding: 2rem 0;">
-      <div class="card">
-        <h3>QR code obligatoire sur le DPE</h3>
-        <p>
-          Depuis le 1er septembre 2025, chaque rapport DPE doit comporter un QR code pour vérifier l’authenticité du diagnostic via la base officielle de l’Ademe.<br>
-          <b>Motivation :</b> Lutter contre la fraude immobilière.<br>
-          <b>Sources :</b> Activ'Expertise, Service Public
-        </p>
-        <p>
-          <b>Guide pratique du ministère de l’Intérieur :</b> “Déjouer phishing, QR codes et SMS frauduleux” (août 2025).
-        </p>
-      </div>
-    </section>
-
-  </main>
-
-  <footer id="footer" class="footer dark-background">
-    <div class="container">
-      <h3 class="sitename">matheo.</h3>
-      <div class="social-links d-flex justify-content-center">
-        <a href="https://x.com/matheo0?s=21"><i class="bi bi-twitter-x"></i></a>
-        <a href="https://www.instagram.com/matheo_photography?igsh=dHl4YjUxZGUzc3hq&utm_source=qr"><i class="bi bi-instagram"></i></a>
-        <a href="https://github.com/PierreBriceCK"><i class="bi bi-github"></i></a>
-        <a href="https://www.linkedin.com/in/pierre-brice-chane-kane-06a364330?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"><i class="bi bi-linkedin"></i></a>
-      </div>
-      <div class="container">
-        <div class="copyright">
-          <span>Copyright</span> <strong class="px-1 sitename">matheo.</strong> <span>All Rights Reserved</span>
+      <div class="article-card">
+        <div class="article-num">#02</div>
+        <div class="article-body">
+          <h5><a href="https://arnaqueoufiable.com/alertes/quishing-les-qr-codes-pieges/" target="_blank">Quishing : les QR codes piégés — Alerte</a></h5>
+          <p>Les cybercriminels collent de faux codes QR sur des affiches, menus et bornes de paiement. Un QR code sur autocollant mal fixé ou une URL étrange après scan sont des signaux d'alerte.</p>
         </div>
-        <div class="credits">
-          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        <div class="article-meta">
+          <span class="badge-date">15 nov. 2025</span>
+          <span class="badge-source">ArnaqueOuFiable.com</span>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-num">#03</div>
+        <div class="article-body">
+          <h5><a href="https://www.hornetsecurity.com/fr/blog/qr-code-phishing/" target="_blank">QR code ou quishing : La nouvelle arme des cybercriminels</a></h5>
+          <p>Analyse des 4 types d'attaques par QR code en entreprise : redirection phishing, téléchargement de malware, scam de paiement et vol d'identifiants. Recommandations pour les équipes IT.</p>
+        </div>
+        <div class="article-meta">
+          <span class="badge-date">4 nov. 2025</span>
+          <span class="badge-source">Hornetsecurity</span>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-num">#04</div>
+        <div class="article-body">
+          <h5><a href="https://www.skblog.dev/cybersecurite/dans-tete-pirate-vrais-secrets-phishing-2025/" target="_blank">Dans la tête d'un pirate : les vrais secrets du phishing 2025</a></h5>
+          <p>Analyse concrète d'une attaque quishing : "Tu scannes. C'est un réflexe, tu penses même plus." Article qui explique pourquoi le téléphone est la cible préférée des attaquants — moins surveillé que le PC.</p>
+        </div>
+        <div class="article-meta">
+          <span class="badge-date">25 oct. 2025</span>
+          <span class="badge-source">SKBlog (Cybersécurité)</span>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-num">#05</div>
+        <div class="article-body">
+          <h5><a href="https://neowave.fr/fr/fini-les-mots-de-passe-une-tendance-qui-se-confirme/" target="_blank">Fini les mots de passe ? Une tendance qui se confirme</a></h5>
+          <p>Depuis août 2025, Microsoft Authenticator ne stocke plus les mots de passe. Microsoft, Google et Meta poussent massivement vers les passkeys. Les connexions par passkey sont 8x plus rapides avec 98% de taux de réussite.</p>
+        </div>
+        <div class="article-meta">
+          <span class="badge-date">11 juil. 2025 → août 2025</span>
+          <span class="badge-source">NEOWAVE</span>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-num">#06</div>
+        <div class="article-body">
+          <h5><a href="https://technomind.fr/2025/11/15/passkeys-2026-activer-partout/" target="_blank">Passkeys 2026 : Guide pour remplacer vos mots de passe</a></h5>
+          <p>Depuis fin 2025, tous les grands services annoncent la transition vers les passkeys. En 2026 : Google, Apple, Microsoft, Amazon, TikTok et Airbnb les supportent nativement. Certains services bancaires restent encore en transition.</p>
+        </div>
+        <div class="article-meta">
+          <span class="badge-date">15 nov. 2025</span>
+          <span class="badge-source">TechnoMind</span>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-num">#07</div>
+        <div class="article-body">
+          <h5><a href="https://qr-verse.com/fr/blog/tendances-code-qr-2026" target="_blank">Tendances QR Code 2026 : Ce qui change vraiment</a></h5>
+          <p>Le débat QR vs NFC est dépassé : les deux technologies fusionnent. Les attaques de quishing ont explosé en 2025 dans les zones urbaines denses. Des solutions de rotation dynamique des codes et de vérification visuelle émergent pour contrer les autocollants frauduleux.</p>
+        </div>
+        <div class="article-meta">
+          <span class="badge-date">7 févr. 2026</span>
+          <span class="badge-source">QR-Verse</span>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-num">#08</div>
+        <div class="article-body">
+          <h5><a href="https://doitqr.com/fr/qr-code-malveillant-quishing" target="_blank">QR Code malveillant : Comment détecter et éviter le Quishing en 2026</a></h5>
+          <p>En 2026, les cybercriminels utilisent l'IA pour générer des leurres quishing à grande échelle : QR codes avec logos de marques, fausses pages de phishing personnalisées, et deepfakes sur affiches. Ces attaques contournent les défenses traditionnelles.</p>
+        </div>
+        <div class="article-meta">
+          <span class="badge-date">1 avr. 2026</span>
+          <span class="badge-source">DoItQR</span>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-num">#09</div>
+        <div class="article-body">
+          <h5><a href="https://aiegeek.wordpress.com/2026/02/04/vers-la-fin-des-mots-de-passe-passkeys-biometrie-cles-fido-expliques-simplement/" target="_blank">Vers la fin des mots de passe : passkeys, biométrie, clés FIDO expliqués simplement</a></h5>
+          <p>En 2026, les passkeys sont supportées par Google, Apple, Microsoft, GitHub, PayPal, Amazon, 1Password, Dashlane… Les données biométriques ne quittent jamais l'appareil (Secure Enclave iPhone, TPM PC). Le standard FIDO garantit l'interopérabilité.</p>
+        </div>
+        <div class="article-meta">
+          <span class="badge-date">4 févr. 2026</span>
+          <span class="badge-source">AIeGeek (Blog)</span>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-num">#10</div>
+        <div class="article-body">
+          <h5><a href="https://keepnetlabs.com/blog/understanding-quishing" target="_blank">Understanding Quishing — Keepnet Labs (mis à jour 2026)</a></h5>
+          <p>En 2025, le quishing représente 1 campagne de vol d'identifiants sur 8. Des attaques ont ciblé des utilisateurs LinkedIn via QR codes. L'IA génère désormais des leurres en masse. La FTC et le FBI ont émis des alertes officielles en janvier 2025.</p>
+        </div>
+        <div class="article-meta">
+          <span class="badge-date">Mis à jour 12 mars 2026</span>
+          <span class="badge-source">Keepnet Labs</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CHRONOLOGIE -->
+    <div class="section-title">Chronologie des évènements clés</div>
+    <div class="timeline" style="margin-bottom:2.5rem;">
+      <div class="tl-item">
+        <div class="tl-date">Juil. 2025</div>
+        <div class="tl-text"><strong>NIST SP 800-63-4 (final) :</strong> Les États-Unis imposent une authentification résistante au phishing comme obligation (non plus recommandation) pour les systèmes AAL2. Les SMS OTP sont officiellement dépréciés.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">1 août 2025</div>
+        <div class="tl-text"><strong>Microsoft :</strong> Microsoft Authenticator cesse de stocker les mots de passe et bascule vers les passkeys et Windows Hello.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">1 sept. 2025</div>
+        <div class="tl-text"><strong>France – DPE :</strong> Chaque rapport de diagnostic de performance énergétique doit désormais comporter un QR code officiel pour vérifier l'authenticité via la base de l'ADEME. Objectif : lutter contre la fraude immobilière.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">29 sept. 2025</div>
+        <div class="tl-text"><strong>TF1 Info :</strong> Alerte grand public sur le quishing — les escroqueries par QR code font la une des médias français. Début de la période de veille.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Oct. – Nov. 2025</div>
+        <div class="tl-text"><strong>Explosion du quishing :</strong> Le volume d'emails contenant des QR codes malveillants est multiplié par 5 en seulement 3 mois. Les cybercriminels automatisent la création de faux QR codes grâce à l'IA.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Nov. 2025</div>
+        <div class="tl-text"><strong>Passkeys :</strong> 69% des utilisateurs mondiaux ont au moins une passkey. 48% des 100 plus grands sites web les supportent. TikTok affiche 97% de succès, Google 4x plus que les mots de passe.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Janv. 2026</div>
+        <div class="tl-text"><strong>U.S. Bank &amp; Revolut :</strong> Déploiement officiel des passkeys pour les clients bancaires. Revolut est l'une des premières néobanques européennes à abandonner les mots de passe.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Févr. 2026</div>
+        <div class="tl-text"><strong>QR Code + NFC :</strong> Fusion des deux technologies confirmée. iOS Universal Links et Android App Links atteignent la maturité. Les QR codes dynamiques changent de contenu toutes les quelques minutes pour contrer les autocollants frauduleux.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Avr. 2026</div>
+        <div class="tl-text"><strong>IA &amp; Quishing :</strong> Les cybercriminels déploient des attaques assistées par l'IA avec deepfakes sur affiches et menus. Les plateformes de cybersécurité intègrent des détecteurs de QR codes malveillants en temps réel.</div>
+      </div>
+    </div>
+
+    <!-- MENACES -->
+    <div class="section-title">Types de menaces identifiées</div>
+    <div class="card-grid" style="margin-bottom:2.5rem;">
+      <div class="card-item">
+        <h4>🎣 Quishing (QR Phishing)</h4>
+        <p>Un faux QR code collé par-dessus un code légitime (restaurant, parking, borne de recharge) redirige vers un site imitant une banque ou un service pour voler identifiants et données bancaires. Contourne les filtres anti-spam car c'est une image.</p>
+      </div>
+      <div class="card-item">
+        <h4>🦠 QR code + Malware</h4>
+        <p>Le scan déclenche automatiquement le téléchargement d'un logiciel espion (spyware) ou d'un ransomware. L'appareil mobile, souvent sans antivirus, est la cible prioritaire.</p>
+      </div>
+      <div class="card-item">
+        <h4>💸 Scam de paiement</h4>
+        <p>Un collaborateur reçoit un QR code prétendument lié à une facture. En le scannant, le paiement part vers le compte du cybercriminel plutôt que vers le fournisseur légitime.</p>
+      </div>
+      <div class="card-item">
+        <h4>🤖 Quishing assisté par IA (2026)</h4>
+        <p>Les cybercriminels utilisent l'IA pour créer des QR codes avec logos de marques authentiques, des fausses pages hyper-personnalisées et des deepfakes sur du matériel imprimé (affiches, menus). Beaucoup plus difficile à détecter.</p>
+      </div>
+    </div>
+
+    <!-- INNOVATIONS / SOLUTIONS -->
+    <div class="section-title">Innovations &amp; solutions</div>
+    <div class="card-grid" style="margin-bottom:2.5rem;">
+      <div class="card-item">
+        <h4>🔑 Passkeys (FIDO2 / WebAuthn)</h4>
+        <p>Les passkeys remplacent le mot de passe par une paire de clés cryptographiques. La clé privée ne quitte jamais l'appareil. Résistantes au phishing par nature : impossible de les donner à un faux site. Supportées en 2026 par Google, Apple, Microsoft, Amazon, TikTok, Airbnb…</p>
+      </div>
+      <div class="card-item">
+        <h4>👁️ Biométrie intégrée</h4>
+        <p>Face ID, Touch ID, Windows Hello : les données biométriques restent stockées dans un chip sécurisé (Secure Enclave iOS, TPM Windows). Combinées aux passkeys, elles constituent une double sécurité sans aucun mot de passe à retenir.</p>
+      </div>
+      <div class="card-item">
+        <h4>🔄 QR codes dynamiques rotatifs</h4>
+        <p>Pour les usages haute sécurité, le contenu d'un QR code change automatiquement toutes les quelques minutes, rendant les attaques par autocollant frauduleux impossibles. Déployé dans les applications bancaires et industrielles.</p>
+      </div>
+      <div class="card-item">
+        <h4>🔍 Outils de diagnostic QR</h4>
+        <p>Des services comme DoItQR ou les scanners intégrés dans iOS/Android affichent désormais une prévisualisation de l'URL avant d'ouvrir le lien. Certaines plateformes analysent la réputation du domaine en temps réel avant de valider le scan.</p>
+      </div>
+    </div>
+
+    <!-- OUTILS DE VEILLE -->
+    <div class="section-title">Outils utilisés pour la veille</div>
+    <div class="tools-grid" style="margin-bottom:2.5rem;">
+      <div class="tool-pill">
+        <div class="icon">📰</div>
+        <div class="info">
+          <div class="name">Feedly</div>
+          <div class="desc">Flux RSS cybersécurité</div>
+        </div>
+      </div>
+      <div class="tool-pill">
+        <div class="icon">🔔</div>
+        <div class="info">
+          <div class="name">Google Alerts</div>
+          <div class="desc">Mots-clés : quishing, passkeys, QR code sécurité</div>
+        </div>
+      </div>
+      <div class="tool-pill">
+        <div class="icon">🐦</div>
+        <div class="info">
+          <div class="name">Twitter / X</div>
+          <div class="desc">Comptes spécialisés en cybersécurité</div>
+        </div>
+      </div>
+      <div class="tool-pill">
+        <div class="icon">💼</div>
+        <div class="info">
+          <div class="name">LinkedIn</div>
+          <div class="desc">Articles professionnels &amp; alertes secteur</div>
+        </div>
+      </div>
+      <div class="tool-pill">
+        <div class="icon">🔖</div>
+        <div class="info">
+          <div class="name">Diigo</div>
+          <div class="desc">Sauvegarde et annotation des sources</div>
+        </div>
+      </div>
+      <div class="tool-pill">
+        <div class="icon">📄</div>
+        <div class="info">
+          <div class="name">Google Docs</div>
+          <div class="desc">Notes et synthèse</div>
         </div>
       </div>
     </div>
+
+    <!-- CONCLUSION -->
+    <div class="section-title">Synthèse &amp; conclusion</div>
+    <div class="card-item" style="margin-bottom:2rem;">
+      <h4>📋 Bilan de la veille (sept. 2025 → avr. 2026)</h4>
+      <p style="margin-bottom:0.8rem;">La période septembre 2025 – avril 2026 marque un double tournant. D'un côté, le <strong style="color:#e8e4dc;">quishing explose</strong> : le volume d'attaques par QR code malveillant a été multiplié par cinq en seulement trois mois, et les cybercriminels utilisent désormais l'IA pour créer des leurres indétectables à grande échelle.</p>
+      <p style="margin-bottom:0.8rem;">De l'autre, la <strong style="color:#e8e4dc;">révolution des passkeys s'accélère</strong> : fin 2025, 69% des utilisateurs en possèdent au moins une. Microsoft, Google, Apple et les grandes banques abandonnent progressivement les mots de passe. La norme FIDO2/WebAuthn devient le standard mondial.</p>
+      <p>La conclusion s'impose : le QR code reste un outil pratique mais son usage pour l'authentification doit s'accompagner de <strong style="color:#e8e4dc;">protections solides</strong> (rotation dynamique, vérification d'URL, sensibilisation). L'avenir de l'authentification mobile passe par les passkeys et la biométrie — plus sûres, plus rapides, résistantes au phishing par conception.</p>
+    </div>
+
+  </main>
+
+  <footer id="footer">
+    <div style="margin-bottom:0.5rem;">
+      <a href="https://x.com/matheo0?s=21" style="color:var(--text-dim);margin:0 0.5rem;text-decoration:none;" target="_blank"><i class="bi bi-twitter-x"></i></a>
+      <a href="https://www.instagram.com/matheo_photography" style="color:var(--text-dim);margin:0 0.5rem;text-decoration:none;" target="_blank"><i class="bi bi-instagram"></i></a>
+      <a href="https://github.com/PierreBriceCK" style="color:var(--text-dim);margin:0 0.5rem;text-decoration:none;" target="_blank"><i class="bi bi-github"></i></a>
+      <a href="https://www.linkedin.com/in/pierre-brice-chane-kane-06a364330" style="color:var(--text-dim);margin:0 0.5rem;text-decoration:none;" target="_blank"><i class="bi bi-linkedin"></i></a>
+    </div>
+    <div>Copyright <strong style="color:var(--orange)">matheo.</strong> All Rights Reserved — Designed by <a href="https://bootstrapmade.com/" style="color:var(--text-dim);">BootstrapMade</a></div>
   </footer>
 
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-  <div id="preloader"></div>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/main.js"></script>
-</body>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Sous-menus
+      document.querySelectorAll('.has-submenu').forEach(function (el) {
+        el.addEventListener('click', function (e) {
+          e.preventDefault();
+          this.parentElement.classList.toggle('open');
+        });
+      });
+      // Sidebar toggle
+      const sidebar = document.getElementById('sidebar');
+      const toggleBtn = document.querySelector('.sidebar-toggle');
+      const openBtn = document.getElementById('open-sidebar');
+      function updateBtn() {
+        openBtn.style.display = sidebar.classList.contains('sidebar-closed') ? 'block' : 'none';
+        document.querySelector('main.main').style.marginLeft = sidebar.classList.contains('sidebar-closed') ? '0' : '260px';
+        document.querySelector('footer').style.marginLeft = sidebar.classList.contains('sidebar-closed') ? '0' : '260px';
+      }
+      toggleBtn.addEventListener('click', function () {
+        sidebar.classList.toggle('sidebar-closed');
+        updateBtn();
+      });
+      openBtn.addEventListener('click', function () {
+        sidebar.classList.remove('sidebar-closed');
+        updateBtn();
+      });
+      updateBtn();
+    });
+  </script>
 
+</body>
 </html>
