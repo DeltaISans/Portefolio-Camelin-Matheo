@@ -7,6 +7,93 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link href="assets/css/main.css" rel="stylesheet">
   <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background: #181818;
+      color: #fff;
+      font-family: 'Space Mono', monospace;
+    }
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 260px;
+      height: 100vh;
+      background: #1a1a1a;
+      display: flex;
+      flex-direction: column;
+      z-index: 1000;
+      transition: transform 0.3s;
+    }
+    .sidebar-logo {
+      padding: 2rem 1.5rem 1rem 1.5rem;
+      text-align: left;
+    }
+    .sidebar-logo h1 {
+      color: #fff;
+      font-size: 1.6rem;
+      margin: 0;
+      font-weight: 700;
+    }
+    .sidebar-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sidebar-nav ul li {
+      margin: 0.7rem 0;
+    }
+    .sidebar-nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: 600;
+      padding: 0.5rem 1.5rem;
+      display: block;
+      border-radius: 4px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .sidebar-nav ul li a.active,
+    .sidebar-nav ul li a:hover {
+      color: #ff6600;
+      background: #232323;
+    }
+    .sidebar-nav ul li .submenu {
+      display: none;
+      margin-left: 1.5rem;
+      margin-top: 0.2rem;
+    }
+    .sidebar-nav ul li.open > .submenu {
+      display: block;
+    }
+    .sidebar-toggle {
+      position: absolute;
+      right: 1rem;
+      bottom: 2rem;
+      background: #292929;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .sidebar-toggle:hover {
+      background: #ff6600;
+      color: #fff;
+    }
+    main.main {
+      margin-left: 260px;
+      padding: 4vw 6vw 8vw 6vw;
+      transition: margin-left 0.3s;
+    }
     .doc-section {
       margin-top: 2rem;
       display: flex;
@@ -51,7 +138,42 @@
     .add-doc-btn:hover {
       background: #ff8533;
     }
-    @media (max-width: 700px) {
+    @media (max-width: 900px) {
+      .sidebar {
+        width: 100vw;
+        height: auto;
+        flex-direction: row;
+        position: fixed;
+        z-index: 1000;
+      }
+      .sidebar-logo { padding: 1rem 1rem 0; }
+      .sidebar-nav ul {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
+      .sidebar-nav ul li { margin: 0.3rem 0; }
+      .sidebar-toggle { right: 1rem; bottom: 1rem; }
+      main.main {
+        margin-left: 0;
+        margin-top: 80px;
+        padding: 2vw 4vw 4vw 4vw;
+      }
+    }
+    @media (max-width: 600px) {
+      .sidebar {
+        width: 100vw;
+        height: auto;
+        position: fixed;
+        z-index: 1000;
+      }
+      .sidebar-nav ul li a { font-size: 1rem; padding: 0.5rem 1rem; }
+      .sidebar-logo { padding: 0.7rem 1rem 0; }
+      main.main {
+        margin-left: 0;
+        margin-top: 60px;
+        padding: 2vw 2vw 4vw 2vw;
+      }
       .doc-section {
         flex-direction: column;
       }
@@ -72,12 +194,14 @@
         <li><a href="experiences.html">Experiences</a></li>
         <li><a href="projet.html" class="active">Projet</a></li>
         <li><a href="#" class="has-submenu">Certifications</a></li>
+        <li><a href="GP.html">Gestion patrimoine</a></li>
         <li><a href="#" class="has-submenu">Veille</a>
           <ul class="submenu">
             <li><a href="veille-t.html">Veille technologique</a></li>
             <li><a href="veille-J.html">Veille juridique</a></li>
           </ul>
         </li>
+        <li><a href="Stage.html">Stages</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
@@ -99,7 +223,7 @@
             <li>Gestion des utilisateurs</li>
             <li>Design responsive</li>
           </ul>
-          <a class="add-doc-btn" href="#">Voir doc</a>
+          <a class="add-doc-btn" href="assets/documents/blog.pdf" target="_blank">Voir doc</a>
         </article>
         <article class="doc-card">
           <h2>Projet M2L</h2>
@@ -109,7 +233,7 @@
             <li>Configuration pgAdmin 4</li>
             <li>Structuration de la BDD</li>
           </ul>
-          <a class="add-doc-btn" href="#">Voir doc</a>
+          <a class="add-doc-btn" href="assets/documents/w11.pdf">Voir doc</a>
         </article>
         <article class="doc-card">
           <h2>Machine virtuelle Windows 11</h2>
@@ -119,7 +243,7 @@
             <li>Installation de Windows 11</li>
             <li>Préparation d’un modèle VM</li>
           </ul>
-          <a class="add-doc-btn" href="#">Voir doc</a>
+          <a class="add-doc-btn" href="assets/documents/w11.pdf" target="_blank">Voir doc</a>
         </article>
         <article class="doc-card">
           <h2>Autres projets</h2>
@@ -129,8 +253,44 @@
             <li>Projet base de données</li>
             <li>Application web responsive</li>
           </ul>
-          <a class="add-doc-btn" href="#">Voir doc</a>
+          <a class="add-doc-btn" href="#doc-autres-projets">Voir doc</a>
         </article>
+      </section>
+      <section id="doc-blog-app" style="margin-top:3rem; padding-top:2rem; border-top:1px solid rgba(255,255,255,0.08);">
+        <h2 style="color:#ff6600;">Doc Blog App</h2>
+        <p>Voici les informations détaillées du projet Blog App :</p>
+        <ul>
+          <li>Architecture : front React / back Node.js ou PHP</li>
+          <li>Fonctionnalités : articles, commentaires, profil utilisateur</li>
+          <li>Sécurité : authentification, validation des formulaires</li>
+        </ul>
+      </section>
+      <section id="doc-m2l" style="margin-top:3rem; padding-top:2rem; border-top:1px solid rgba(255,255,255,0.08);">
+        <h2 style="color:#ff6600;">Doc Projet M2L</h2>
+        <p>Voici les informations détaillées du projet M2L :</p>
+        <ul>
+          <li>Installation PostgreSQL et pgAdmin 4</li>
+          <li>Modélisation de la base de données</li>
+          <li>Création des tables, relations et volumes</li>
+        </ul>
+      </section>
+      <section id="doc-windows-vm" style="margin-top:3rem; padding-top:2rem; border-top:1px solid rgba(255,255,255,0.08);">
+        <h2 style="color:#ff6600;">Doc Machine virtuelle Windows 11</h2>
+        <p>Voici les informations détaillées du projet VM Windows 11 :</p>
+        <ul>
+          <li>Configuration du BIOS ou UEFI</li>
+          <li>Allocation CPU / RAM / stockage</li>
+          <li>Création d’un modèle de VM prêt à réutiliser</li>
+        </ul>
+      </section>
+      <section id="doc-autres-projets" style="margin-top:3rem; padding-top:2rem; border-top:1px solid rgba(255,255,255,0.08);">
+        <h2 style="color:#ff6600;">Doc Autres projets</h2>
+        <p>Informations sur les projets à venir :</p>
+        <ul>
+          <li>Projets réseau</li>
+          <li>Automatisation de tâches</li>
+          <li>Développement d’applications web</li>
+        </ul>
       </section>
     </div>
   </main>
