@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Documentation - Projets</title>
+  <title>Projets - Mathéo Camelin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link href="assets/css/main.css" rel="stylesheet">
   <style>
     .doc-section {
@@ -68,8 +69,8 @@
         <li><a href="index.html">Accueil</a></li>
         <li><a href="resume.html">Résumé</a></li>
         <li><a href="about.html">A propos</a></li>
-        <li><a href="Experience.html">Experiences</a></li>
-        <li><a href="projet.html">Projet</a></li>
+        <li><a href="experiences.html">Experiences</a></li>
+        <li><a href="projet.html" class="active">Projet</a></li>
         <li><a href="#" class="has-submenu">Certifications</a></li>
         <li><a href="#" class="has-submenu">Veille</a>
           <ul class="submenu">
@@ -85,30 +86,51 @@
 
   <main class="main">
     <div class="container">
-      <h1>Documentation : Installation de Windows</h1>
-      <section>
-        <h2>Prérequis</h2>
-        <ul>
-          <li>Clé USB (8 Go minimum)</li>
-          <li>Image ISO de Windows</li>
-          <li>Outil de création de média (Media Creation Tool)</li>
-        </ul>
-      </section>
-      <section>
-        <h2>Étapes d'installation</h2>
-        <ol>
-          <li>Télécharger l’ISO de Windows depuis le site officiel.</li>
-          <li>Créer une clé USB bootable avec l’outil Media Creation Tool.</li>
-          <li>Démarrer le PC sur la clé USB (modifier l’ordre de boot dans le BIOS si besoin).</li>
-          <li>Suivre les instructions à l’écran pour installer Windows.</li>
-        </ol>
-      </section>
-      <section>
-        <h2>Conseils</h2>
-        <ul>
-          <li>Pense à sauvegarder tes données avant l’installation.</li>
-          <li>Prépare ta clé de licence Windows si nécessaire.</li>
-        </ul>
+      <div class="hero-banner" style="padding: 4rem 0 2rem;">
+        <h1 style="font-family: 'Space Mono', monospace; color: #ff6600; margin-bottom: 1rem;">Mes projets de cours</h1>
+        <p style="max-width: 720px; color: #d1d5db; font-size: 1rem; line-height: 1.8;">Retrouvez ici mes réalisations créées pendant mes études et mes projets personnels appliquant les compétences en développement, base de données et infrastructure.</p>
+      </div>
+      <section class="doc-section">
+        <article class="doc-card">
+          <h2>Blog App</h2>
+          <p>Application de blog avec gestion des articles, des utilisateurs et commentaires. Développement front/back, authentification et déploiement local.</p>
+          <ul>
+            <li>Création d’un CRUD complet</li>
+            <li>Gestion des utilisateurs</li>
+            <li>Design responsive</li>
+          </ul>
+          <a class="add-doc-btn" href="#">Voir doc</a>
+        </article>
+        <article class="doc-card">
+          <h2>Projet M2L</h2>
+          <p>Installation et configuration de PostgreSQL et pgAdmin 4. Mise en place d’une base de données relationnelle pour un projet de gestion.</p>
+          <ul>
+            <li>Installation PostgreSQL</li>
+            <li>Configuration pgAdmin 4</li>
+            <li>Structuration de la BDD</li>
+          </ul>
+          <a class="add-doc-btn" href="#">Voir doc</a>
+        </article>
+        <article class="doc-card">
+          <h2>Machine virtuelle Windows 11</h2>
+          <p>Création d’une machine virtuelle sur CVMM pour un environnement de test Windows 11, modèle prêt à l’emploi pour les TP et démonstrations.</p>
+          <ul>
+            <li>Configuration du matériel virtuel</li>
+            <li>Installation de Windows 11</li>
+            <li>Préparation d’un modèle VM</li>
+          </ul>
+          <a class="add-doc-btn" href="#">Voir doc</a>
+        </article>
+        <article class="doc-card">
+          <h2>Autres projets</h2>
+          <p>Travaux en cours et projets futurs à ajouter ici : réseaux, scripts d’automatisation, applications web et bases de données.</p>
+          <ul>
+            <li>Script d’automatisation</li>
+            <li>Projet base de données</li>
+            <li>Application web responsive</li>
+          </ul>
+          <a class="add-doc-btn" href="#">Voir doc</a>
+        </article>
       </section>
     </div>
   </main>
