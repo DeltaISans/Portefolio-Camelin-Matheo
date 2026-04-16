@@ -182,7 +182,7 @@
 </head>
 <body class="projet-page">
 
-  <aside id="sidebar" class="sidebar">
+  <aside id="sidebar" class="sidebar sidebar-closed">
     <div class="sidebar-logo">
       <a href="index.html"><h1 class="sitename">Mathéo Camelin</h1></a>
     </div>
@@ -191,23 +191,20 @@
         <li><a href="index.html">Accueil</a></li>
         <li><a href="resume.html">Résumé</a></li>
         <li><a href="about.html">A propos</a></li>
-        <li><a href="experiences.html">Experiences</a></li>
         <li><a href="projet.html" class="active">Projet</a></li>
-        <li><a href="#" class="has-submenu">Certifications</a></li>
-        <li><a href="GP.html">Gestion patrimoine</a></li>
         <li><a href="#" class="has-submenu">Veille</a>
           <ul class="submenu">
             <li><a href="veille-t.html">Veille technologique</a></li>
             <li><a href="veille-J.html">Veille juridique</a></li>
           </ul>
         </li>
+        <li><a href="GP.html">Gestion patrimoine</a></li>
         <li><a href="Stage.html">Stages</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
     <button class="sidebar-toggle" aria-label="Ouvrir/Fermer le menu"><span>&#9660;</span></button>
   </aside>
-
   <main class="main">
     <div class="container">
       <div class="hero-banner" style="padding: 4rem 0 2rem;">
@@ -304,5 +301,20 @@
     </div>
   </footer>
   <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.has-submenu').forEach(function (anchor) {
+        anchor.addEventListener('click', function (event) {
+          event.preventDefault();
+          const li = anchor.parentElement;
+          const isOpen = li.classList.contains('open');
+          document.querySelectorAll('.sidebar-nav .open').forEach(function (openLi) {
+            if (openLi !== li) openLi.classList.remove('open');
+          });
+          if (!isOpen) li.classList.add('open');
+        });
+      });
+    });
+  </script>
 </body>
 </html>
