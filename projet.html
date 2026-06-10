@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projets - Mathéo Camelin</title>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
+    * {
       margin: 0;
       padding: 0;
-      min-height: 100vh;
-      background: #181818;
-      color: #fff;
-      font-family: 'Space Mono', monospace;
+      box-sizing: border-box;
     }
+
+    body {
+      background: #0f0f0f;
+      color: #e0e0e0;
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+    }
+
     .sidebar {
       position: fixed;
       top: 0;
@@ -25,164 +30,207 @@
       display: flex;
       flex-direction: column;
       z-index: 1000;
-      transition: transform 0.3s;
+      transition: transform 0.3s ease;
+      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.4);
     }
+
     .sidebar-logo {
-      padding: 2rem 1.5rem 1rem 1.5rem;
-      text-align: left;
+      padding: 2.5rem 1.5rem 1.5rem;
     }
+
     .sidebar-logo h1 {
       color: #fff;
-      font-size: 1.6rem;
-      margin: 0;
+      font-size: 1.5rem;
       font-weight: 700;
     }
+
     .sidebar-nav ul {
       list-style: none;
       padding: 0;
       margin: 0;
+      flex: 1;
     }
-    .sidebar-nav ul li {
-      margin: 0.7rem 0;
-    }
+
     .sidebar-nav ul li a {
-      color: #fff;
+      color: #b0b0b0;
       text-decoration: none;
-      font-size: 1.2rem;
-      font-weight: 600;
-      padding: 0.5rem 1.5rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 0.9rem 1.5rem;
       display: block;
-      border-radius: 4px;
-      transition: background 0.2s, color 0.2s;
+      border-left: 3px solid transparent;
+      transition: all 0.2s ease;
     }
-    .sidebar-nav ul li a.active,
-    .sidebar-nav ul li a:hover {
-      color: #ff6600;
-      background: #232323;
+
+    .sidebar-nav ul li a:hover,
+    .sidebar-nav ul li a.active {
+      color: #ff8c42;
+      background: rgba(255, 140, 66, 0.08);
+      border-left-color: #ff8c42;
     }
+
     .sidebar-nav ul li .submenu {
       display: none;
-      margin-left: 1.5rem;
-      margin-top: 0.2rem;
     }
+
+    .sidebar-nav ul li .submenu li a {
+      padding-left: 3rem;
+      font-size: 0.9rem;
+    }
+
     .sidebar-nav ul li.open > .submenu {
       display: block;
     }
+
     .sidebar-toggle {
       position: absolute;
       right: 1rem;
       bottom: 2rem;
-      background: #292929;
-      color: #fff;
-      border: none;
+      background: rgba(255, 140, 66, 0.1);
+      color: #ff8c42;
+      border: 1px solid rgba(255, 140, 66, 0.3);
       border-radius: 50%;
-      width: 36px;
-      height: 36px;
-      font-size: 1.2rem;
+      width: 40px;
+      height: 40px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background 0.2s;
+      transition: all 0.2s ease;
     }
-    .sidebar-toggle:hover {
-      background: #ff6600;
-      color: #fff;
-    }
-    main.main {
-      margin-left: 260px;
-      padding: 4vw 6vw 8vw 6vw;
-      transition: margin-left 0.3s;
-    }
-    .doc-section {
-      margin-top: 2rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: flex-start;
-    }
-    .doc-card {
-      background: #232323;
-      color: #fff;
-      border-radius: 12px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.18);
-      padding: 2rem 1.5rem;
-      min-width: 320px;
-      max-width: 400px;
-      flex: 1 1 320px;
-      margin-bottom: 1rem;
-      transition: box-shadow 0.2s;
-    }
-    .doc-card:hover {
-      box-shadow: 0 4px 24px rgba(255,102,0,0.18);
-    }
-    .doc-card h2 {
-      color: #ff6600;
-      font-size: 1.4rem;
-      margin-bottom: 1rem;
-    }
-    .add-doc-btn {
-      display: inline-block;
-      margin-top: 1.5rem;
-      padding: 0.7rem 1.5rem;
-      background: #ff6600;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-      text-decoration: none;
-    }
-    .add-doc-btn:hover {
-      background: #ff8533;
-    }
+
     @media (max-width: 900px) {
       .sidebar {
         width: 100vw;
         height: auto;
         flex-direction: row;
-        position: fixed;
-        z-index: 1000;
-      }
-      .sidebar-logo { padding: 1rem 1rem 0; }
-      .sidebar-nav ul {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-      }
-      .sidebar-nav ul li { margin: 0.3rem 0; }
-      .sidebar-toggle { right: 1rem; bottom: 1rem; }
-      main.main {
-        margin-left: 0;
-        margin-top: 80px;
-        padding: 2vw 4vw 4vw 4vw;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
     }
-    @media (max-width: 600px) {
-      .sidebar {
-        width: 100vw;
-        height: auto;
-        position: fixed;
-        z-index: 1000;
-      }
-      .sidebar-nav ul li a { font-size: 1rem; padding: 0.5rem 1rem; }
-      .sidebar-logo { padding: 0.7rem 1rem 0; }
+
+    main.main {
+      margin-left: 260px;
+      padding: 3rem 2rem;
+      transition: margin-left 0.3s ease;
+    }
+
+    @media (max-width: 900px) {
       main.main {
         margin-left: 0;
-        margin-top: 60px;
-        padding: 2vw 2vw 4vw 2vw;
+        margin-top: 70px;
+        padding: 2rem 1.5rem;
       }
-      .doc-section {
-        flex-direction: column;
-      }
+    }
+
+    .header {
+      margin-bottom: 3.5rem;
+    }
+
+    .header h1 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .header p {
+      color: #a8a8a8;
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 720px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .project-card {
+      background: rgba(255, 140, 66, 0.05);
+      border: 1px solid rgba(255, 140, 66, 0.15);
+      border-radius: 6px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .project-card:hover {
+      border-color: #ff8c42;
+      box-shadow: 0 8px 24px rgba(255, 140, 66, 0.15);
+    }
+
+    .project-card h2 {
+      color: #ff8c42;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .project-card p {
+      color: #a8a8a8;
+      font-size: 0.95rem;
+      margin-bottom: 1.2rem;
+      line-height: 1.6;
+    }
+
+    .project-card ul {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-card ul li {
+      color: #888;
+      font-size: 0.9rem;
+      padding: 0.4rem 0 0.4rem 1.5rem;
+      position: relative;
+    }
+
+    .project-card ul li:before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: #ff8c42;
+    }
+
+    .project-btn {
+      display: inline-block;
+      background: rgba(255, 140, 66, 0.15);
+      color: #ff8c42;
+      padding: 0.7rem 1.5rem;
+      border: 1px solid #ff8c42;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .project-btn:hover {
+      background: rgba(255, 140, 66, 0.25);
+    }
+
+    #open-sidebar {
+      position: fixed;
+      top: 24px;
+      left: 24px;
+      z-index: 1100;
+      background: #ff8c42;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+      display: none;
     }
   </style>
 </head>
+
 <body class="projet-page">
 
-  <aside id="sidebar" class="sidebar sidebar-closed">
+  <aside id="sidebar" class="sidebar">
     <div class="sidebar-logo">
       <a href="index.html"><h1 class="sitename">Mathéo Camelin</h1></a>
     </div>
@@ -190,170 +238,128 @@
       <ul>
         <li><a href="index.html">Accueil</a></li>
         <li><a href="resume.html">Résumé</a></li>
-        <li><a href="about.html">A propos</a></li>
-        <li><a href="projet.html" class="active">Projet</a></li>
+        <li><a href="about.html">À propos</a></li>
+        <li><a href="projet.html" class="active">Projets</a></li>
         <li><a href="GP.html">Gestion patrimoine</a></li>
         <li><a href="#" class="has-submenu">Veille</a>
           <ul class="submenu">
-            <li><a href="veille-t.html">Veille technologique</a></li>
-            <li><a href="veille-J.html">Veille juridique</a></li>
+            <li><a href="veille-t.html">Technologique</a></li>
+            <li><a href="veille-J.html">Juridique</a></li>
           </ul>
         </li>
         <li><a href="Stage.html">Stages</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
-    <button class="sidebar-toggle" aria-label="Ouvrir/Fermer le menu"><span>&#9660;</span></button>
+    <button class="sidebar-toggle">☰</button>
   </aside>
+
+  <button id="open-sidebar">☰</button>
+
   <main class="main">
-    <div class="container">
-      <div class="hero-banner" style="padding: 4rem 0 2rem;">
-        <h1 style="font-family: 'Space Mono', monospace; color: #ff6600; margin-bottom: 1rem;">Mes projets de cours</h1>
-        <p style="max-width: 720px; color: #d1d5db; font-size: 1rem; line-height: 1.8;">Retrouvez ici mes réalisations créées pendant mes études et mes projets personnels appliquant les compétences en développement, base de données et infrastructure.</p>
+    <div class="header">
+      <h1>Mes Projets</h1>
+      <p>Retrouvez ici mes réalisations créées pendant mes études et mes projets personnels appliquant les compétences en développement, base de données et infrastructure.</p>
+    </div>
+
+    <div class="projects-grid">
+      <div class="project-card">
+        <h2>Blog App</h2>
+        <p>Application de blog avec gestion des articles, des utilisateurs et commentaires. Développement front/back, authentification et déploiement local.</p>
+        <ul>
+          <li>Création d'un CRUD complet</li>
+          <li>Gestion des utilisateurs</li>
+          <li>Design responsive</li>
+        </ul>
+        <a class="project-btn" href="assets/documents/blog.pdf" target="_blank">Voir documentation</a>
       </div>
-      <section class="doc-section">
-        <article class="doc-card">
-          <h2>Blog App</h2>
-          <p>Application de blog avec gestion des articles, des utilisateurs et commentaires. Développement front/back, authentification et déploiement local.</p>
-          <ul>
-            <li>Création d’un CRUD complet</li>
-            <li>Gestion des utilisateurs</li>
-            <li>Design responsive</li>
-          </ul>
-          <a class="add-doc-btn" href="assets/documents/blog.pdf" target="_blank">Voir doc</a>
-        </article>
-        <article class="doc-card">
-          <h2>Projet M2L</h2>
-          <p>Installation et configuration de PostgreSQL et pgAdmin 4. Mise en place d’une base de données relationnelle pour un projet de gestion.</p>
-          <ul>
-            <li>Installation PostgreSQL</li>
-            <li>Configuration pgAdmin 4</li>
-            <li>Structuration de la BDD</li>
-          </ul>
-          <a class="add-doc-btn" href="#">Voir doc</a>
-        </article>
-        <article class="doc-card">
-          <h2>Machine virtuelle Windows 11</h2>
-          <p>Création d’une machine virtuelle sur CVMM pour un environnement de test Windows 11, modèle prêt à l’emploi pour les TP et démonstrations.</p>
-          <ul>
-            <li>Configuration du matériel virtuel</li>
-            <li>Installation de Windows 11</li>
-            <li>Préparation d’un modèle VM</li>
-          </ul>
-          <a class="add-doc-btn" href="assets/documents/w11.pdf">Voir doc</a>
-        </article>
-        <article class="doc-card">
-          <h2>Installation Linux Debian sur machine virtuelle</h2>
-          <p>Installation et configuration de Debian Linux sur une machine virtuelle pour créer un environnement de développement ou de test sécurisé.</p>
-          <ul>
-            <li>Téléchargement de l'ISO Debian</li>
-            <li>Configuration de la VM (CPU, RAM, stockage)</li>
-            <li>Installation et paramétrage du système</li>
-          </ul>
-          <a class="add-doc-btn" href="assets/documents/Debian.pdf" target="_blank">Voir doc</a>
-        </article>
-        <article class="doc-card">
-          <h2>microProjet</h2>
-          <p>Projet micro avec documentation détaillée, réalisé pour démontrer la conception, la mise en œuvre et la documentation technique.</p>
-          <ul>
-            <li>Présentation du projet</li>
-            <li>Analyse et conception</li>
-            <li>Résultats et conclusions</li>
-          </ul>
-          <a class="add-doc-btn" href="assets/documents/APs5.pdf" target="_blank" rel="noopener">Voir doc</a>
-          <a class="add-doc-btn" href="https://drive.google.com/drive/folders/1hnJiHrNWPDkc8wONDjkSmil_88gEc36m?usp=sharing" target="_blank" rel="noopener" style="margin-left:0.5rem;">Google Drive</a>
-        </article>
-        <article class="doc-card">
-          <h2>Autres projets</h2>
-          <p>Travaux en cours et projets futurs à ajouter ici : réseaux, scripts d’automatisation, applications web et bases de données.</p>
-          <ul>
-            <li>Script d’automatisation</li>
-            <li>Projet base de données</li>
-            <li>Application web responsive</li>
-          </ul>
-          <a class="add-doc-btn" href="assets/documents/autres-projets.pdf" target="_blank">Voir doc</a>
-        </article>
-      </section>
-      <section id="doc-blog-app" style="margin-top:3rem; padding-top:2rem; border-top:1px solid rgba(255,255,255,0.08);">
-        <h2 style="color:#ff6600;">Doc Blog App</h2>
-        <p>Voici les informations détaillées du projet Blog App :</p>
+
+      <div class="project-card">
+        <h2>Projet M2L</h2>
+        <p>Installation et configuration de PostgreSQL et pgAdmin 4. Mise en place d'une base de données relationnelle pour un projet de gestion.</p>
         <ul>
-          <li>Architecture : front React / back Node.js ou PHP</li>
-          <li>Fonctionnalités : articles, commentaires, profil utilisateur</li>
-          <li>Sécurité : authentification, validation des formulaires</li>
+          <li>Installation PostgreSQL</li>
+          <li>Configuration pgAdmin 4</li>
+          <li>Structuration de la BDD</li>
         </ul>
-      </section>
-      <section id="doc-m2l" style="margin-top:3rem; padding-top:2rem; border-top:1px solid rgba(255,255,255,0.08);">
-        <h2 style="color:#ff6600;">Doc Projet M2L</h2>
-        <p>Voici les informations détaillées du projet M2L :</p>
+        <a class="project-btn" href="#">Voir documentation</a>
+      </div>
+
+      <div class="project-card">
+        <h2>Machine virtuelle Windows 11</h2>
+        <p>Création d'une machine virtuelle sur CVMM pour un environnement de test Windows 11, modèle prêt à l'emploi pour les TP.</p>
         <ul>
-          <li>Installation PostgreSQL et pgAdmin 4</li>
-          <li>Modélisation de la base de données</li>
-          <li>Création des tables, relations et volumes</li>
+          <li>Configuration du matériel virtuel</li>
+          <li>Installation de Windows 11</li>
+          <li>Préparation d'un modèle VM</li>
         </ul>
-      </section>
-      <section id="doc-windows-vm" style="margin-top:3rem; padding-top:2rem; border-top:1px solid rgba(255,255,255,0.08);">
-        <h2 style="color:#ff6600;">Doc Machine virtuelle Windows 11</h2>
-        <p>Voici les informations détaillées du projet VM Windows 11 :</p>
+        <a class="project-btn" href="assets/documents/w11.pdf" target="_blank">Voir documentation</a>
+      </div>
+
+      <div class="project-card">
+        <h2>Installation Linux Debian</h2>
+        <p>Installation et configuration de Debian Linux sur machine virtuelle pour créer un environnement de développement ou de test sécurisé.</p>
         <ul>
-          <li>Configuration du BIOS ou UEFI</li>
-          <li>Allocation CPU / RAM / stockage</li>
-          <li>Création d’un modèle de VM prêt à réutiliser</li>
+          <li>Téléchargement de l'ISO Debian</li>
+          <li>Configuration de la VM</li>
+          <li>Installation et paramétrage</li>
         </ul>
-      </section>
-      <section id="doc-autres-projets" style="margin-top:3rem; padding-top:2rem; border-top:1px solid rgba(255,255,255,0.08);">
-        <h2 style="color:#ff6600;">Doc Autres projets</h2>
-        <p>Informations sur les projets à venir :</p>
+        <a class="project-btn" href="assets/documents/Debian.pdf" target="_blank">Voir documentation</a>
+      </div>
+
+      <div class="project-card">
+        <h2>microProjet</h2>
+        <p>Projet micro avec documentation détaillée, réalisé pour démontrer la conception, la mise en œuvre et la documentation technique.</p>
         <ul>
-          <li>Projets réseau</li>
-          <li>Automatisation de tâches</li>
-          <li>Développement d’applications web</li>
+          <li>Présentation du projet</li>
+          <li>Analyse et conception</li>
+          <li>Résultats et conclusions</li>
         </ul>
-      </section>
-      <section id="doc-microprojet" style="margin-top:3rem; padding-top:2rem; border-top:1px solid rgba(255,255,255,0.08);">
-        <h2 style="color:#ff6600;">Doc microProjet</h2>
-        <p>Voici les informations détaillées du microProjet :</p>
+        <a class="project-btn" href="assets/documents/APs5.pdf" target="_blank">Voir documentation</a>
+      </div>
+
+      <div class="project-card">
+        <h2>Autres projets</h2>
+        <p>Travaux en cours et projets futurs : réseaux, scripts d'automatisation, applications web et bases de données.</p>
         <ul>
-          <li>Résumé du projet et objectifs</li>
-          <li>Ressources utilisées et déroulé</li>
-          <li>Documentation complète disponible au téléchargement</li>
+          <li>Scripts d'automatisation</li>
+          <li>Projets base de données</li>
+          <li>Applications web responsive</li>
         </ul>
-      </section>
-      <section id="doc-debian" style="margin-top:3rem; padding-top:2rem; border-top:1px solid rgba(255,255,255,0.08);">
-        <h2 style="color:#ff6600;">Doc Installation Linux Debian</h2>
-        <p>Voici les informations détaillées du projet Installation Linux Debian sur machine virtuelle :</p>
-        <ul>
-          <li>Téléchargement et vérification de l'ISO</li>
-          <li>Configuration de VirtualBox ou VMware</li>
-          <li>Installation pas à pas et configuration réseau</li>
-        </ul>
-      </section>
+        <a class="project-btn" href="assets/documents/autres-projets.pdf" target="_blank">Voir documentation</a>
+      </div>
     </div>
   </main>
 
-  <footer id="footer" class="footer dark-background">
-    <div class="container">
-      <h3 class="sitename">matheo.</h3>
-      <div class="copyright">
-        <span>Copyright</span> <strong class="px-1 sitename">matheo.</strong> <span>All Rights Reserved</span>
-      </div>
-    </div>
-  </footer>
-  <script src="assets/js/main.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      document.querySelectorAll('.has-submenu').forEach(function (anchor) {
-        anchor.addEventListener('click', function (event) {
-          event.preventDefault();
-          const li = anchor.parentElement;
-          const isOpen = li.classList.contains('open');
-          document.querySelectorAll('.sidebar-nav .open').forEach(function (openLi) {
-            if (openLi !== li) openLi.classList.remove('open');
-          });
-          if (!isOpen) li.classList.add('open');
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.has-submenu').forEach(function(el) {
+        el.addEventListener('click', function(e) {
+          e.preventDefault();
+          this.parentElement.classList.toggle('open');
         });
       });
+
+      const sidebar = document.getElementById('sidebar');
+      const toggleBtn = document.querySelector('.sidebar-toggle');
+      const openSidebarBtn = document.getElementById('open-sidebar');
+
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', function() {
+          sidebar.classList.toggle('sidebar-closed');
+          document.querySelector('main.main').style.marginLeft = sidebar.classList.contains('sidebar-closed') ? '0' : '260px';
+        });
+      }
+
+      if (openSidebarBtn) {
+        openSidebarBtn.addEventListener('click', function() {
+          sidebar.classList.remove('sidebar-closed');
+          document.querySelector('main.main').style.marginLeft = '260px';
+        });
+      }
     });
   </script>
+
 </body>
+
 </html>

@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Stages - Mathéo Camelin</title>
-  <link href="assets/img/logomatheo.png" rel="icon">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
+    * {
       margin: 0;
       padding: 0;
-      min-height: 100vh;
-      background: #181818;
-      color: #f5f5f5;
-      font-family: 'Poppins', Arial, sans-serif;
-      overflow-y: auto;
+      box-sizing: border-box;
     }
+
+    body {
+      background: #0f0f0f;
+      color: #e0e0e0;
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+    }
+
     .sidebar {
       position: fixed;
       top: 0;
@@ -25,233 +27,263 @@
       width: 260px;
       height: 100vh;
       background: #1a1a1a;
-      z-index: 1000;
-      transition: transform 0.3s;
       display: flex;
       flex-direction: column;
+      z-index: 1000;
+      transition: transform 0.3s ease;
+      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.4);
     }
+
     .sidebar-logo {
-      padding: 2rem 1.5rem 1rem 1.5rem;
-      text-align: left;
+      padding: 2.5rem 1.5rem 1.5rem;
     }
+
     .sidebar-logo h1 {
       color: #fff;
-      font-size: 1.6rem;
-      margin: 0;
+      font-size: 1.5rem;
       font-weight: 700;
     }
+
     .sidebar-nav ul {
       list-style: none;
       padding: 0;
       margin: 0;
+      flex: 1;
     }
-    .sidebar-nav ul li {
-      margin: 0.7rem 0;
-    }
+
     .sidebar-nav ul li a {
-      color: #fff;
+      color: #b0b0b0;
       text-decoration: none;
-      font-size: 1.2rem;
-      font-weight: 600;
-      padding: 0.5rem 1.5rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 0.9rem 1.5rem;
       display: block;
-      border-radius: 4px;
-      transition: background 0.2s, color 0.2s;
+      border-left: 3px solid transparent;
+      transition: all 0.2s ease;
     }
-    .sidebar-nav ul li a.active,
-    .sidebar-nav ul li a:hover {
-      color: #ff6600;
-      background: #232323;
+
+    .sidebar-nav ul li a:hover,
+    .sidebar-nav ul li a.active {
+      color: #ff8c42;
+      background: rgba(255, 140, 66, 0.08);
+      border-left-color: #ff8c42;
     }
+
     .sidebar-nav ul li .submenu {
       display: none;
-      margin-left: 1.5rem;
-      margin-top: 0.2rem;
     }
-    .sidebar-nav ul li.open> .submenu {
+
+    .sidebar-nav ul li .submenu li a {
+      padding-left: 3rem;
+      font-size: 0.9rem;
+    }
+
+    .sidebar-nav ul li.open > .submenu {
       display: block;
     }
+
     .sidebar-toggle {
       position: absolute;
       right: 1rem;
       bottom: 2rem;
-      background: #292929;
-      color: #fff;
-      border: none;
+      background: rgba(255, 140, 66, 0.1);
+      color: #ff8c42;
+      border: 1px solid rgba(255, 140, 66, 0.3);
       border-radius: 50%;
-      width: 36px;
-      height: 36px;
-      font-size: 1.2rem;
+      width: 40px;
+      height: 40px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background 0.2s;
+      transition: all 0.2s ease;
     }
-    .sidebar-toggle:hover {
-      background: #ff6600;
-      color: #fff;
-    }
-    .sidebar.sidebar-closed {
-      transform: translateX(-100%);
-      transition: transform 0.3s;
-    }
-    main.main {
-      margin-left: 260px;
-      max-width: 100vw;
-      width: 100%;
-      padding: 4vw 6vw 8vw 6vw;
-      min-height: 100vh;
-      box-sizing: border-box;
-      overflow-y: auto;
-      transition: margin-left 0.3s;
-    }
+
     @media (max-width: 900px) {
       .sidebar {
         width: 100vw;
         height: auto;
-        position: fixed;
+        flex-direction: row;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
+    }
+
+    main.main {
+      margin-left: 260px;
+      padding: 3rem 2rem;
+      transition: margin-left 0.3s ease;
+    }
+
+    @media (max-width: 900px) {
       main.main {
         margin-left: 0;
-        margin-top: 80px;
-        max-width: 100vw;
-        padding: 4vw 4vw 8vw 4vw;
+        margin-top: 70px;
+        padding: 2rem 1.5rem;
       }
     }
-    @media (max-width: 600px) {
-      .sidebar {
-        width: 100vw;
-        height: auto;
-        position: fixed;
-      }
-      main.main {
-        margin-left: 0;
-        margin-top: 60px;
-        max-width: 100vw;
-        padding: 2vw 3vw 8vw 3vw;
-      }
+
+    .header {
+      margin-bottom: 3rem;
     }
-    .card {
-      background: #232323;
-      border-radius: 16px;
-      padding: 2.5rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      width: 100%;
-      max-width: 100%;
-      box-sizing: border-box;
-      color: #f5f5f5;
-    }
-    h1, h2, h3, h4 {
-      font-family: 'Poppins', Arial, sans-serif;
+
+    .header h1 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      color: #fff;
       font-weight: 700;
-      color: #ff6600;
     }
+
+    .header p {
+      color: #a8a8a8;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .stages-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .stage-card {
+      background: rgba(255, 140, 66, 0.05);
+      border: 1px solid rgba(255, 140, 66, 0.15);
+      border-radius: 6px;
+      padding: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .stage-header h2 {
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: 0.3rem;
+      font-weight: 700;
+    }
+
+    .stage-subtitle {
+      color: #a8a8a8;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .stage-info {
+      background: rgba(255, 140, 66, 0.08);
+      padding: 1.5rem;
+      border-radius: 4px;
+      margin-bottom: 1.5rem;
+    }
+
+    .stage-info p {
+      color: #a8a8a8;
+      font-size: 0.95rem;
+      margin: 0.6rem 0;
+      line-height: 1.6;
+    }
+
+    .stage-info strong {
+      color: #ff8c42;
+    }
+
+    .stage-card h3 {
+      color: #ff8c42;
+      font-size: 1.1rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .stage-card h3:first-child {
+      margin-top: 0;
+    }
+
+    .stage-card ul {
+      list-style: none;
+      margin-bottom: 1.5rem;
+      padding-left: 0;
+    }
+
+    .stage-card ul li {
+      color: #a8a8a8;
+      font-size: 0.95rem;
+      padding: 0.6rem 0 0.6rem 1.5rem;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .stage-card ul li:before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: #ff8c42;
+    }
+
+    .stage-card strong {
+      color: #ff8c42;
+    }
+
+    .stage-card p {
+      color: #a8a8a8;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .stage-btn {
+      display: inline-block;
+      background: rgba(255, 140, 66, 0.15);
+      color: #ff8c42;
+      padding: 0.8rem 1.8rem;
+      border: 1px solid #ff8c42;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .stage-btn:hover {
+      background: rgba(255, 140, 66, 0.25);
+    }
+
+    .stage-btn.secondary {
+      background: rgba(66, 133, 244, 0.15);
+      color: #4285F4;
+      border-color: #4285F4;
+    }
+
+    .stage-btn.secondary:hover {
+      background: rgba(66, 133, 244, 0.25);
+    }
+
     #open-sidebar {
       position: fixed;
       top: 24px;
       left: 24px;
       z-index: 1100;
-      background: #ff6600;
+      background: #ff8c42;
       color: #fff;
       border: none;
       border-radius: 50%;
       width: 44px;
       height: 44px;
-      font-size: 1.5rem;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       cursor: pointer;
       display: none;
     }
-    .stage-card {
-      background: #2a2a2a;
-      border-radius: 12px;
-      padding: 2rem;
-      margin-top: 1.5rem;
-    }
-    .stage-info {
-      display: grid;
-      gap: 0.8rem;
-      margin-bottom: 1.5rem;
-    }
-    .stage-info p {
-      margin: 0;
-      line-height: 1.6;
-    }
-    .stage-card h3 {
-      color: #fff;
-      font-size: 1.3rem;
-      margin-bottom: 1rem;
-      margin-top: 1.5rem;
-    }
-    .stage-card h3:first-child {
-      margin-top: 0;
-    }
-    .stage-card ul {
-      line-height: 1.8;
-      margin-bottom: 1.5rem;
-      padding-left: 1.5rem;
-    }
-    .stage-card ul li {
-      margin-bottom: 0.5rem;
-    }
-    .btn-rapport {
-      display: inline-block;
-      background: #ff6600;
-      color: #fff;
-      padding: 1rem 2.5rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s;
-      box-shadow: 0 4px 12px rgba(255, 102, 0, 0.3);
-    }
-    .btn-rapport:hover {
-      background: #ff7a1f;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(255, 102, 0, 0.4);
-      color: #fff;
-    }
   </style>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      document.querySelectorAll('.has-submenu').forEach(function (el) {
-        el.addEventListener('click', function (e) {
-          e.preventDefault();
-          this.parentElement.classList.toggle('open');
-        });
-      });
-      const sidebar = document.getElementById('sidebar');
-      const toggleBtn = document.querySelector('.sidebar-toggle');
-      const openSidebarBtn = document.getElementById('open-sidebar');
-      function updateSidebarBtn() {
-        if (sidebar.classList.contains('sidebar-closed')) {
-          openSidebarBtn.style.display = 'block';
-        } else {
-          openSidebarBtn.style.display = 'none';
-        }
-      }
-      if (toggleBtn) {
-        toggleBtn.addEventListener('click', function () {
-          sidebar.classList.toggle('sidebar-closed');
-          document.querySelector('main.main').style.marginLeft = sidebar.classList.contains('sidebar-closed') ? '0' : '260px';
-          updateSidebarBtn();
-        });
-      }
-      if (openSidebarBtn) {
-        openSidebarBtn.addEventListener('click', function () {
-          sidebar.classList.remove('sidebar-closed');
-          document.querySelector('main.main').style.marginLeft = '260px';
-          updateSidebarBtn();
-        });
-      }
-      updateSidebarBtn();
-    });
-  </script>
 </head>
+
 <body>
-  <aside id="sidebar" class="sidebar sidebar-closed">
+
+  <aside id="sidebar" class="sidebar">
     <div class="sidebar-logo">
       <a href="index.html"><h1 class="sitename">Mathéo Camelin</h1></a>
     </div>
@@ -259,131 +291,130 @@
       <ul>
         <li><a href="index.html">Accueil</a></li>
         <li><a href="resume.html">Résumé</a></li>
-        <li><a href="about.html">A propos</a></li>
-        <li><a href="projet.html">Projet</a></li>
+        <li><a href="about.html">À propos</a></li>
+        <li><a href="projet.html">Projets</a></li>
         <li><a href="GP.html">Gestion patrimoine</a></li>
         <li><a href="#" class="has-submenu">Veille</a>
           <ul class="submenu">
-            <li><a href="veille-t.html">Veille technologique</a></li>
-            <li><a href="veille-J.html">Veille juridique</a></li>
+            <li><a href="veille-t.html">Technologique</a></li>
+            <li><a href="veille-J.html">Juridique</a></li>
           </ul>
         </li>
         <li><a href="Stage.html" class="active">Stages</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
-    <button class="sidebar-toggle" aria-label="Ouvrir/Fermer le menu"><span>&#9660;</span></button>
+    <button class="sidebar-toggle">☰</button>
   </aside>
-  
+
   <button id="open-sidebar">☰</button>
 
   <main class="main">
-    <section class="intro-section">
-      <div class="card text-center">
-        <h1>Mes stages</h1>
-        <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 1rem;">
-          Découvrez ici un aperçu de mes expériences professionnelles en entreprise, avec un résumé et l'accès à mon rapport de stage complet.
+    <div class="header">
+      <h1>Mes Stages</h1>
+      <p>Découvrez ici un aperçu de mes expériences professionnelles en entreprise, avec un résumé et l'accès à ma documentation complète.</p>
+    </div>
+
+    <div class="stages-container">
+      <div class="stage-card">
+        <div class="stage-header">
+          <h2>Stage BTS SIO - Première Année</h2>
+          <p class="stage-subtitle">Automatisation du traitement des licences Microsoft 365</p>
+        </div>
+
+        <div class="stage-info">
+          <p><strong>Entreprise :</strong> Groupe Mauvilac - Service Informatique</p>
+          <p><strong>Période :</strong> 26 mai - 20 juin 2025</p>
+          <p><strong>Durée :</strong> 4 semaines</p>
+          <p><strong>Lieu :</strong> La Réunion, France</p>
+          <p><strong>Fonction :</strong> Développeur - Équipe Helpdesk</p>
+        </div>
+
+        <h3>Missions réalisées</h3>
+        <ul>
+          <li><strong>Développement d'une solution d'automatisation</strong> pour le traitement des licences Microsoft 365 (1394+ utilisateurs répartis sur 12 sociétés du groupe)</li>
+          <li><strong>Création de scripts Python</strong> pour l'analyse et la répartition automatique des licences par société avec gestion des cas complexes</li>
+          <li><strong>Migration vers PowerShell</strong> pour une meilleure intégration Windows et utilisation dans des tâches planifiées</li>
+          <li><strong>Conception d'une architecture modulaire</strong> avec fichiers de configuration JSON pour faciliter la maintenance</li>
+          <li><strong>Documentation complète</strong> : guide d'installation, utilisation, dépannage et documentation technique</li>
+        </ul>
+
+        <h3>Compétences développées</h3>
+        <ul>
+          <li><strong>Développement Python :</strong> Maîtrise d'openpyxl pour la manipulation Excel, gestion JSON, traitement de données complexes</li>
+          <li><strong>Apprentissage PowerShell :</strong> COM Automation, Import-Csv, Export-Excel, scripting Windows avancé</li>
+          <li><strong>Architecture logicielle :</strong> Conception modulaire, fichiers de configuration, versioning et maintenance</li>
+          <li><strong>Méthodologie agile :</strong> Approche itérative, amélioration continue, tests et validation à chaque étape</li>
+          <li><strong>Analyse et résolution de problèmes :</strong> Gestion des cas particuliers et optimisation</li>
+        </ul>
+
+        <h3>Résultats et bilan</h3>
+        <p>
+          Ce stage m'a permis de développer une solution concrète ayant un impact mesurable : <strong>réduction du temps de traitement de 2-3 heures à 2-3 minutes (98% de gain)</strong> avec élimination des erreurs humaines.
         </p>
-      </div>
-    </section>
+        <p>
+          La satisfaction de voir l'outil utilisé quotidiennement par l'équipe et générant un gain de temps réel a été très motivante. Cette expérience a renforcé mon intérêt pour l'automatisation et l'optimisation des processus IT.
+        </p>
 
-    <section class="stages-section">
-      <div class="card">
-        <h2 style="font-size: 1.8rem; margin-bottom: 0.5rem;">Stage BTS SIO - Première Année</h2>
-        <p style="color: #aaa; font-size: 1.1rem; margin-bottom: 1rem;">Automatisation du traitement des licences Microsoft 365</p>
-        <div class="stage-card">
-          <h3>📋 Informations du stage</h3>
-          <div class="stage-info">
-            <p><strong style="color: #ff6600;">Entreprise :</strong> Groupe Mauvilac - Service Informatique</p>
-            <p><strong style="color: #ff6600;">Période :</strong> 26 mai - 20 juin 2025</p>
-            <p><strong style="color: #ff6600;">Durée :</strong> 4 semaines</p>
-            <p><strong style="color: #ff6600;">Lieu :</strong> La Réunion, France</p>
-            <p><strong style="color: #ff6600;">Fonction :</strong> Développeur - Équipe Helpdesk</p>
-          </div>
-          
-          <h3>🎯 Missions réalisées</h3>
-          <ul>
-            <li><strong>Développement d'une solution d'automatisation</strong> pour le traitement des licences Microsoft 365 (1394+ utilisateurs répartis sur 12 sociétés du groupe)</li>
-            <li><strong>Création de scripts Python</strong> pour l'analyse et la répartition automatique des licences par société avec gestion des cas complexes (licences multiples, domaines variés)</li>
-            <li><strong>Migration vers PowerShell</strong> pour une meilleure intégration Windows et utilisation dans des tâches planifiées</li>
-            <li><strong>Conception d'une architecture modulaire</strong> avec fichiers de configuration JSON pour faciliter la maintenance et l'évolutivité</li>
-            <li><strong>Documentation complète</strong> : guide d'installation, utilisation, dépannage et documentation technique comparative Python/PowerShell</li>
-          </ul>
-
-          <h3>💡 Compétences développées</h3>
-          <ul>
-            <li><strong>Développement Python :</strong> Maîtrise d'openpyxl pour la manipulation Excel, gestion JSON, traitement de données complexes</li>
-            <li><strong>Apprentissage PowerShell :</strong> COM Automation, Import-Csv, Export-Excel, scripting Windows avancé</li>
-            <li><strong>Architecture logicielle :</strong> Conception modulaire, fichiers de configuration, versioning et maintenance</li>
-            <li><strong>Méthodologie agile :</strong> Approche itérative, amélioration continue, tests et validation à chaque étape</li>
-            <li><strong>Analyse et résolution de problèmes :</strong> Gestion des cas particuliers (MIA multi-pays, délimiteurs CSV variables, conservation des styles Excel)</li>
-          </ul>
-
-          <h3>✅ Bilan et résultats</h3>
-          <p style="line-height: 1.8; margin-bottom: 1rem;">
-            Ce stage m'a permis de développer une solution concrète ayant un impact mesurable : <strong>réduction du temps de traitement de 2-3 heures à 2-3 minutes (98% de gain)</strong> avec élimination des erreurs humaines. J'ai particulièrement apprécié l'autonomie progressive accordée et la confiance de mon tuteur pour mener ce projet à bien.
-          </p>
-          <p style="line-height: 1.8; margin-bottom: 2rem;">
-            La migration vers PowerShell, bien que challengeante, m'a permis d'apprendre un nouveau langage en contexte professionnel. La satisfaction de voir l'outil utilisé quotidiennement par l'équipe et générant un gain de temps réel a été très motivante. Cette expérience a renforcé mon intérêt pour l'automatisation et l'optimisation des processus IT.
-          </p>
-
-          <div style="text-align: center; display: flex; flex-direction: column; gap: 1rem; align-items: center;">
-            <a href="assets/doc/stage1.pdf" target="_blank" class="btn-rapport">
-              📄 Consulter le rapport de stage complet
-            </a>
-            <a href="https://drive.google.com/drive/folders/1pYA33QR6xQJN-YpGYTBuubjM-fHB6k-O?usp=sharing" target="_blank" class="btn-rapport" style="background: #4285F4; box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);">
-              📁 Voir Google Drive
-            </a>
-          </div>
+        <div class="button-group">
+          <a href="assets/doc/stage1.pdf" target="_blank" class="stage-btn">📄 Rapport de stage</a>
+          <a href="https://drive.google.com/drive/folders/1pYA33QR6xQJN-YpGYTBuubjM-fHB6k-O?usp=sharing" target="_blank" class="stage-btn secondary">📁 Google Drive</a>
         </div>
       </div>
-      <div class="card">
-        <h2 style="font-size: 1.8rem; margin-bottom: 0.5rem;">Stage BTS SIO - Deuxième Année</h2>
-        <p style="color: #aaa; font-size: 1.1rem; margin-bottom: 1rem;">Réparation de téléphones et support technique</p>
-        <div class="stage-card">
-          <h3>📋 Informations du stage</h3>
-          <div class="stage-info">
-            <p><strong style="color: #ff6600;">Entreprise :</strong> telecombinatie wassenaar</p>
-            <p><strong style="color: #ff6600;">Période :</strong> 19 Janvier 2026 - 19 Mars 2026</p>
-            <p><strong style="color: #ff6600;">Durée :</strong> 9 semaines</p>
-            <p><strong style="color: #ff6600;">Lieu :</strong> Wassenaar, Pays-Bas</p>
-            <p><strong style="color: #ff6600;">Fonction :</strong> Réparation de téléphone</p>
-          </div>
 
-          <h3>🎯 Missions réalisées</h3>
-          <ul>
-            <li><strong>Réparation de téléphones</strong> en suivant des tutoriels vidéo et des guides techniques pour diagnostiquer et résoudre des pannes matérielles et logicielles.</li>
-          </ul>
+      <div class="stage-card">
+        <div class="stage-header">
+          <h2>Stage BTS SIO - Deuxième Année</h2>
+          <p class="stage-subtitle">Réparation de téléphones et support technique</p>
         </div>
-      </div>
-    </section>
-  </main>
 
-  <footer id="footer" class="footer dark-background" style="background: #1a1a1a; padding: 3rem 0; margin-top: 4rem;">
-    <div class="container">
-      <h3 class="sitename" style="color: #ff6600; text-align: center; margin-bottom: 1.5rem;">matheo.</h3>
-      <div class="social-links d-flex justify-content-center" style="gap: 1rem; margin-bottom: 2rem;">
-        <a href="https://x.com/matheo0?s=21" style="color: #fff; font-size: 1.5rem; transition: color 0.3s;"><i class="bi bi-twitter-x"></i></a>
-        <a href="https://www.instagram.com/matheo_photography?igsh=dHl4YjUxZGUzc3hq&utm_source=qr" style="color: #fff; font-size: 1.5rem; transition: color 0.3s;"><i class="bi bi-instagram"></i></a>
-        <a href="https://github.com/PierreBriceCK" style="color: #fff; font-size: 1.5rem; transition: color 0.3s;"><i class="bi bi-github"></i></a>
-        <a href="https://www.linkedin.com/in/pierre-brice-chane-kane-06a364330?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" style="color: #fff; font-size: 1.5rem; transition: color 0.3s;"><i class="bi bi-linkedin"></i></a>
-      </div>
-      <div class="container">
-        <div class="copyright" style="text-align: center; color: #999;">
-          <span>Copyright</span> <strong class="px-1 sitename" style="color: #ff6600;">matheo.</strong> <span>All Rights Reserved</span>
+        <div class="stage-info">
+          <p><strong>Entreprise :</strong> telecombinatie wassenaar</p>
+          <p><strong>Période :</strong> 19 janvier 2026 - 19 mars 2026</p>
+          <p><strong>Durée :</strong> 9 semaines</p>
+          <p><strong>Lieu :</strong> Wassenaar, Pays-Bas</p>
+          <p><strong>Fonction :</strong> Technicien réparation</p>
         </div>
-        <div class="credits" style="text-align: center; color: #999; margin-top: 0.5rem;">
-          Designed by <a href="https://bootstrapmade.com/" style="color: #ff6600;">BootstrapMade</a>
-        </div>
+
+        <h3>Missions réalisées</h3>
+        <ul>
+          <li><strong>Réparation de téléphones</strong> en suivant des tutoriels vidéo et des guides techniques pour diagnostiquer et résoudre des pannes matérielles et logicielles</li>
+          <li>Support utilisateur et diagnostic de défauts</li>
+          <li>Documentation des interventions et des solutions</li>
+        </ul>
       </div>
     </div>
-  </footer>
-  
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center" style="position: fixed; bottom: 2rem; right: 2rem; background: #ff6600; color: #fff; width: 48px; height: 48px; border-radius: 50%; display: none;"><i class="bi bi-arrow-up-short"></i></a>
-  
-  <div id="preloader"></div>
-  
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/main.js"></script>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.has-submenu').forEach(function(el) {
+        el.addEventListener('click', function(e) {
+          e.preventDefault();
+          this.parentElement.classList.toggle('open');
+        });
+      });
+
+      const sidebar = document.getElementById('sidebar');
+      const toggleBtn = document.querySelector('.sidebar-toggle');
+      const openSidebarBtn = document.getElementById('open-sidebar');
+
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', function() {
+          sidebar.classList.toggle('sidebar-closed');
+          document.querySelector('main.main').style.marginLeft = sidebar.classList.contains('sidebar-closed') ? '0' : '260px';
+        });
+      }
+
+      if (openSidebarBtn) {
+        openSidebarBtn.addEventListener('click', function() {
+          sidebar.classList.remove('sidebar-closed');
+          document.querySelector('main.main').style.marginLeft = '260px';
+        });
+      }
+    });
+  </script>
+
 </body>
+
 </html>

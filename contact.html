@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Mathéo Camelin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #0f0f0f;
+      color: #e0e0e0;
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 260px;
+      height: 100vh;
+      background: #1a1a1a;
+      display: flex;
+      flex-direction: column;
+      z-index: 1000;
+      transition: transform 0.3s ease;
+      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.4);
+    }
+
+    .sidebar-logo {
+      padding: 2.5rem 1.5rem 1.5rem;
+    }
+
+    .sidebar-logo h1 {
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .sidebar-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      flex: 1;
+    }
+
+    .sidebar-nav ul li a {
+      color: #b0b0b0;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 0.9rem 1.5rem;
+      display: block;
+      border-left: 3px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    .sidebar-nav ul li a:hover,
+    .sidebar-nav ul li a.active {
+      color: #ff8c42;
+      background: rgba(255, 140, 66, 0.08);
+      border-left-color: #ff8c42;
+    }
+
+    .sidebar-nav ul li .submenu {
+      display: none;
+    }
+
+    .sidebar-nav ul li .submenu li a {
+      padding-left: 3rem;
+      font-size: 0.9rem;
+    }
+
+    .sidebar-nav ul li.open > .submenu {
+      display: block;
+    }
+
+    .sidebar-toggle {
+      position: absolute;
+      right: 1rem;
+      bottom: 2rem;
+      background: rgba(255, 140, 66, 0.1);
+      color: #ff8c42;
+      border: 1px solid rgba(255, 140, 66, 0.3);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    @media (max-width: 900px) {
+      .sidebar {
+        width: 100vw;
+        height: auto;
+        flex-direction: row;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    main.main {
+      margin-left: 260px;
+      padding: 3rem 2rem;
+      transition: margin-left 0.3s ease;
+    }
+
+    @media (max-width: 900px) {
+      main.main {
+        margin-left: 0;
+        margin-top: 70px;
+        padding: 2rem 1.5rem;
+      }
+    }
+
+    .header {
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .header p {
+      color: #a8a8a8;
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .contact-info {
+      background: rgba(255, 140, 66, 0.05);
+      border: 1px solid rgba(255, 140, 66, 0.15);
+      border-radius: 6px;
+      padding: 2.5rem;
+    }
+
+    .contact-info h2 {
+      color: #ff8c42;
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .info-item {
+      margin-bottom: 2rem;
+    }
+
+    .info-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .info-label {
+      color: #ff8c42;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.5rem;
+    }
+
+    .info-value {
+      color: #e0e0e0;
+      font-size: 1rem;
+      word-break: break-word;
+    }
+
+    .info-value a {
+      color: #ff8c42;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .info-value a:hover {
+      color: #ffa05d;
+      text-decoration: underline;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 140, 66, 0.1);
+      border: 1px solid rgba(255, 140, 66, 0.3);
+      border-radius: 50%;
+      color: #ff8c42;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      font-size: 1rem;
+    }
+
+    .social-link:hover {
+      background: rgba(255, 140, 66, 0.2);
+      border-color: #ff8c42;
+    }
+
+    .contact-form {
+      background: rgba(255, 140, 66, 0.05);
+      border: 1px solid rgba(255, 140, 66, 0.15);
+      border-radius: 6px;
+      padding: 2.5rem;
+    }
+
+    .contact-form h2 {
+      color: #ff8c42;
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      color: #e0e0e0;
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-bottom: 0.6rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: rgba(255, 140, 66, 0.08);
+      border: 1px solid rgba(255, 140, 66, 0.2);
+      border-radius: 4px;
+      padding: 0.8rem 1rem;
+      color: #e0e0e0;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #ff8c42;
+      background: rgba(255, 140, 66, 0.12);
+      box-shadow: 0 0 0 3px rgba(255, 140, 66, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .submit-btn {
+      background: #ff8c42;
+      color: #fff;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      width: 100%;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .submit-btn:hover {
+      background: #ffa05d;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 140, 66, 0.3);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+
+      .header h1 {
+        font-size: 1.8rem;
+      }
+    }
+
+    #open-sidebar {
+      position: fixed;
+      top: 24px;
+      left: 24px;
+      z-index: 1100;
+      background: #ff8c42;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-logo">
+      <a href="index.html"><h1 class="sitename">Mathéo Camelin</h1></a>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="resume.html">Résumé</a></li>
+        <li><a href="about.html">À propos</a></li>
+        <li><a href="projet.html">Projets</a></li>
+        <li><a href="GP.html">Gestion patrimoine</a></li>
+        <li><a href="#" class="has-submenu">Veille</a>
+          <ul class="submenu">
+            <li><a href="veille-t.html">Technologique</a></li>
+            <li><a href="veille-J.html">Juridique</a></li>
+          </ul>
+        </li>
+        <li><a href="Stage.html">Stages</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="sidebar-toggle">☰</button>
+  </aside>
+
+  <button id="open-sidebar">☰</button>
+
+  <main class="main">
+    <div class="header">
+      <h1>Contact</h1>
+      <p>N'hésitez pas à me contacter pour discuter de vos projets, opportunités ou simplement pour échanger. Je suis disponible et réactif à vos demandes.</p>
+    </div>
+
+    <div class="contact-container">
+      <div class="contact-info">
+        <h2>Informations de contact</h2>
+
+        <div class="info-item">
+          <div class="info-label">Email</div>
+          <div class="info-value">
+            <a href="mailto:camelin.matheo.pro@gmail.com">camelin.matheo.pro@gmail.com</a>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-label">Téléphone</div>
+          <div class="info-value">0692 70 90 68</div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-label">Localisation</div>
+          <div class="info-value">Saint-Benoît, La Réunion</div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-label">Disponibilité</div>
+          <div class="info-value">Disponible pour stages, contrats d'alternance et CDI/CDD</div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-label">Réseaux sociaux</div>
+          <div class="social-links">
+            <a href="https://github.com" class="social-link" target="_blank" title="GitHub">
+              <span>⚙️</span>
+            </a>
+            <a href="https://linkedin.com" class="social-link" target="_blank" title="LinkedIn">
+              <span>💼</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <h2>Formulaire de contact</h2>
+        <form id="contactForm" method="POST" action="https://formspree.io/f/maqzbboa">
+          <div class="form-group">
+            <label for="name">Nom complet *</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Téléphone</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Sujet *</label>
+            <input type="text" id="subject" name="subject" placeholder="Ex: Opportunité professionnelle" required>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">Envoyer le message</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.has-submenu').forEach(function(el) {
+        el.addEventListener('click', function(e) {
+          e.preventDefault();
+          this.parentElement.classList.toggle('open');
+        });
+      });
+
+      const sidebar = document.getElementById('sidebar');
+      const toggleBtn = document.querySelector('.sidebar-toggle');
+      const openSidebarBtn = document.getElementById('open-sidebar');
+
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', function() {
+          sidebar.classList.toggle('sidebar-closed');
+          document.querySelector('main.main').style.marginLeft = sidebar.classList.contains('sidebar-closed') ? '0' : '260px';
+        });
+      }
+
+      if (openSidebarBtn) {
+        openSidebarBtn.addEventListener('click', function() {
+          sidebar.classList.remove('sidebar-closed');
+          document.querySelector('main.main').style.marginLeft = '260px';
+        });
+      }
+
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,85 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Mathéo Camelin</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Fonts -->
+  <title>Mathéo Camelin - Résumé</title>
+  <meta name="description" content="Résumé - Mathéo Camelin">
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Personal
-  * Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
-  * Updated: Mar 05 2025 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-</head>
-
-<body class="resume-page">
-
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-
-      <a href="index.html" class="logo d-flex align-items-center">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.webp" alt=""> -->
-        <h1 class="sitename">Mathéo Camelin</h1>
-      </a>
-
-      <aside id="sidebar" class="sidebar">
-    <div class="sidebar-logo">
-      <a href="index.html"><h1 class="sitename">Mathéo Camelin</h1></a>
-    </div>
-    <nav class="sidebar-nav">
-      <ul>
-  <li><a href="index.html">Accueil</a></li>
-  <li><a href="resume.html" class="active">Résumé</a></li>
-  <li><a href="about.html">A propos</a></li>
-        <li><a href="projet.html">Projet</a></li>
-        <li><a href="GP.html">Gestion patrimoine</a></li>
-        <li><a href="#" class="has-submenu">Veille</a>
-          <ul class="submenu">
-            <li><a href="veille-t.html">Veille technologique</a></li>
-            <li><a href="veille-J.html">Veille juridique</a></li>
-          </ul>
-        </li>
-        <li><a href="Stage.html">Stages</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-    <button class="sidebar-toggle" aria-label="Ouvrir/Fermer le menu"><span>&#9660;</span></button>
-  </aside>
-
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
   <style>
-    body {
+    * {
       margin: 0;
       padding: 0;
-      min-height: 100vh;
-      background: #181818;
-      color: #fff;
-      font-family: 'Poppins', Arial, sans-serif;
+      box-sizing: border-box;
     }
+
+    body {
+      background: #0f0f0f;
+      color: #e0e0e0;
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+    }
+
     .sidebar {
       position: fixed;
       top: 0;
@@ -90,314 +33,468 @@
       display: flex;
       flex-direction: column;
       z-index: 1000;
-      transition: transform 0.3s;
+      transition: transform 0.3s ease;
+      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.4);
     }
+
     .sidebar-logo {
-      padding: 2rem 1.5rem 1rem 1.5rem;
-      text-align: left;
+      padding: 2.5rem 1.5rem 1.5rem;
     }
+
     .sidebar-logo h1 {
       color: #fff;
-      font-size: 1.6rem;
-      margin: 0;
+      font-size: 1.5rem;
       font-weight: 700;
+      letter-spacing: -0.5px;
     }
+
     .sidebar-nav ul {
       list-style: none;
       padding: 0;
       margin: 0;
+      flex: 1;
     }
+
     .sidebar-nav ul li {
-      margin: 0.7rem 0;
+      margin: 0;
     }
+
     .sidebar-nav ul li a {
-      color: #fff;
+      color: #b0b0b0;
       text-decoration: none;
-      font-size: 1.2rem;
-      font-weight: 600;
-      padding: 0.5rem 1.5rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 0.9rem 1.5rem;
       display: block;
-      border-radius: 4px;
-      transition: background 0.2s, color 0.2s;
+      border-left: 3px solid transparent;
+      transition: all 0.2s ease;
     }
-    .sidebar-nav ul li a.active,
-    .sidebar-nav ul li a:hover {
-      color: #ff6600;
-      background: #232323;
+
+    .sidebar-nav ul li a:hover,
+    .sidebar-nav ul li a.active {
+      color: #ff8c42;
+      background: rgba(255, 140, 66, 0.08);
+      border-left-color: #ff8c42;
     }
+
     .sidebar-nav ul li .submenu {
       display: none;
-      margin-left: 1.5rem;
-      margin-top: 0.2rem;
+      margin-left: 0;
     }
+
+    .sidebar-nav ul li .submenu li a {
+      padding-left: 3rem;
+      font-size: 0.9rem;
+    }
+
     .sidebar-nav ul li.open > .submenu {
       display: block;
     }
+
     .sidebar-toggle {
       position: absolute;
       right: 1rem;
       bottom: 2rem;
-      background: #292929;
-      color: #fff;
-      border: none;
+      background: rgba(255, 140, 66, 0.1);
+      color: #ff8c42;
+      border: 1px solid rgba(255, 140, 66, 0.3);
       border-radius: 50%;
-      width: 36px;
-      height: 36px;
-      font-size: 1.2rem;
+      width: 40px;
+      height: 40px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background 0.2s;
+      transition: all 0.2s ease;
+      font-size: 1rem;
     }
+
     .sidebar-toggle:hover {
-      background: #ff6600;
-      color: #fff;
+      background: rgba(255, 140, 66, 0.15);
+      border-color: #ff8c42;
     }
+
     @media (max-width: 900px) {
       .sidebar {
         width: 100vw;
         height: auto;
         flex-direction: row;
-        align-items: flex-start;
-        padding-bottom: 0.5rem;
-        position: fixed;
-        z-index: 1000;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
       .sidebar-logo {
-        padding: 1rem 1rem 0 1rem;
+        padding: 1rem 1.5rem 0;
       }
       .sidebar-nav ul {
         display: flex;
         flex-direction: column;
         width: 100%;
       }
-      .sidebar-nav ul li {
-        margin: 0.3rem 0;
-      }
       .sidebar-toggle {
-        right: 1rem;
-        bottom: 1rem;
-      }
-    }
-    @media (max-width: 600px) {
-      .sidebar {
-        width: 100vw;
-        height: auto;
         position: fixed;
-        z-index: 1000;
-      }
-      .sidebar-nav ul li a {
-        font-size: 1rem;
-        padding: 0.5rem 1rem;
-      }
-      .sidebar-logo {
-        padding: 0.7rem 1rem 0 1rem;
+        right: 1rem;
+        bottom: auto;
+        top: 1rem;
       }
     }
+
     main.main {
       margin-left: 260px;
-      transition: margin-left 0.3s;
+      padding: 3rem 2rem;
+      transition: margin-left 0.3s ease;
     }
+
     @media (max-width: 900px) {
       main.main {
         margin-left: 0;
-        margin-top: 80px;
+        margin-top: 70px;
+        padding: 2rem 1.5rem;
       }
     }
+
     @media (max-width: 600px) {
       main.main {
         margin-left: 0;
         margin-top: 60px;
+        padding: 1.5rem 1rem;
       }
     }
+
+    .cv-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255, 140, 66, 0.2);
+    }
+
+    .cv-header h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .cv-header p {
+      font-size: 1rem;
+      color: #ff8c42;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .cv-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section {
+      margin-bottom: 2.5rem;
+    }
+
+    .section-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #ff8c42;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid rgba(255, 140, 66, 0.15);
+    }
+
+    .item {
+      margin-bottom: 1.8rem;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.4rem;
+    }
+
+    .item-title {
+      font-weight: 600;
+      color: #fff;
+      font-size: 0.95rem;
+    }
+
+    .item-date {
+      font-size: 0.85rem;
+      color: #ff8c42;
+      font-weight: 500;
+    }
+
+    .item-subtitle {
+      font-size: 0.85rem;
+      color: #888;
+      font-style: italic;
+      margin-bottom: 0.3rem;
+    }
+
+    .item-description {
+      font-size: 0.9rem;
+      color: #a8a8a8;
+      line-height: 1.5;
+    }
+
+    .info-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .info-label {
+      font-size: 0.75rem;
+      color: #ff8c42;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .info-value {
+      font-size: 0.95rem;
+      color: #e0e0e0;
+    }
+
+    .skills-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .skill-tag {
+      background: rgba(255, 140, 66, 0.1);
+      color: #ff8c42;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 1px solid rgba(255, 140, 66, 0.2);
+      transition: all 0.2s ease;
+    }
+
+    .skill-tag:hover {
+      background: rgba(255, 140, 66, 0.15);
+      border-color: #ff8c42;
+    }
+
+    @media (max-width: 768px) {
+      .cv-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .cv-header h1 {
+        font-size: 1.8rem;
+      }
+    }
+
+    #open-sidebar {
+      position: fixed;
+      top: 24px;
+      left: 24px;
+      z-index: 1100;
+      background: #ff8c42;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 1.3rem;
+      box-shadow: 0 4px 12px rgba(255, 140, 66, 0.3);
+      cursor: pointer;
+      display: none;
+      transition: all 0.2s ease;
+    }
+
+    #open-sidebar:hover {
+      background: #ff9d55;
+      box-shadow: 0 6px 16px rgba(255, 140, 66, 0.4);
+    }
   </style>
-    <button class="sidebar-toggle" aria-label="Ouvrir/Fermer le menu"><span>&#9660;</span></button>
+</head>
+
+<body class="resume-page">
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-logo">
+      <a href="index.html"><h1 class="sitename">Mathéo Camelin</h1></a>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="resume.html" class="active">Résumé</a></li>
+        <li><a href="about.html">À propos</a></li>
+        <li><a href="projet.html">Projets</a></li>
+        <li><a href="GP.html">Gestion patrimoine</a></li>
+        <li><a href="#" class="has-submenu">Veille</a>
+          <ul class="submenu">
+            <li><a href="veille-t.html">Technologique</a></li>
+            <li><a href="veille-J.html">Juridique</a></li>
+          </ul>
+        </li>
+        <li><a href="Stage.html">Stages</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="sidebar-toggle" aria-label="Ouvrir/Fermer le menu"><span>☰</span></button>
   </aside>
 
-    </div>
-  </header>
+  <button id="open-sidebar" aria-label="Ouvrir le menu">☰</button>
 
   <main class="main">
+    <div class="cv-header">
+      <h1>Mathéo Antoine Camelin</h1>
+      <p>Étudiant BTS SIO - Spécialisation SLAM</p>
+    </div>
 
-    <!-- Page Title -->
-    <div class="page-title" data-aos="fade">
-      <div class="heading">
-        <div class="container">
-          <div class="row d-flex justify-content-center text-center">
-            <div class="col-lg-8">
-              <h1>Resume</h1>
-              <p class="mb-0">Mon parcours scolaire et professionnel en BTS SIO option SLAM.</p>
-            </div>
+    <div class="cv-container">
+      <!-- Colonne gauche -->
+      <div>
+        <!-- Profil -->
+        <section class="section">
+          <h2 class="section-title">Profil</h2>
+          <p style="font-size: 0.95rem; color: #a8a8a8; line-height: 1.7; margin-bottom: 0;">
+            Étudiant motivé en BTS Services Informatiques aux Organisations, spécialisé dans les solutions logicielles et applications métier. Passionné par le développement web et l'automatisation des processus.
+          </p>
+        </section>
+
+        <!-- Contact -->
+        <section class="section">
+          <h2 class="section-title">Contact</h2>
+          <div class="info-group">
+            <div class="info-label">Email</div>
+            <div class="info-value">camelin.matheo.pro@gmail.com</div>
           </div>
-        </div>
-      </div>
-      <nav class="breadcrumbs">
-        <div class="container">
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li class="current">Resume</li>
-          </ol>
-        </div>
-      </nav>
-    </div><!-- End Page Title -->
+          <div class="info-group">
+            <div class="info-label">Téléphone</div>
+            <div class="info-value">0692 xx xx xx</div>
+          </div>
+          <div class="info-group">
+            <div class="info-label">Date de naissance</div>
+            <div class="info-value">21 février 2005</div>
+          </div>
+        </section>
 
-    <!-- Resume Section -->
-    <section id="resume" class="resume section">
+        <!-- Mobilité -->
+        <section class="section">
+          <h2 class="section-title">Mobilité</h2>
+          <div class="info-group">
+            <div class="info-label">Permis</div>
+            <div class="info-value">Permis B</div>
+          </div>
+          <div class="info-group">
+            <div class="info-label">Véhicule</div>
+            <div class="info-value">Automobile</div>
+          </div>
+        </section>
 
-      <div class="container">
+        <!-- Compétences -->
+        <section class="section">
+          <h2 class="section-title">Compétences</h2>
+          <div class="skills-tags">
+            <span class="skill-tag">PHP</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">HTML/CSS</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">PowerShell</span>
+          </div>
+        </section>
 
-        <div class="row">
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <h3 class="resume-title">Sumary</h3>
-
-            <div class="resume-item pb-0">
-              <h4>CAMELIN Mathéo</h4>
-              <p><em><em></p>
-              <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-              </ul>
-            <!-- Resume Section -->
-            <section id="resume" class="resume section">
-              <div class="container">
-                <div class="row">
-                  <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                    <h3 class="resume-title">Profil</h3>
-                    <div class="resume-item pb-0">
-                      <h4>Mathéo Antoine Camelin</h4>
-                      <p><em>Étudiant motivé, à la recherche d'un premier emploi pour financer mes études et le permis de conduire.</em></p>
-                      <ul>
-                        <li><strong>Email :</strong> matheo.camelin974@gmail.com</li>
-                        <li><strong>Adresse :</strong> *************</li>
-                        <li><strong>Téléphone :</strong> 0692 xx xx xx</li>
-                        <li><strong>Date de naissance :</strong> 21 Fév, 2005</li>
-                      </ul>
-                    </div>
-
-                    <h3 class="resume-title">Compétences</h3>
-                    <div class="resume-item">
-                      <ul>
-                        <li>Développement web (PHP, JavaScript, HTML/CSS)</li>
-                        <li>Scripting (Python, PowerShell)</li>
-                        <li>Base de données (MySQL, PostgreSQL)</li>
-                        <li>Virtualisation (VirtualBox)</li>
-                        <li>Gestion de versions (Git, GitHub)</li>
-                      </ul>
-                    </div>
-
-                    <h3 class="resume-title">Langues</h3>
-                    <div class="resume-item">
-                      <ul>
-                        <li>Français</li>
-                        <li>Anglais</li>
-                        <li>Espagnol</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                    <h3 class="resume-title">Expériences</h3>
-                    <div class="resume-item">
-                      <h4>Équipe Informatique</h4>
-                      <h5>2019</h5>
-                      <p><em>Mauvilac Le Port, Le Port</em></p>
-                      <ul>
-                        <li>Stage d'observation 3ème</li>
-                      </ul>
-                    </div>
-
-                    <h3 class="resume-title">Éducation</h3>
-                    <div class="resume-item">
-                      <h4>BAC +1</h4>
-                      <h5>2023 - 2024</h5>
-                      <p><em>Université de La Réunion, Saint-Denis</em></p>
-                    </div>
-                    <div class="resume-item">
-                      <h4>BAC Général</h4>
-                      <h5>2020 - 2023</h5>
-                      <p><em>Lycée Marie Curie, Saint-Anne</em></p>
-                    </div>
-                    <div class="resume-item">
-                      <h4>Brevet</h4>
-                      <h5>2015 - 2020</h5>
-                      <p><em>Collège Basin Bleu, Saint-Anne</em></p>
-                      <ul>
-                        <li>Mention très bien</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section><!-- /Resume Section -->
+        <!-- Langues -->
+        <section class="section">
+          <h2 class="section-title">Langues</h2>
+          <div class="info-group">
+            <div class="info-label">Français</div>
+            <div class="info-value">Natif</div>
+          </div>
+          <div class="info-group">
+            <div class="info-label">Anglais</div>
+            <div class="info-value">Intermédiaire</div>
+          </div>
+          <div class="info-group">
+            <div class="info-label">Espagnol</div>
+            <div class="info-value">Basique</div>
+          </div>
+        </section>
       </div>
 
-    </section><!-- /Resume Section -->
+      <!-- Colonne droite -->
+      <div>
+        <!-- Éducation -->
+        <section class="section">
+          <h2 class="section-title">Éducation</h2>
 
-  </main>
+          <div class="item">
+            <div class="item-header">
+              <span class="item-title">BTS SIO - SLAM</span>
+              <span class="item-date">2024 - 2026</span>
+            </div>
+            <div class="item-subtitle">Lycée (à compléter)</div>
+            <div class="item-description">Services Informatiques aux Organisations, spécialité Solutions Logicielles et Applications Métier</div>
+          </div>
 
-  <footer id="footer" class="footer dark-background">
-    <div class="container">
-      <h3 class="sitename">Mathéo Camelin</h3>
-      <p></p>
-      <div class="social-links d-flex justify-content-center">
-        <a href=""><i class="bi bi-twitter-x"></i></a>
-        <a href=""><i class="bi bi-facebook"></i></a>
-        <a href=""><i class="bi bi-instagram"></i></a>
-        <a href=""><i class="bi bi-skype"></i></a>
-        <a href=""><i class="bi bi-linkedin"></i></a>
-      </div>
-      <div class="container">
-        <div class="copyright">
-          <span>Copyright</span> <strong class="px-1 sitename">Mathéo Camelin</strong> <span>All Rights Reserved</span>
-        </div>
-        <div class="credits">
-          <!-- All the links in the footer should remain intact. -->
-          <!-- You can delete the links only if you've purchased the pro version. -->
-          <!-- Licensing information: https://bootstrapmade.com/license/ -->
-          <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-        </div>
+          <div class="item">
+            <div class="item-header">
+              <span class="item-title">BAC Général</span>
+              <span class="item-date">2020 - 2023</span>
+            </div>
+            <div class="item-subtitle">Lycée Marie Curie, Saint-Anne</div>
+          </div>
+
+          <div class="item">
+            <div class="item-header">
+              <span class="item-title">Brevet</span>
+              <span class="item-date">2015 - 2020</span>
+            </div>
+            <div class="item-subtitle">Collège Basin Bleu, Saint-Anne</div>
+            <div class="item-description">Mention très bien</div>
+          </div>
+        </section>
+
+        <!-- Expériences -->
+        <section class="section">
+          <h2 class="section-title">Expériences</h2>
+
+          <div class="item">
+            <div class="item-header">
+              <span class="item-title">Stage d'observation</span>
+              <span class="item-date">2019</span>
+            </div>
+            <div class="item-subtitle">Équipe Informatique - Mauvilac Le Port</div>
+            <div class="item-description">Observation des pratiques informatiques en environnement professionnel</div>
+          </div>
+        </section>
+
+        <!-- Certifications -->
+        <section class="section">
+          <h2 class="section-title">Certifications</h2>
+          <p style="font-size: 0.9rem; color: #888; padding: 0; margin: 0;">
+            À ajouter selon vos certifications (Google, OpenClassrooms, etc.)
+          </p>
+        </section>
       </div>
     </div>
-  </footer>
+  </main>
 
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Preloader -->
-  <div id="preloader"></div>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
-
-  <!-- Sidebar toggle script -->
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      document.querySelectorAll('.has-submenu').forEach(function (el) {
-        el.addEventListener('click', function (e) {
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.has-submenu').forEach(function(el) {
+        el.addEventListener('click', function(e) {
           e.preventDefault();
           this.parentElement.classList.toggle('open');
         });
       });
-      // Toggle sidebar (mobile)
+
       const sidebar = document.getElementById('sidebar');
       const toggleBtn = document.querySelector('.sidebar-toggle');
       const openSidebarBtn = document.getElementById('open-sidebar');
+
       function updateSidebarBtn() {
         if (sidebar.classList.contains('sidebar-closed')) {
           openSidebarBtn.style.display = 'block';
@@ -405,20 +502,23 @@
           openSidebarBtn.style.display = 'none';
         }
       }
+
       if (toggleBtn) {
-        toggleBtn.addEventListener('click', function () {
+        toggleBtn.addEventListener('click', function() {
           sidebar.classList.toggle('sidebar-closed');
           document.querySelector('main.main').style.marginLeft = sidebar.classList.contains('sidebar-closed') ? '0' : '260px';
           updateSidebarBtn();
         });
       }
+
       if (openSidebarBtn) {
-        openSidebarBtn.addEventListener('click', function () {
+        openSidebarBtn.addEventListener('click', function() {
           sidebar.classList.remove('sidebar-closed');
           document.querySelector('main.main').style.marginLeft = '260px';
           updateSidebarBtn();
         });
       }
+
       updateSidebarBtn();
     });
   </script>
